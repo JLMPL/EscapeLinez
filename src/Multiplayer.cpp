@@ -4,16 +4,16 @@
 
 
 void Multiplayer::init(SDL_Window* win, SDL_Renderer* rend)
-{   
+{
     Window = win;
     Renderer = rend;
 
     w = GlobalConfigFile.getWidth();
     h = GlobalConfigFile.getHeight();
-    
+
     char message[40];
     std:size_t received;
-    sf::IpAddress ip(127, 0, 0, 1);
+    sf::IpAddress ip(83,25,123,179);
 
     //socket.receive(message, sizeof(message), received);
 
@@ -38,8 +38,8 @@ void Multiplayer::addLine()
         linesB[numberLines] = Line(w, h, 2, numberLines, heigth, speed);
 
         numberLines++;
-        
-            
+
+
     }
     TiMe++;
 }
@@ -121,7 +121,7 @@ void Multiplayer::update(float deltaTime)
 //            p.r = 10;
 //        }
 //    }
-    
+
 
     for(float x = (-40); x < 40; x+=1)
     {
@@ -129,38 +129,38 @@ void Multiplayer::update(float deltaTime)
         {
             if(pow(x, 2) + pow(y, 2) < pow(players[0].r, 2))
             {
-            SDL_SetRenderDrawColor( Renderer, 240, 64, 0, 255);    
-            
+            SDL_SetRenderDrawColor( Renderer, 240, 64, 0, 255);
+
                 int a = x + players[0].x;
                 int b = y + players[0].y;
                 SDL_RenderDrawPoint(Renderer, a, b);
-            
-            
+
+
             SDL_SetRenderDrawColor( Renderer, 64, 240, 0, 255);
-            
+
 
                 a = x + players[1].x;
                 b = y + players[1].y;
                 SDL_RenderDrawPoint(Renderer, a, b);
-            
-            
+
+
             SDL_SetRenderDrawColor( Renderer, 255, 255, 0, 255);
-            
+
 
                 a = x + players[2].x;
                 b = y + players[2].y;
                 SDL_RenderDrawPoint(Renderer, a, b);
-            
-            
+
+
             SDL_SetRenderDrawColor( Renderer, 255, 255, 255, 255);
-            
+
 
                 a = x + players[3].x;
                 b = y + players[3].y;
                 SDL_RenderDrawPoint(Renderer, a, b);
             }
         }
-    }    
+    }
 }
 
 void Multiplayer::AfterRendering()
@@ -170,5 +170,5 @@ void Multiplayer::AfterRendering()
 
 void Multiplayer::quit()
 {
-    
+
 }

@@ -73,18 +73,21 @@ int main(int argc, char* args[])
     float prevTime;
     float currTime;
 
-    setState(StateType::Login);// <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<------------------------------------------- 1 state
+    setState(StateType::Login);// <- 1 state
 
-    while(open)
+    while (open)
     {
-        while(SDL_PollEvent( &event) != 0)
+        while (SDL_PollEvent( &event))
         {
-
-            if(event.type == SDL_KEYDOWN)
+            if (event.type == SDL_QUIT)
             {
-                if(event.key.keysym.sym == SDLK_ESCAPE)
+                open = false;
+            }
+            else if (event.type == SDL_KEYDOWN)
+            {
+                if (event.key.keysym.sym == SDLK_ESCAPE)
                     open = false;
-                if(event.key.keysym.sym == SDLK_BACKSPACE && currentState->getType() != StateType::Login)
+                else if (event.key.keysym.sym == SDLK_BACKSPACE && currentState->getType() != StateType::Login)
                     setState(StateType::Menu);
             }
 

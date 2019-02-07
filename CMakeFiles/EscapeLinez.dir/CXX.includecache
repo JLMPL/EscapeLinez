@@ -120,8 +120,6 @@ iostream
 ConfigFile.hpp
 /home/dominik/Desktop/MyApp/src/ConfigFile.hpp
 
-/home/dominik/Desktop/MyApp/src/MoviePlayer.cpp
-
 /home/dominik/Desktop/MyApp/src/Multiplayer.cpp
 Multiplayer.hpp
 /home/dominik/Desktop/MyApp/src/Multiplayer.hpp
@@ -207,32 +205,32 @@ string
 -
 
 /home/dominik/Desktop/MyApp/src/WaitingRoom.cpp
-WaitingRoom.hpp
-/home/dominik/Desktop/MyApp/src/WaitingRoom.hpp
+ConfigFile.hpp
+/home/dominik/Desktop/MyApp/src/ConfigFile.hpp
+jsonP.hpp
+/home/dominik/Desktop/MyApp/src/jsonP.hpp
+Login.hpp
+/home/dominik/Desktop/MyApp/src/Login.hpp
+Network.hpp
+/home/dominik/Desktop/MyApp/src/Network.hpp
+Settings.hpp
+/home/dominik/Desktop/MyApp/src/Settings.hpp
 State.hpp
 /home/dominik/Desktop/MyApp/src/State.hpp
+WaitingRoom.hpp
+/home/dominik/Desktop/MyApp/src/WaitingRoom.hpp
+iostream
+-
 SDL2/SDL.h
 -
 SDL2/SDL_image.h
 -
-Settings.hpp
-/home/dominik/Desktop/MyApp/src/Settings.hpp
-iostream
--
-ConfigFile.hpp
-/home/dominik/Desktop/MyApp/src/ConfigFile.hpp
 SFML/Network.hpp
--
-vector
 -
 time.h
 -
-Login.hpp
-/home/dominik/Desktop/MyApp/src/Login.hpp
-jsonP.hpp
-/home/dominik/Desktop/MyApp/src/jsonP.hpp
-Network.hpp
-/home/dominik/Desktop/MyApp/src/Network.hpp
+vector
+-
 
 /home/dominik/Desktop/MyApp/src/WaitingRoom.hpp
 State.hpp

@@ -9,7 +9,6 @@ file(REMOVE_RECURSE
   "CMakeFiles/EscapeLinez.dir/src/TextureLoader.cpp.o"
   "CMakeFiles/EscapeLinez.dir/src/Menu.cpp.o"
   "CMakeFiles/EscapeLinez.dir/src/main.cpp.o"
-  "CMakeFiles/EscapeLinez.dir/src/MoviePlayer.cpp.o"
   "CMakeFiles/EscapeLinez.dir/src/Lines.cpp.o"
   "CMakeFiles/EscapeLinez.dir/src/WaitingRoom.cpp.o"
   "EscapeLinez.pdb"

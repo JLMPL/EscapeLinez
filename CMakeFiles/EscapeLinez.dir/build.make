@@ -297,33 +297,9 @@ CMakeFiles/EscapeLinez.dir/src/main.cpp.o.provides: CMakeFiles/EscapeLinez.dir/s
 CMakeFiles/EscapeLinez.dir/src/main.cpp.o.provides.build: CMakeFiles/EscapeLinez.dir/src/main.cpp.o
 
 
-CMakeFiles/EscapeLinez.dir/src/MoviePlayer.cpp.o: CMakeFiles/EscapeLinez.dir/flags.make
-CMakeFiles/EscapeLinez.dir/src/MoviePlayer.cpp.o: src/MoviePlayer.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/dominik/Desktop/MyApp/CMakeFiles --progress-num=$(CMAKE_PROGRESS_11) "Building CXX object CMakeFiles/EscapeLinez.dir/src/MoviePlayer.cpp.o"
-	/usr/bin/c++   $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/EscapeLinez.dir/src/MoviePlayer.cpp.o -c /home/dominik/Desktop/MyApp/src/MoviePlayer.cpp
-
-CMakeFiles/EscapeLinez.dir/src/MoviePlayer.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/EscapeLinez.dir/src/MoviePlayer.cpp.i"
-	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/dominik/Desktop/MyApp/src/MoviePlayer.cpp > CMakeFiles/EscapeLinez.dir/src/MoviePlayer.cpp.i
-
-CMakeFiles/EscapeLinez.dir/src/MoviePlayer.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/EscapeLinez.dir/src/MoviePlayer.cpp.s"
-	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/dominik/Desktop/MyApp/src/MoviePlayer.cpp -o CMakeFiles/EscapeLinez.dir/src/MoviePlayer.cpp.s
-
-CMakeFiles/EscapeLinez.dir/src/MoviePlayer.cpp.o.requires:
-
-.PHONY : CMakeFiles/EscapeLinez.dir/src/MoviePlayer.cpp.o.requires
-
-CMakeFiles/EscapeLinez.dir/src/MoviePlayer.cpp.o.provides: CMakeFiles/EscapeLinez.dir/src/MoviePlayer.cpp.o.requires
-	$(MAKE) -f CMakeFiles/EscapeLinez.dir/build.make CMakeFiles/EscapeLinez.dir/src/MoviePlayer.cpp.o.provides.build
-.PHONY : CMakeFiles/EscapeLinez.dir/src/MoviePlayer.cpp.o.provides
-
-CMakeFiles/EscapeLinez.dir/src/MoviePlayer.cpp.o.provides.build: CMakeFiles/EscapeLinez.dir/src/MoviePlayer.cpp.o
-
-
 CMakeFiles/EscapeLinez.dir/src/Lines.cpp.o: CMakeFiles/EscapeLinez.dir/flags.make
 CMakeFiles/EscapeLinez.dir/src/Lines.cpp.o: src/Lines.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/dominik/Desktop/MyApp/CMakeFiles --progress-num=$(CMAKE_PROGRESS_12) "Building CXX object CMakeFiles/EscapeLinez.dir/src/Lines.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/dominik/Desktop/MyApp/CMakeFiles --progress-num=$(CMAKE_PROGRESS_11) "Building CXX object CMakeFiles/EscapeLinez.dir/src/Lines.cpp.o"
 	/usr/bin/c++   $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/EscapeLinez.dir/src/Lines.cpp.o -c /home/dominik/Desktop/MyApp/src/Lines.cpp
 
 CMakeFiles/EscapeLinez.dir/src/Lines.cpp.i: cmake_force
@@ -347,7 +323,7 @@ CMakeFiles/EscapeLinez.dir/src/Lines.cpp.o.provides.build: CMakeFiles/EscapeLine
 
 CMakeFiles/EscapeLinez.dir/src/WaitingRoom.cpp.o: CMakeFiles/EscapeLinez.dir/flags.make
 CMakeFiles/EscapeLinez.dir/src/WaitingRoom.cpp.o: src/WaitingRoom.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/dominik/Desktop/MyApp/CMakeFiles --progress-num=$(CMAKE_PROGRESS_13) "Building CXX object CMakeFiles/EscapeLinez.dir/src/WaitingRoom.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/dominik/Desktop/MyApp/CMakeFiles --progress-num=$(CMAKE_PROGRESS_12) "Building CXX object CMakeFiles/EscapeLinez.dir/src/WaitingRoom.cpp.o"
 	/usr/bin/c++   $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/EscapeLinez.dir/src/WaitingRoom.cpp.o -c /home/dominik/Desktop/MyApp/src/WaitingRoom.cpp
 
 CMakeFiles/EscapeLinez.dir/src/WaitingRoom.cpp.i: cmake_force
@@ -381,7 +357,6 @@ EscapeLinez_OBJECTS = \
 "CMakeFiles/EscapeLinez.dir/src/TextureLoader.cpp.o" \
 "CMakeFiles/EscapeLinez.dir/src/Menu.cpp.o" \
 "CMakeFiles/EscapeLinez.dir/src/main.cpp.o" \
-"CMakeFiles/EscapeLinez.dir/src/MoviePlayer.cpp.o" \
 "CMakeFiles/EscapeLinez.dir/src/Lines.cpp.o" \
 "CMakeFiles/EscapeLinez.dir/src/WaitingRoom.cpp.o"
 
@@ -398,12 +373,11 @@ EscapeLinez: CMakeFiles/EscapeLinez.dir/src/Singleplayer.cpp.o
 EscapeLinez: CMakeFiles/EscapeLinez.dir/src/TextureLoader.cpp.o
 EscapeLinez: CMakeFiles/EscapeLinez.dir/src/Menu.cpp.o
 EscapeLinez: CMakeFiles/EscapeLinez.dir/src/main.cpp.o
-EscapeLinez: CMakeFiles/EscapeLinez.dir/src/MoviePlayer.cpp.o
 EscapeLinez: CMakeFiles/EscapeLinez.dir/src/Lines.cpp.o
 EscapeLinez: CMakeFiles/EscapeLinez.dir/src/WaitingRoom.cpp.o
 EscapeLinez: CMakeFiles/EscapeLinez.dir/build.make
 EscapeLinez: CMakeFiles/EscapeLinez.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/dominik/Desktop/MyApp/CMakeFiles --progress-num=$(CMAKE_PROGRESS_14) "Linking CXX executable EscapeLinez"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/dominik/Desktop/MyApp/CMakeFiles --progress-num=$(CMAKE_PROGRESS_13) "Linking CXX executable EscapeLinez"
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/EscapeLinez.dir/link.txt --verbose=$(VERBOSE)
 
 # Rule to build all files generated by this target.
@@ -421,7 +395,6 @@ CMakeFiles/EscapeLinez.dir/requires: CMakeFiles/EscapeLinez.dir/src/Singleplayer
 CMakeFiles/EscapeLinez.dir/requires: CMakeFiles/EscapeLinez.dir/src/TextureLoader.cpp.o.requires
 CMakeFiles/EscapeLinez.dir/requires: CMakeFiles/EscapeLinez.dir/src/Menu.cpp.o.requires
 CMakeFiles/EscapeLinez.dir/requires: CMakeFiles/EscapeLinez.dir/src/main.cpp.o.requires
-CMakeFiles/EscapeLinez.dir/requires: CMakeFiles/EscapeLinez.dir/src/MoviePlayer.cpp.o.requires
 CMakeFiles/EscapeLinez.dir/requires: CMakeFiles/EscapeLinez.dir/src/Lines.cpp.o.requires
 CMakeFiles/EscapeLinez.dir/requires: CMakeFiles/EscapeLinez.dir/src/WaitingRoom.cpp.o.requires
 

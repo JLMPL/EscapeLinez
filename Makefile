@@ -258,33 +258,6 @@ src/Menu.cpp.s:
 	$(MAKE) -f CMakeFiles/EscapeLinez.dir/build.make CMakeFiles/EscapeLinez.dir/src/Menu.cpp.s
 .PHONY : src/Menu.cpp.s
 
-src/MoviePlayer.o: src/MoviePlayer.cpp.o
-
-.PHONY : src/MoviePlayer.o
-
-# target to build an object file
-src/MoviePlayer.cpp.o:
-	$(MAKE) -f CMakeFiles/EscapeLinez.dir/build.make CMakeFiles/EscapeLinez.dir/src/MoviePlayer.cpp.o
-.PHONY : src/MoviePlayer.cpp.o
-
-src/MoviePlayer.i: src/MoviePlayer.cpp.i
-
-.PHONY : src/MoviePlayer.i
-
-# target to preprocess a source file
-src/MoviePlayer.cpp.i:
-	$(MAKE) -f CMakeFiles/EscapeLinez.dir/build.make CMakeFiles/EscapeLinez.dir/src/MoviePlayer.cpp.i
-.PHONY : src/MoviePlayer.cpp.i
-
-src/MoviePlayer.s: src/MoviePlayer.cpp.s
-
-.PHONY : src/MoviePlayer.s
-
-# target to generate assembly for a file
-src/MoviePlayer.cpp.s:
-	$(MAKE) -f CMakeFiles/EscapeLinez.dir/build.make CMakeFiles/EscapeLinez.dir/src/MoviePlayer.cpp.s
-.PHONY : src/MoviePlayer.cpp.s
-
 src/Multiplayer.o: src/Multiplayer.cpp.o
 
 .PHONY : src/Multiplayer.o
@@ -498,9 +471,6 @@ help:
 	@echo "... src/Menu.o"
 	@echo "... src/Menu.i"
 	@echo "... src/Menu.s"
-	@echo "... src/MoviePlayer.o"
-	@echo "... src/MoviePlayer.i"
-	@echo "... src/MoviePlayer.s"
 	@echo "... src/Multiplayer.o"
 	@echo "... src/Multiplayer.i"
 	@echo "... src/Multiplayer.s"

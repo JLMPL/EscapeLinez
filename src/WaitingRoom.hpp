@@ -11,8 +11,6 @@
 #include <vector>
 #include <time.h>
 
-
-
 class WaitingRoom : public State
 {
     public:
@@ -22,27 +20,27 @@ class WaitingRoom : public State
         void AfterRendering() override final;
 
         void processEvent(const SDL_Event& event) override final;
-        
+
         StateType nextState() override final;
-        
+
         StateType getType() const override final
         {
             return StateType::WaitingRoom;
         }
 
-    private:        
+    private:
         StateType changeState = StateType::None;
-        
+
         int w = GlobalConfigFile.getWidth(), h = GlobalConfigFile.getHeight();
 
         TTF_Font*       Font;
         SDL_Color       FontColor;
 
 //-----------------------left-----------------------------
-        
+
         SDL_Surface*    FontSurfaceTime;
         SDL_Texture*    FontTextureTime;
-        
+
         SDL_Surface*    FontSurfacePlayers;
         SDL_Texture*    FontTexturePlayers;
 
@@ -58,7 +56,7 @@ class WaitingRoom : public State
 
         SDL_Surface*    FontSurfaceTimeData;
         SDL_Texture*    FontTextureTimeData;
-        
+
         SDL_Surface*    FontSurfacePlayersData;
         SDL_Texture*    FontTexturePlayersData;
 
@@ -75,7 +73,7 @@ class WaitingRoom : public State
         std::string MessageTimeCopy;
         std::string MessagePlayers;
         std::string ToBattle = "0";
-        
+
 };
 
 

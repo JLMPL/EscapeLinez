@@ -63,10 +63,8 @@ void Login::init(SDL_Window* window, SDL_Renderer* renderer)
     Error.init(loadTexture(Renderer, "data/Images/Login/ErrorLogin.png"), w / 2 - 350, h*0.6, 700);
     NoInternet.init(loadTexture(Renderer, "data/Images/Login/NoInternet.png"), w / 2 - 350, h* 0.6, 700);
 
-
-    new (&MySocketLogin) MySocket(sf::IpAddress(127, 0, 0, 1), 8000);
-
-
+    new (&MySocketLogin) MySocket(sf::IpAddress(83,25,123,179), 8000);
+    std::cout << MySocketLogin.getStatus() << std::endl;
 }
 
 void Login::update(float deltaTime)
@@ -114,7 +112,6 @@ void Login::AfterRendering()
 
 void Login::processEvent(const SDL_Event& event)
 {
-
     if(event.type == SDL_KEYDOWN)
     {
         SDL_StartTextInput();
@@ -228,27 +225,18 @@ void Login::processEvent(const SDL_Event& event)
         NickRect.h = FontSurfaceLoginNickValue->h;
         PasswordReck.w = FontSurfaceLoginPasswordValue->w;
         PasswordReck.h = FontSurfaceLoginPasswordValue->h;
-
     }
-
-
 }
 
 void Login::send() //<<<<<<<<<<<<<<<<-------- Network.cpp
 {
     std::string LoginP = Nick + "," + Password + "," + std::to_string(h);
 
-
     MySocketLogin.send(LoginP);
-
-
 
     std::string answare = MySocketLogin.get();
 
     json parser = json::parse(answare);
-
-
-
 
     switch(MySocketLogin.getStatus())
     {
@@ -276,9 +264,6 @@ void Login::send() //<<<<<<<<<<<<<<<<-------- Network.cpp
             err = 2;
         break;
     }
-
-
-
 }
 
 void Login::quit()
@@ -286,7 +271,7 @@ void Login::quit()
 
 }
 
-StateType Login :: nextState()
+StateType Login::nextState()
 {
     if (changeState == 1)
         return StateType::Singleplayer;
