@@ -1,4 +1,16 @@
 #include "Game.hpp"
+#include <cstdlib>
+#include <time.h>
+#include <iostream>
+#include <math.h>
+#include <SFML/Network.hpp>
+#include "Multiplayer.hpp"
+#include "Singleplayer.hpp"
+#include "Menu.hpp"
+#include "Settings.hpp"
+#include "Login.hpp"
+#include "ConfigFile.hpp"
+#include "WaitingRoom.hpp"
 
 Game::Game()
 {
@@ -9,8 +21,8 @@ Game::Game()
 
 Game::~Game()
 {
-    SDL_DestoryRenderer(m_renderer);
-    SDL_DestoryWindow(m_window);
+    SDL_DestroyRenderer(m_renderer);
+    SDL_DestroyWindow(m_window);
 
     TTF_Quit();
     IMG_Quit();
@@ -70,12 +82,14 @@ void Game::processEvent(const SDL_Event& event)
                 break;
             case SDLK_BACKSPACE:
             {
-                if (currentState->getType() != StateType::Login)
+                if (m_currState->getType() != StateType::Login)
                     setState(StateType::Menu);
             }
             break;
         }
     }
+
+    m_currState->processEvent(m_event);
 }
 
 void Game::update()
@@ -84,19 +98,22 @@ void Game::update()
     m_currTime = SDL_GetTicks();
     m_deltaTime = (m_currTime - m_prevTime) / 1000.f;
 
+    SDL_RenderClear(m_renderer);
 
+    if (m_currState->nextState() != StateType::None)
+    {
+        setState(m_currState->nextState());
+    }
+
+    m_currState->update(m_deltaTime);
 }
 
 void Game::draw()
 {
-    SDL_RenderClear(m_renderer);
-
-    m_currState->draw(m_renderer);
-
     SDL_RenderPresent(m_renderer);
 }
 
-void setState(StateType type)
+void Game::setState(StateType type)
 {
     if (m_currState)
         m_currState->quit();

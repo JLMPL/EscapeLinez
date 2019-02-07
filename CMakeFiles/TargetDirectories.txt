@@ -1,9 +1,3 @@
-<<<<<<< HEAD
 /home/dominik/Desktop/EscapeLinez/CMakeFiles/edit_cache.dir
 /home/dominik/Desktop/EscapeLinez/CMakeFiles/EscapeLinez.dir
 /home/dominik/Desktop/EscapeLinez/CMakeFiles/rebuild_cache.dir
-=======
-/home/krzysiek/Desktop/MyApp/EscapeLinez/CMakeFiles/rebuild_cache.dir
-/home/krzysiek/Desktop/MyApp/EscapeLinez/CMakeFiles/EscapeLinez.dir
-/home/krzysiek/Desktop/MyApp/EscapeLinez/CMakeFiles/edit_cache.dir
->>>>>>> 7b2514b3a09db1e57853d31d596fd5f2146cf550
