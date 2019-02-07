@@ -4,18 +4,18 @@ set(CMAKE_DEPENDS_LANGUAGES
   )
 # The set of files for implicit dependencies of each language:
 set(CMAKE_DEPENDS_CHECK_CXX
-  "/home/dominik/Desktop/MyApp/src/Button.cpp" "/home/dominik/Desktop/MyApp/CMakeFiles/EscapeLinez.dir/src/Button.cpp.o"
-  "/home/dominik/Desktop/MyApp/src/ConfigFile.cpp" "/home/dominik/Desktop/MyApp/CMakeFiles/EscapeLinez.dir/src/ConfigFile.cpp.o"
-  "/home/dominik/Desktop/MyApp/src/Lines.cpp" "/home/dominik/Desktop/MyApp/CMakeFiles/EscapeLinez.dir/src/Lines.cpp.o"
-  "/home/dominik/Desktop/MyApp/src/Login.cpp" "/home/dominik/Desktop/MyApp/CMakeFiles/EscapeLinez.dir/src/Login.cpp.o"
-  "/home/dominik/Desktop/MyApp/src/Menu.cpp" "/home/dominik/Desktop/MyApp/CMakeFiles/EscapeLinez.dir/src/Menu.cpp.o"
-  "/home/dominik/Desktop/MyApp/src/Multiplayer.cpp" "/home/dominik/Desktop/MyApp/CMakeFiles/EscapeLinez.dir/src/Multiplayer.cpp.o"
-  "/home/dominik/Desktop/MyApp/src/Network.cpp" "/home/dominik/Desktop/MyApp/CMakeFiles/EscapeLinez.dir/src/Network.cpp.o"
-  "/home/dominik/Desktop/MyApp/src/Settings.cpp" "/home/dominik/Desktop/MyApp/CMakeFiles/EscapeLinez.dir/src/Settings.cpp.o"
-  "/home/dominik/Desktop/MyApp/src/Singleplayer.cpp" "/home/dominik/Desktop/MyApp/CMakeFiles/EscapeLinez.dir/src/Singleplayer.cpp.o"
-  "/home/dominik/Desktop/MyApp/src/TextureLoader.cpp" "/home/dominik/Desktop/MyApp/CMakeFiles/EscapeLinez.dir/src/TextureLoader.cpp.o"
-  "/home/dominik/Desktop/MyApp/src/WaitingRoom.cpp" "/home/dominik/Desktop/MyApp/CMakeFiles/EscapeLinez.dir/src/WaitingRoom.cpp.o"
-  "/home/dominik/Desktop/MyApp/src/main.cpp" "/home/dominik/Desktop/MyApp/CMakeFiles/EscapeLinez.dir/src/main.cpp.o"
+  "/home/krzysiek/Desktop/MyApp/EscapeLinez/src/Button.cpp" "/home/krzysiek/Desktop/MyApp/EscapeLinez/CMakeFiles/EscapeLinez.dir/src/Button.cpp.o"
+  "/home/krzysiek/Desktop/MyApp/EscapeLinez/src/ConfigFile.cpp" "/home/krzysiek/Desktop/MyApp/EscapeLinez/CMakeFiles/EscapeLinez.dir/src/ConfigFile.cpp.o"
+  "/home/krzysiek/Desktop/MyApp/EscapeLinez/src/Lines.cpp" "/home/krzysiek/Desktop/MyApp/EscapeLinez/CMakeFiles/EscapeLinez.dir/src/Lines.cpp.o"
+  "/home/krzysiek/Desktop/MyApp/EscapeLinez/src/Login.cpp" "/home/krzysiek/Desktop/MyApp/EscapeLinez/CMakeFiles/EscapeLinez.dir/src/Login.cpp.o"
+  "/home/krzysiek/Desktop/MyApp/EscapeLinez/src/Menu.cpp" "/home/krzysiek/Desktop/MyApp/EscapeLinez/CMakeFiles/EscapeLinez.dir/src/Menu.cpp.o"
+  "/home/krzysiek/Desktop/MyApp/EscapeLinez/src/Multiplayer.cpp" "/home/krzysiek/Desktop/MyApp/EscapeLinez/CMakeFiles/EscapeLinez.dir/src/Multiplayer.cpp.o"
+  "/home/krzysiek/Desktop/MyApp/EscapeLinez/src/Network.cpp" "/home/krzysiek/Desktop/MyApp/EscapeLinez/CMakeFiles/EscapeLinez.dir/src/Network.cpp.o"
+  "/home/krzysiek/Desktop/MyApp/EscapeLinez/src/Settings.cpp" "/home/krzysiek/Desktop/MyApp/EscapeLinez/CMakeFiles/EscapeLinez.dir/src/Settings.cpp.o"
+  "/home/krzysiek/Desktop/MyApp/EscapeLinez/src/Singleplayer.cpp" "/home/krzysiek/Desktop/MyApp/EscapeLinez/CMakeFiles/EscapeLinez.dir/src/Singleplayer.cpp.o"
+  "/home/krzysiek/Desktop/MyApp/EscapeLinez/src/TextureLoader.cpp" "/home/krzysiek/Desktop/MyApp/EscapeLinez/CMakeFiles/EscapeLinez.dir/src/TextureLoader.cpp.o"
+  "/home/krzysiek/Desktop/MyApp/EscapeLinez/src/WaitingRoom.cpp" "/home/krzysiek/Desktop/MyApp/EscapeLinez/CMakeFiles/EscapeLinez.dir/src/WaitingRoom.cpp.o"
+  "/home/krzysiek/Desktop/MyApp/EscapeLinez/src/main.cpp" "/home/krzysiek/Desktop/MyApp/EscapeLinez/CMakeFiles/EscapeLinez.dir/src/main.cpp.o"
   )
 set(CMAKE_CXX_COMPILER_ID "GNU")
 

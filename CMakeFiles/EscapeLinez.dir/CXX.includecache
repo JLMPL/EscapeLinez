@@ -1,4 +1,4 @@
-#IncludeRegexLine: ^[ 	]*#[ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
 
 #IncludeRegexScan: ^.*$
 
@@ -6,7 +6,7 @@
 
 #IncludeRegexTransform: 
 
-/home/dominik/Desktop/MyApp/src/Button.cpp
+/home/krzysiek/Desktop/MyApp/EscapeLinez/src/Button.cpp
 SDL2/SDL.h
 -
 SDL2/SDL_image.h
@@ -14,9 +14,9 @@ SDL2/SDL_image.h
 iostream
 -
 Button.hpp
-/home/dominik/Desktop/MyApp/src/Button.hpp
+/home/krzysiek/Desktop/MyApp/EscapeLinez/src/Button.hpp
 
-/home/dominik/Desktop/MyApp/src/Button.hpp
+/home/krzysiek/Desktop/MyApp/EscapeLinez/src/Button.hpp
 SDL2/SDL.h
 -
 SDL2/SDL_image.h
@@ -24,9 +24,9 @@ SDL2/SDL_image.h
 iostream
 -
 
-/home/dominik/Desktop/MyApp/src/ConfigFile.cpp
+/home/krzysiek/Desktop/MyApp/EscapeLinez/src/ConfigFile.cpp
 ConfigFile.hpp
-/home/dominik/Desktop/MyApp/src/ConfigFile.hpp
+/home/krzysiek/Desktop/MyApp/EscapeLinez/src/ConfigFile.hpp
 fstream
 -
 stdio.h
@@ -34,13 +34,13 @@ stdio.h
 SDL2/SDL.h
 -
 
-/home/dominik/Desktop/MyApp/src/ConfigFile.hpp
+/home/krzysiek/Desktop/MyApp/EscapeLinez/src/ConfigFile.hpp
 
-/home/dominik/Desktop/MyApp/src/Lines.cpp
+/home/krzysiek/Desktop/MyApp/EscapeLinez/src/Lines.cpp
 Lines.hpp
-/home/dominik/Desktop/MyApp/src/Lines.hpp
+/home/krzysiek/Desktop/MyApp/EscapeLinez/src/Lines.hpp
 
-/home/dominik/Desktop/MyApp/src/Lines.hpp
+/home/krzysiek/Desktop/MyApp/EscapeLinez/src/Lines.hpp
 cstdlib
 -
 time.h
@@ -52,29 +52,29 @@ SDL2/SDL.h
 math.h
 -
 ConfigFile.hpp
-/home/dominik/Desktop/MyApp/src/ConfigFile.hpp
+/home/krzysiek/Desktop/MyApp/EscapeLinez/src/ConfigFile.hpp
 
-/home/dominik/Desktop/MyApp/src/Login.cpp
+/home/krzysiek/Desktop/MyApp/EscapeLinez/src/Login.cpp
 Login.hpp
-/home/dominik/Desktop/MyApp/src/Login.hpp
+/home/krzysiek/Desktop/MyApp/EscapeLinez/src/Login.hpp
 Button.hpp
-/home/dominik/Desktop/MyApp/src/Button.hpp
+/home/krzysiek/Desktop/MyApp/EscapeLinez/src/Button.hpp
 Settings.hpp
-/home/dominik/Desktop/MyApp/src/Settings.hpp
+/home/krzysiek/Desktop/MyApp/EscapeLinez/src/Settings.hpp
 TextureLoader.hpp
-/home/dominik/Desktop/MyApp/src/TextureLoader.hpp
+/home/krzysiek/Desktop/MyApp/EscapeLinez/src/TextureLoader.hpp
 Network.hpp
-/home/dominik/Desktop/MyApp/src/Network.hpp
+/home/krzysiek/Desktop/MyApp/EscapeLinez/src/Network.hpp
 time.h
 -
 vector
 -
 jsonP.hpp
-/home/dominik/Desktop/MyApp/src/jsonP.hpp
+/home/krzysiek/Desktop/MyApp/EscapeLinez/src/jsonP.hpp
 
-/home/dominik/Desktop/MyApp/src/Login.hpp
+/home/krzysiek/Desktop/MyApp/EscapeLinez/src/Login.hpp
 State.hpp
-/home/dominik/Desktop/MyApp/src/State.hpp
+/home/krzysiek/Desktop/MyApp/EscapeLinez/src/State.hpp
 SDL2/SDL.h
 -
 SDL2/SDL_image.h
@@ -86,87 +86,87 @@ SFML/Network.hpp
 iostream
 -
 Button.hpp
-/home/dominik/Desktop/MyApp/src/Button.hpp
+/home/krzysiek/Desktop/MyApp/EscapeLinez/src/Button.hpp
 Settings.hpp
-/home/dominik/Desktop/MyApp/src/Settings.hpp
+/home/krzysiek/Desktop/MyApp/EscapeLinez/src/Settings.hpp
 ConfigFile.hpp
-/home/dominik/Desktop/MyApp/src/ConfigFile.hpp
+/home/krzysiek/Desktop/MyApp/EscapeLinez/src/ConfigFile.hpp
 
-/home/dominik/Desktop/MyApp/src/Menu.cpp
+/home/krzysiek/Desktop/MyApp/EscapeLinez/src/Menu.cpp
 Menu.hpp
-/home/dominik/Desktop/MyApp/src/Menu.hpp
+/home/krzysiek/Desktop/MyApp/EscapeLinez/src/Menu.hpp
 Button.hpp
-/home/dominik/Desktop/MyApp/src/Button.hpp
+/home/krzysiek/Desktop/MyApp/EscapeLinez/src/Button.hpp
 Settings.hpp
-/home/dominik/Desktop/MyApp/src/Settings.hpp
+/home/krzysiek/Desktop/MyApp/EscapeLinez/src/Settings.hpp
 TextureLoader.hpp
-/home/dominik/Desktop/MyApp/src/TextureLoader.hpp
+/home/krzysiek/Desktop/MyApp/EscapeLinez/src/TextureLoader.hpp
 ConfigFile.hpp
-/home/dominik/Desktop/MyApp/src/ConfigFile.hpp
+/home/krzysiek/Desktop/MyApp/EscapeLinez/src/ConfigFile.hpp
 
-/home/dominik/Desktop/MyApp/src/Menu.hpp
+/home/krzysiek/Desktop/MyApp/EscapeLinez/src/Menu.hpp
 State.hpp
-/home/dominik/Desktop/MyApp/src/State.hpp
+/home/krzysiek/Desktop/MyApp/EscapeLinez/src/State.hpp
 SDL2/SDL.h
 -
 SDL2/SDL_image.h
 -
 Button.hpp
-/home/dominik/Desktop/MyApp/src/Button.hpp
+/home/krzysiek/Desktop/MyApp/EscapeLinez/src/Button.hpp
 Settings.hpp
-/home/dominik/Desktop/MyApp/src/Settings.hpp
+/home/krzysiek/Desktop/MyApp/EscapeLinez/src/Settings.hpp
 iostream
 -
 ConfigFile.hpp
-/home/dominik/Desktop/MyApp/src/ConfigFile.hpp
+/home/krzysiek/Desktop/MyApp/EscapeLinez/src/ConfigFile.hpp
 
-/home/dominik/Desktop/MyApp/src/Multiplayer.cpp
+/home/krzysiek/Desktop/MyApp/EscapeLinez/src/Multiplayer.cpp
 Multiplayer.hpp
-/home/dominik/Desktop/MyApp/src/Multiplayer.hpp
+/home/krzysiek/Desktop/MyApp/EscapeLinez/src/Multiplayer.hpp
 ConfigFile.hpp
-/home/dominik/Desktop/MyApp/src/ConfigFile.hpp
+/home/krzysiek/Desktop/MyApp/EscapeLinez/src/ConfigFile.hpp
 SFML/Network.hpp
 -
 
-/home/dominik/Desktop/MyApp/src/Multiplayer.hpp
+/home/krzysiek/Desktop/MyApp/EscapeLinez/src/Multiplayer.hpp
 State.hpp
-/home/dominik/Desktop/MyApp/src/State.hpp
+/home/krzysiek/Desktop/MyApp/EscapeLinez/src/State.hpp
 Lines.hpp
-/home/dominik/Desktop/MyApp/src/Lines.hpp
+/home/krzysiek/Desktop/MyApp/EscapeLinez/src/Lines.hpp
 SDL2/SDL.h
 -
 SFML/Network.hpp
 -
 Settings.hpp
-/home/dominik/Desktop/MyApp/src/Settings.hpp
+/home/krzysiek/Desktop/MyApp/EscapeLinez/src/Settings.hpp
 
-/home/dominik/Desktop/MyApp/src/Network.cpp
+/home/krzysiek/Desktop/MyApp/EscapeLinez/src/Network.cpp
 Network.hpp
-/home/dominik/Desktop/MyApp/src/Network.hpp
+/home/krzysiek/Desktop/MyApp/EscapeLinez/src/Network.hpp
 iostream
 -
 
-/home/dominik/Desktop/MyApp/src/Network.hpp
+/home/krzysiek/Desktop/MyApp/EscapeLinez/src/Network.hpp
 SFML/Network.hpp
 -
 string
 -
 
-/home/dominik/Desktop/MyApp/src/Settings.cpp
+/home/krzysiek/Desktop/MyApp/EscapeLinez/src/Settings.cpp
 Settings.hpp
-/home/dominik/Desktop/MyApp/src/Settings.hpp
+/home/krzysiek/Desktop/MyApp/EscapeLinez/src/Settings.hpp
 Button.hpp
-/home/dominik/Desktop/MyApp/src/Button.hpp
+/home/krzysiek/Desktop/MyApp/EscapeLinez/src/Button.hpp
 TextureLoader.hpp
-/home/dominik/Desktop/MyApp/src/TextureLoader.hpp
+/home/krzysiek/Desktop/MyApp/EscapeLinez/src/TextureLoader.hpp
 ConfigFile.hpp
-/home/dominik/Desktop/MyApp/src/ConfigFile.hpp
+/home/krzysiek/Desktop/MyApp/EscapeLinez/src/ConfigFile.hpp
 
-/home/dominik/Desktop/MyApp/src/Settings.hpp
+/home/krzysiek/Desktop/MyApp/EscapeLinez/src/Settings.hpp
 State.hpp
-/home/dominik/Desktop/MyApp/src/State.hpp
+/home/krzysiek/Desktop/MyApp/EscapeLinez/src/State.hpp
 Button.hpp
-/home/dominik/Desktop/MyApp/src/Button.hpp
+/home/krzysiek/Desktop/MyApp/EscapeLinez/src/Button.hpp
 SDL2/SDL.h
 -
 SDL2/SDL_image.h
@@ -176,49 +176,49 @@ SDL2/SDL_ttf.h
 iostream
 -
 
-/home/dominik/Desktop/MyApp/src/Singleplayer.cpp
+/home/krzysiek/Desktop/MyApp/EscapeLinez/src/Singleplayer.cpp
 Singleplayer.hpp
-/home/dominik/Desktop/MyApp/src/Singleplayer.hpp
+/home/krzysiek/Desktop/MyApp/EscapeLinez/src/Singleplayer.hpp
 
-/home/dominik/Desktop/MyApp/src/Singleplayer.hpp
+/home/krzysiek/Desktop/MyApp/EscapeLinez/src/Singleplayer.hpp
 State.hpp
-/home/dominik/Desktop/MyApp/src/State.hpp
+/home/krzysiek/Desktop/MyApp/EscapeLinez/src/State.hpp
 Lines.hpp
-/home/dominik/Desktop/MyApp/src/Lines.hpp
+/home/krzysiek/Desktop/MyApp/EscapeLinez/src/Lines.hpp
 SDL2/SDL.h
 -
 Settings.hpp
-/home/dominik/Desktop/MyApp/src/Settings.hpp
+/home/krzysiek/Desktop/MyApp/EscapeLinez/src/Settings.hpp
 ConfigFile.hpp
-/home/dominik/Desktop/MyApp/src/ConfigFile.hpp
+/home/krzysiek/Desktop/MyApp/EscapeLinez/src/ConfigFile.hpp
 
-/home/dominik/Desktop/MyApp/src/State.hpp
+/home/krzysiek/Desktop/MyApp/EscapeLinez/src/State.hpp
 
-/home/dominik/Desktop/MyApp/src/TextureLoader.cpp
+/home/krzysiek/Desktop/MyApp/EscapeLinez/src/TextureLoader.cpp
 TextureLoader.hpp
-/home/dominik/Desktop/MyApp/src/TextureLoader.hpp
+/home/krzysiek/Desktop/MyApp/EscapeLinez/src/TextureLoader.hpp
 SDL2/SDL_image.h
 -
 
-/home/dominik/Desktop/MyApp/src/TextureLoader.hpp
+/home/krzysiek/Desktop/MyApp/EscapeLinez/src/TextureLoader.hpp
 string
 -
 
-/home/dominik/Desktop/MyApp/src/WaitingRoom.cpp
+/home/krzysiek/Desktop/MyApp/EscapeLinez/src/WaitingRoom.cpp
 ConfigFile.hpp
-/home/dominik/Desktop/MyApp/src/ConfigFile.hpp
+/home/krzysiek/Desktop/MyApp/EscapeLinez/src/ConfigFile.hpp
 jsonP.hpp
-/home/dominik/Desktop/MyApp/src/jsonP.hpp
+/home/krzysiek/Desktop/MyApp/EscapeLinez/src/jsonP.hpp
 Login.hpp
-/home/dominik/Desktop/MyApp/src/Login.hpp
+/home/krzysiek/Desktop/MyApp/EscapeLinez/src/Login.hpp
 Network.hpp
-/home/dominik/Desktop/MyApp/src/Network.hpp
+/home/krzysiek/Desktop/MyApp/EscapeLinez/src/Network.hpp
 Settings.hpp
-/home/dominik/Desktop/MyApp/src/Settings.hpp
+/home/krzysiek/Desktop/MyApp/EscapeLinez/src/Settings.hpp
 State.hpp
-/home/dominik/Desktop/MyApp/src/State.hpp
+/home/krzysiek/Desktop/MyApp/EscapeLinez/src/State.hpp
 WaitingRoom.hpp
-/home/dominik/Desktop/MyApp/src/WaitingRoom.hpp
+/home/krzysiek/Desktop/MyApp/EscapeLinez/src/WaitingRoom.hpp
 iostream
 -
 SDL2/SDL.h
@@ -232,19 +232,19 @@ time.h
 vector
 -
 
-/home/dominik/Desktop/MyApp/src/WaitingRoom.hpp
+/home/krzysiek/Desktop/MyApp/EscapeLinez/src/WaitingRoom.hpp
 State.hpp
-/home/dominik/Desktop/MyApp/src/State.hpp
+/home/krzysiek/Desktop/MyApp/EscapeLinez/src/State.hpp
 SDL2/SDL.h
 -
 SDL2/SDL_image.h
 -
 Settings.hpp
-/home/dominik/Desktop/MyApp/src/Settings.hpp
+/home/krzysiek/Desktop/MyApp/EscapeLinez/src/Settings.hpp
 iostream
 -
 ConfigFile.hpp
-/home/dominik/Desktop/MyApp/src/ConfigFile.hpp
+/home/krzysiek/Desktop/MyApp/EscapeLinez/src/ConfigFile.hpp
 SFML/Network.hpp
 -
 vector
@@ -252,7 +252,7 @@ vector
 time.h
 -
 
-/home/dominik/Desktop/MyApp/src/jsonP.hpp
+/home/krzysiek/Desktop/MyApp/EscapeLinez/src/jsonP.hpp
 algorithm
 -
 cassert
@@ -532,7 +532,7 @@ vector
 utility
 -
 
-/home/dominik/Desktop/MyApp/src/main.cpp
+/home/krzysiek/Desktop/MyApp/EscapeLinez/src/main.cpp
 cstdlib
 -
 time.h
@@ -544,17 +544,17 @@ math.h
 SFML/Network.hpp
 -
 Multiplayer.hpp
-/home/dominik/Desktop/MyApp/src/Multiplayer.hpp
+/home/krzysiek/Desktop/MyApp/EscapeLinez/src/Multiplayer.hpp
 Singleplayer.hpp
-/home/dominik/Desktop/MyApp/src/Singleplayer.hpp
+/home/krzysiek/Desktop/MyApp/EscapeLinez/src/Singleplayer.hpp
 Menu.hpp
-/home/dominik/Desktop/MyApp/src/Menu.hpp
+/home/krzysiek/Desktop/MyApp/EscapeLinez/src/Menu.hpp
 Settings.hpp
-/home/dominik/Desktop/MyApp/src/Settings.hpp
+/home/krzysiek/Desktop/MyApp/EscapeLinez/src/Settings.hpp
 Login.hpp
-/home/dominik/Desktop/MyApp/src/Login.hpp
+/home/krzysiek/Desktop/MyApp/EscapeLinez/src/Login.hpp
 ConfigFile.hpp
-/home/dominik/Desktop/MyApp/src/ConfigFile.hpp
+/home/krzysiek/Desktop/MyApp/EscapeLinez/src/ConfigFile.hpp
 WaitingRoom.hpp
-/home/dominik/Desktop/MyApp/src/WaitingRoom.hpp
+/home/krzysiek/Desktop/MyApp/EscapeLinez/src/WaitingRoom.hpp
 

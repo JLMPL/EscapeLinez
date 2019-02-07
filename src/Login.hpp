@@ -32,6 +32,13 @@ class Login : public State
         //const extern std::string ClientId;
 
     private:
+        struct mouse
+        {
+            int x, y;
+        };
+
+        mouse m;
+
         int id;
         int changeState = 0;
                       
