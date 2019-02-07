@@ -64,19 +64,19 @@ void Multiplayer::update(float deltaTime)
 
     if (keys[SDL_SCANCODE_DOWN])
     {
-        players[0].y += deltaTime * 0.5;
+        players[0].y += deltaTime * 32;
     }
     if (keys[SDL_SCANCODE_LEFT])
     {
-        players[0].x -= deltaTime * 0.5;
+        players[0].x -= deltaTime * 32;
     }
     if (keys[SDL_SCANCODE_RIGHT])
     {
-        players[0].x += deltaTime * 0.5;
+        players[0].x += deltaTime * 32;
     }
     if (keys[SDL_SCANCODE_UP])
     {
-        players[0].y -= deltaTime * 0.5;
+        players[0].y -= deltaTime * 32;
     }
 
     if (timer > 5.f)
