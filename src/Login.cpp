@@ -82,6 +82,7 @@ void Login::update(float deltaTime)
 
     switch(err)
     {
+
         case 0:
             singleButton.updateButton(Renderer);
             if (m.y > h * 0.6 && m.y < (h * 0.6) + 70 && m.x > (w / 2) - 150 && m.x < (w / 2) + 150)
