@@ -1,4 +1,4 @@
-#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+#IncludeRegexLine: ^[ 	]*#[ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
 
 #IncludeRegexScan: ^.*$
 
@@ -6,7 +6,7 @@
 
 #IncludeRegexTransform: 
 
-/home/krzysiek/Desktop/MyApp/src/Button.cpp
+/home/dominik/Desktop/MyApp/src/Button.cpp
 SDL2/SDL.h
 -
 SDL2/SDL_image.h
@@ -14,9 +14,9 @@ SDL2/SDL_image.h
 iostream
 -
 Button.hpp
-/home/krzysiek/Desktop/MyApp/src/Button.hpp
+/home/dominik/Desktop/MyApp/src/Button.hpp
 
-/home/krzysiek/Desktop/MyApp/src/Button.hpp
+/home/dominik/Desktop/MyApp/src/Button.hpp
 SDL2/SDL.h
 -
 SDL2/SDL_image.h
@@ -24,9 +24,9 @@ SDL2/SDL_image.h
 iostream
 -
 
-/home/krzysiek/Desktop/MyApp/src/ConfigFile.cpp
+/home/dominik/Desktop/MyApp/src/ConfigFile.cpp
 ConfigFile.hpp
-/home/krzysiek/Desktop/MyApp/src/ConfigFile.hpp
+/home/dominik/Desktop/MyApp/src/ConfigFile.hpp
 fstream
 -
 stdio.h
@@ -34,13 +34,13 @@ stdio.h
 SDL2/SDL.h
 -
 
-/home/krzysiek/Desktop/MyApp/src/ConfigFile.hpp
+/home/dominik/Desktop/MyApp/src/ConfigFile.hpp
 
-/home/krzysiek/Desktop/MyApp/src/Lines.cpp
+/home/dominik/Desktop/MyApp/src/Lines.cpp
 Lines.hpp
-/home/krzysiek/Desktop/MyApp/src/Lines.hpp
+/home/dominik/Desktop/MyApp/src/Lines.hpp
 
-/home/krzysiek/Desktop/MyApp/src/Lines.hpp
+/home/dominik/Desktop/MyApp/src/Lines.hpp
 cstdlib
 -
 time.h
@@ -52,29 +52,29 @@ SDL2/SDL.h
 math.h
 -
 ConfigFile.hpp
-/home/krzysiek/Desktop/MyApp/src/ConfigFile.hpp
+/home/dominik/Desktop/MyApp/src/ConfigFile.hpp
 
-/home/krzysiek/Desktop/MyApp/src/Login.cpp
+/home/dominik/Desktop/MyApp/src/Login.cpp
 Login.hpp
-/home/krzysiek/Desktop/MyApp/src/Login.hpp
+/home/dominik/Desktop/MyApp/src/Login.hpp
 Button.hpp
-/home/krzysiek/Desktop/MyApp/src/Button.hpp
+/home/dominik/Desktop/MyApp/src/Button.hpp
 Settings.hpp
-/home/krzysiek/Desktop/MyApp/src/Settings.hpp
+/home/dominik/Desktop/MyApp/src/Settings.hpp
 TextureLoader.hpp
-/home/krzysiek/Desktop/MyApp/src/TextureLoader.hpp
+/home/dominik/Desktop/MyApp/src/TextureLoader.hpp
 Network.hpp
-/home/krzysiek/Desktop/MyApp/src/Network.hpp
+/home/dominik/Desktop/MyApp/src/Network.hpp
 time.h
 -
 vector
 -
 jsonP.hpp
-/home/krzysiek/Desktop/MyApp/src/jsonP.hpp
+/home/dominik/Desktop/MyApp/src/jsonP.hpp
 
-/home/krzysiek/Desktop/MyApp/src/Login.hpp
+/home/dominik/Desktop/MyApp/src/Login.hpp
 State.hpp
-/home/krzysiek/Desktop/MyApp/src/State.hpp
+/home/dominik/Desktop/MyApp/src/State.hpp
 SDL2/SDL.h
 -
 SDL2/SDL_image.h
@@ -86,89 +86,89 @@ SFML/Network.hpp
 iostream
 -
 Button.hpp
-/home/krzysiek/Desktop/MyApp/src/Button.hpp
+/home/dominik/Desktop/MyApp/src/Button.hpp
 Settings.hpp
-/home/krzysiek/Desktop/MyApp/src/Settings.hpp
+/home/dominik/Desktop/MyApp/src/Settings.hpp
 ConfigFile.hpp
-/home/krzysiek/Desktop/MyApp/src/ConfigFile.hpp
+/home/dominik/Desktop/MyApp/src/ConfigFile.hpp
 
-/home/krzysiek/Desktop/MyApp/src/Menu.cpp
+/home/dominik/Desktop/MyApp/src/Menu.cpp
 Menu.hpp
-/home/krzysiek/Desktop/MyApp/src/Menu.hpp
+/home/dominik/Desktop/MyApp/src/Menu.hpp
 Button.hpp
-/home/krzysiek/Desktop/MyApp/src/Button.hpp
+/home/dominik/Desktop/MyApp/src/Button.hpp
 Settings.hpp
-/home/krzysiek/Desktop/MyApp/src/Settings.hpp
+/home/dominik/Desktop/MyApp/src/Settings.hpp
 TextureLoader.hpp
-/home/krzysiek/Desktop/MyApp/src/TextureLoader.hpp
+/home/dominik/Desktop/MyApp/src/TextureLoader.hpp
 ConfigFile.hpp
-/home/krzysiek/Desktop/MyApp/src/ConfigFile.hpp
+/home/dominik/Desktop/MyApp/src/ConfigFile.hpp
 
-/home/krzysiek/Desktop/MyApp/src/Menu.hpp
+/home/dominik/Desktop/MyApp/src/Menu.hpp
 State.hpp
-/home/krzysiek/Desktop/MyApp/src/State.hpp
+/home/dominik/Desktop/MyApp/src/State.hpp
 SDL2/SDL.h
 -
 SDL2/SDL_image.h
 -
 Button.hpp
-/home/krzysiek/Desktop/MyApp/src/Button.hpp
+/home/dominik/Desktop/MyApp/src/Button.hpp
 Settings.hpp
-/home/krzysiek/Desktop/MyApp/src/Settings.hpp
+/home/dominik/Desktop/MyApp/src/Settings.hpp
 iostream
 -
 ConfigFile.hpp
-/home/krzysiek/Desktop/MyApp/src/ConfigFile.hpp
+/home/dominik/Desktop/MyApp/src/ConfigFile.hpp
 
-/home/krzysiek/Desktop/MyApp/src/MoviePlayer.cpp
+/home/dominik/Desktop/MyApp/src/MoviePlayer.cpp
 
-/home/krzysiek/Desktop/MyApp/src/Multiplayer.cpp
+/home/dominik/Desktop/MyApp/src/Multiplayer.cpp
 Multiplayer.hpp
-/home/krzysiek/Desktop/MyApp/src/Multiplayer.hpp
+/home/dominik/Desktop/MyApp/src/Multiplayer.hpp
 ConfigFile.hpp
-/home/krzysiek/Desktop/MyApp/src/ConfigFile.hpp
+/home/dominik/Desktop/MyApp/src/ConfigFile.hpp
 SFML/Network.hpp
 -
 
-/home/krzysiek/Desktop/MyApp/src/Multiplayer.hpp
+/home/dominik/Desktop/MyApp/src/Multiplayer.hpp
 State.hpp
-/home/krzysiek/Desktop/MyApp/src/State.hpp
+/home/dominik/Desktop/MyApp/src/State.hpp
 Lines.hpp
-/home/krzysiek/Desktop/MyApp/src/Lines.hpp
+/home/dominik/Desktop/MyApp/src/Lines.hpp
 SDL2/SDL.h
 -
 SFML/Network.hpp
 -
 Settings.hpp
-/home/krzysiek/Desktop/MyApp/src/Settings.hpp
+/home/dominik/Desktop/MyApp/src/Settings.hpp
 
-/home/krzysiek/Desktop/MyApp/src/Network.cpp
+/home/dominik/Desktop/MyApp/src/Network.cpp
 Network.hpp
-/home/krzysiek/Desktop/MyApp/src/Network.hpp
+/home/dominik/Desktop/MyApp/src/Network.hpp
 iostream
 -
 
-/home/krzysiek/Desktop/MyApp/src/Network.hpp
+/home/dominik/Desktop/MyApp/src/Network.hpp
 SFML/Network.hpp
 -
 string
 -
 
-/home/krzysiek/Desktop/MyApp/src/Settings.cpp
+/home/dominik/Desktop/MyApp/src/Settings.cpp
 Settings.hpp
-/home/krzysiek/Desktop/MyApp/src/Settings.hpp
+/home/dominik/Desktop/MyApp/src/Settings.hpp
 Button.hpp
-/home/krzysiek/Desktop/MyApp/src/Button.hpp
+/home/dominik/Desktop/MyApp/src/Button.hpp
 TextureLoader.hpp
-/home/krzysiek/Desktop/MyApp/src/TextureLoader.hpp
+/home/dominik/Desktop/MyApp/src/TextureLoader.hpp
 ConfigFile.hpp
-/home/krzysiek/Desktop/MyApp/src/ConfigFile.hpp
+/home/dominik/Desktop/MyApp/src/ConfigFile.hpp
 
-/home/krzysiek/Desktop/MyApp/src/Settings.hpp
+/home/dominik/Desktop/MyApp/src/Settings.hpp
 State.hpp
-/home/krzysiek/Desktop/MyApp/src/State.hpp
+/home/dominik/Desktop/MyApp/src/State.hpp
 Button.hpp
-/home/krzysiek/Desktop/MyApp/src/Button.hpp
+/home/dominik/Desktop/MyApp/src/Button.hpp
 SDL2/SDL.h
 -
 SDL2/SDL_image.h
@@ -178,49 +178,49 @@ SDL2/SDL_ttf.h
 iostream
 -
 
-/home/krzysiek/Desktop/MyApp/src/Singleplayer.cpp
+/home/dominik/Desktop/MyApp/src/Singleplayer.cpp
 Singleplayer.hpp
-/home/krzysiek/Desktop/MyApp/src/Singleplayer.hpp
+/home/dominik/Desktop/MyApp/src/Singleplayer.hpp
 
-/home/krzysiek/Desktop/MyApp/src/Singleplayer.hpp
+/home/dominik/Desktop/MyApp/src/Singleplayer.hpp
 State.hpp
-/home/krzysiek/Desktop/MyApp/src/State.hpp
+/home/dominik/Desktop/MyApp/src/State.hpp
 Lines.hpp
-/home/krzysiek/Desktop/MyApp/src/Lines.hpp
+/home/dominik/Desktop/MyApp/src/Lines.hpp
 SDL2/SDL.h
 -
 Settings.hpp
-/home/krzysiek/Desktop/MyApp/src/Settings.hpp
+/home/dominik/Desktop/MyApp/src/Settings.hpp
 ConfigFile.hpp
-/home/krzysiek/Desktop/MyApp/src/ConfigFile.hpp
+/home/dominik/Desktop/MyApp/src/ConfigFile.hpp
 
-/home/krzysiek/Desktop/MyApp/src/State.hpp
+/home/dominik/Desktop/MyApp/src/State.hpp
 
-/home/krzysiek/Desktop/MyApp/src/TextureLoader.cpp
+/home/dominik/Desktop/MyApp/src/TextureLoader.cpp
 TextureLoader.hpp
-/home/krzysiek/Desktop/MyApp/src/TextureLoader.hpp
+/home/dominik/Desktop/MyApp/src/TextureLoader.hpp
 SDL2/SDL_image.h
 -
 
-/home/krzysiek/Desktop/MyApp/src/TextureLoader.hpp
+/home/dominik/Desktop/MyApp/src/TextureLoader.hpp
 string
 -
 
-/home/krzysiek/Desktop/MyApp/src/WaitingRoom.cpp
+/home/dominik/Desktop/MyApp/src/WaitingRoom.cpp
 WaitingRoom.hpp
-/home/krzysiek/Desktop/MyApp/src/WaitingRoom.hpp
+/home/dominik/Desktop/MyApp/src/WaitingRoom.hpp
 State.hpp
-/home/krzysiek/Desktop/MyApp/src/State.hpp
+/home/dominik/Desktop/MyApp/src/State.hpp
 SDL2/SDL.h
 -
 SDL2/SDL_image.h
 -
 Settings.hpp
-/home/krzysiek/Desktop/MyApp/src/Settings.hpp
+/home/dominik/Desktop/MyApp/src/Settings.hpp
 iostream
 -
 ConfigFile.hpp
-/home/krzysiek/Desktop/MyApp/src/ConfigFile.hpp
+/home/dominik/Desktop/MyApp/src/ConfigFile.hpp
 SFML/Network.hpp
 -
 vector
@@ -228,25 +228,25 @@ vector
 time.h
 -
 Login.hpp
-/home/krzysiek/Desktop/MyApp/src/Login.hpp
+/home/dominik/Desktop/MyApp/src/Login.hpp
 jsonP.hpp
-/home/krzysiek/Desktop/MyApp/src/jsonP.hpp
+/home/dominik/Desktop/MyApp/src/jsonP.hpp
 Network.hpp
-/home/krzysiek/Desktop/MyApp/src/Network.hpp
+/home/dominik/Desktop/MyApp/src/Network.hpp
 
-/home/krzysiek/Desktop/MyApp/src/WaitingRoom.hpp
+/home/dominik/Desktop/MyApp/src/WaitingRoom.hpp
 State.hpp
-/home/krzysiek/Desktop/MyApp/src/State.hpp
+/home/dominik/Desktop/MyApp/src/State.hpp
 SDL2/SDL.h
 -
 SDL2/SDL_image.h
 -
 Settings.hpp
-/home/krzysiek/Desktop/MyApp/src/Settings.hpp
+/home/dominik/Desktop/MyApp/src/Settings.hpp
 iostream
 -
 ConfigFile.hpp
-/home/krzysiek/Desktop/MyApp/src/ConfigFile.hpp
+/home/dominik/Desktop/MyApp/src/ConfigFile.hpp
 SFML/Network.hpp
 -
 vector
@@ -254,7 +254,7 @@ vector
 time.h
 -
 
-/home/krzysiek/Desktop/MyApp/src/jsonP.hpp
+/home/dominik/Desktop/MyApp/src/jsonP.hpp
 algorithm
 -
 cassert
@@ -534,7 +534,7 @@ vector
 utility
 -
 
-/home/krzysiek/Desktop/MyApp/src/main.cpp
+/home/dominik/Desktop/MyApp/src/main.cpp
 cstdlib
 -
 time.h
@@ -546,17 +546,17 @@ math.h
 SFML/Network.hpp
 -
 Multiplayer.hpp
-/home/krzysiek/Desktop/MyApp/src/Multiplayer.hpp
+/home/dominik/Desktop/MyApp/src/Multiplayer.hpp
 Singleplayer.hpp
-/home/krzysiek/Desktop/MyApp/src/Singleplayer.hpp
+/home/dominik/Desktop/MyApp/src/Singleplayer.hpp
 Menu.hpp
-/home/krzysiek/Desktop/MyApp/src/Menu.hpp
+/home/dominik/Desktop/MyApp/src/Menu.hpp
 Settings.hpp
-/home/krzysiek/Desktop/MyApp/src/Settings.hpp
+/home/dominik/Desktop/MyApp/src/Settings.hpp
 Login.hpp
-/home/krzysiek/Desktop/MyApp/src/Login.hpp
+/home/dominik/Desktop/MyApp/src/Login.hpp
 ConfigFile.hpp
-/home/krzysiek/Desktop/MyApp/src/ConfigFile.hpp
+/home/dominik/Desktop/MyApp/src/ConfigFile.hpp
 WaitingRoom.hpp
-/home/krzysiek/Desktop/MyApp/src/WaitingRoom.hpp
+/home/dominik/Desktop/MyApp/src/WaitingRoom.hpp
 

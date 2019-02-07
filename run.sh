@@ -1,5 +1,8 @@
 #!/bin/bash
 
-make
+cmake .
+make -j4
 
 ./EscapeLinez
+
+clear
