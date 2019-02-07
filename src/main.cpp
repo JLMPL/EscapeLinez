@@ -1,4 +1,4 @@
-#include <cstdlib>
+/*#include <cstdlib>
 #include <time.h>
 #include <iostream>
 #include <math.h>
@@ -117,5 +117,15 @@ int main(int argc, char* args[])
     currentState->quit();
     delete currentState;
 
+    return 0;
+}
+*/
+
+#include "Game.hpp"
+
+int main(int argc, char* args[])
+{
+    Game game;
+    game.run();
     return 0;
 }
