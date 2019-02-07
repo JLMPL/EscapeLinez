@@ -19,6 +19,11 @@ MySocket		MySocketTime;
 MySocket		MySocketPlayers;
 MySocket		MySocketToBattle;
 const int		*ClientId;
+const std::vector<server> servers =
+{
+	server("Login Server", sf::IpAddress("serwerkrolak.ddns.net")),
+	server("Loop Back", sf::IpAddress("127.0.0.1")),
+};
 
 
 

@@ -1,3 +1,0 @@
-/home/dominik/Desktop/EscapeLinez/CMakeFiles/edit_cache.dir
-/home/dominik/Desktop/EscapeLinez/CMakeFiles/EscapeLinez.dir
-/home/dominik/Desktop/EscapeLinez/CMakeFiles/rebuild_cache.dir

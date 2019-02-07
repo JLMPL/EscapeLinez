@@ -11,13 +11,6 @@ void Multiplayer::init(SDL_Window* win, SDL_Renderer* rend)
     w = GlobalConfigFile.getWidth();
     h = GlobalConfigFile.getHeight();
 
-    char message[40];
-    std:size_t received;
-    sf::IpAddress ip("serwerkrolak.ddns.net");
-
-    //socket.receive(message, sizeof(message), received);
-
-
     for(int i = 0; i < 4; i++)
     {
 //        players[i].x = 623 + (i * 30);
