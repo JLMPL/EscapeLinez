@@ -21,6 +21,11 @@ Game::Game()
 
 Game::~Game()
 {
+    if (m_currState)
+        m_currState->quit();
+
+    delete m_currState;
+
     SDL_DestroyRenderer(m_renderer);
     SDL_DestroyWindow(m_window);
 
@@ -140,7 +145,6 @@ void Game::setState(StateType type)
         case StateType::Login:
             m_currState = new Login();
             break;
-
     }
 
     m_currState->init(m_window, m_renderer);
