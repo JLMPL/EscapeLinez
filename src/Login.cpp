@@ -63,8 +63,7 @@ void Login::init(SDL_Window* window, SDL_Renderer* renderer)
     Error.init(loadTexture(Renderer, "data/Images/Login/ErrorLogin.png"), w / 2 - 350, h*0.6, 700);
     NoInternet.init(loadTexture(Renderer, "data/Images/Login/NoInternet.png"), w / 2 - 350, h* 0.6, 700);
 
-    new (&MySocketLogin) MySocket(sf::IpAddress("serwerkrolak.ddns.net"), 8000);
-    std::cout << MySocketLogin.getStatus() << std::endl;
+    new (&MySocketLogin) MySocket(servers[0].ip, 8000);
 }
 
 void Login::update(float deltaTime)

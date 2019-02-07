@@ -34,7 +34,8 @@ public:
     int getStatus();
     
 private:
-    
+
+
     sf::IpAddress MySocketIp;  
     sf::TcpSocket socket;
     sf::Socket::Status status;
@@ -46,6 +47,16 @@ extern MySocket             MySocketTime;
 extern MySocket             MySocketPlayers;
 extern MySocket             MySocketToBattle;
 extern const int            *ClientId;
+
+struct server
+{
+server(std::string name, sf::IpAddress ip) : name(name), ip(ip){}
+std::string name;
+sf::IpAddress ip;
+};
+
+extern const std::vector<server> servers;
+
 
 
 #endif /* NETWORK_HPP */

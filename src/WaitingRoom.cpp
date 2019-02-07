@@ -65,11 +65,9 @@ void WaitingRoom::init(SDL_Window* win, SDL_Renderer* rend)
 
     //-------------------net---------------
 
-    sf::IpAddress ip("serwerkrolak.ddns.net");  //ip serwera
-
-	new (&MySocketTime) MySocket(ip, 8001);
-	new (&MySocketPlayers) MySocket(ip, 8002);
-	new (&MySocketToBattle) MySocket(ip, 8003);
+	new (&MySocketTime) MySocket(servers[0].ip, 8001);
+	new (&MySocketPlayers) MySocket(servers[0].ip, 8002);
+	new (&MySocketToBattle) MySocket(servers[0].ip, 8003);
 }
 
 void WaitingRoom::update(float deltaTime)
