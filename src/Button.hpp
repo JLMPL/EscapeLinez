@@ -13,9 +13,9 @@ class Button
 
         void init(SDL_Texture* texture, int x, int y, int w = 300);
         void updateButton(SDL_Renderer *renderer);
-        
+
         bool isHover(int x, int y) const;
-        
+
     private:
     	SDL_Surface 		*imcopy;
         SDL_Texture         *texture;

@@ -27,6 +27,7 @@ const std::vector<server> servers =
 
 
 
+
 void MySocket::send(std::string ToSend)
 {
     socket.send(ToSend.c_str(), ToSend.length() + 1);
