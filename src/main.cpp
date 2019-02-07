@@ -63,22 +63,23 @@ int main(int argc, char* args[])
         flags = SDL_WINDOW_FULLSCREEN;
 
     win = SDL_CreateWindow("Escape Lines", 0, 0, GlobalConfigFile.getWidth(), GlobalConfigFile.getHeight(), flags);
-    
+
     bool open = true;
-    
+
     renderer = SDL_CreateRenderer( win, -1, SDL_RENDERER_ACCELERATED );
-        
+
     SDL_Event event;
- 
+
     float prevTime;
     float currTime;
 
     setState(StateType::Login);// <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<------------------------------------------- 1 state
-    
+
     while(open)
     {
         while(SDL_PollEvent( &event) != 0)
         {
+
             if(event.type == SDL_KEYDOWN)
             {
                 if(event.key.keysym.sym == SDLK_ESCAPE)
@@ -89,11 +90,11 @@ int main(int argc, char* args[])
 
             currentState->processEvent(event);
         }
-        
+
         prevTime = currTime;
         currTime = SDL_GetTicks();
         float deltaTime = (currTime - prevTime) / 2;
-        
+
         if (currentState->nextState() != StateType::None)
         {
             setState(currentState->nextState());
@@ -105,11 +106,11 @@ int main(int argc, char* args[])
         SDL_RenderPresent(renderer);
         currentState->AfterRendering();
     }
-      
+
     TTF_Quit();
     IMG_Quit();
     SDL_Quit();
-        
+
     currentState->quit();
     delete currentState;
 

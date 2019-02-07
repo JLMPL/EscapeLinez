@@ -16,12 +16,12 @@ using json = nlohmann::json;
 
 
 void WaitingRoom :: init(SDL_Window* win, SDL_Renderer* rend)
-{    
+{
 	Renderer = rend;
 
-	Font = TTF_OpenFont("husa.ttf", 36);
+	Font = TTF_OpenFont("data/Fonts/husa.ttf", 36);
 	FontColor = {255, 255, 255};
-        
+
         MessageTime[2] = '\0';
 
 
@@ -71,7 +71,7 @@ void WaitingRoom :: init(SDL_Window* win, SDL_Renderer* rend)
     //-------------------net---------------
 
     sf::IpAddress ip(127, 0, 0, 1);  //ip serwera
-	
+
 	new (&MySocketTime) MySocket(ip, 8001);
 	new (&MySocketPlayers) MySocket(ip, 8002);
 	new (&MySocketToBattle) MySocket(ip, 8003);
@@ -94,27 +94,27 @@ void WaitingRoom :: update(float deltaTime)
 	MessageTime = MySocketTime.get();
 	MessagePlayers = MySocketPlayers.get();
 	ToBattle = MySocketToBattle.get();
-	
+
 	json JsonTime  = json::parse(MessageTime);
 	json JsonPlayers = json::parse(MessagePlayers);
 	json JsonToBattle = json::parse(ToBattle);
-        
-	
+
+
         const    int IntTime = JsonTime["body"].get<int>();
         const    int IntPlayers = JsonPlayers["body"].get<int>();
         const    int IntToBattle = JsonToBattle["body"].get<int>();
-        
+
         std::string StringTime = std::to_string(IntTime);
         std::string StringPlayers = std::to_string(IntPlayers);
 
 
-	
+
         FontSurfaceTimeData = TTF_RenderText_Solid(Font, StringTime.c_str(), FontColor);
         RectTimeData.w = FontSurfaceTimeData->w;
         RectTimeData.h = FontSurfaceTimeData->h;
         FontTextureTimeData = SDL_CreateTextureFromSurface(Renderer, FontSurfaceTimeData);
 
-        
+
 
         FontSurfacePlayersData = TTF_RenderText_Solid(Font, StringPlayers.c_str(), FontColor);
         RectPlayersData.w = FontSurfacePlayersData->w;
@@ -131,7 +131,7 @@ void WaitingRoom :: update(float deltaTime)
     SDL_RenderCopy(Renderer, FontTextureTimeData, NULL, &RectTimeData);
     SDL_RenderCopy(Renderer, FontTexturePlayersData, NULL, &RectPlayersData);
     SDL_RenderCopy(Renderer, FontTextureHourData, NULL, &RectHourData);
-    
+
     SDL_FreeSurface(FontSurfaceTimeData);
     SDL_FreeSurface(FontSurfacePlayersData);
     SDL_FreeSurface(FontSurfaceHourData);

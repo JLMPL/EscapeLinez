@@ -5,82 +5,82 @@
 #include "ConfigFile.hpp"
 
 void Menu::init(SDL_Window* win, SDL_Renderer* rend)
-{    
+{
     Window = win;
     Renderer = rend;
 
-    wallpaper = IMG_Load("IMG/Main/lines.png");
+    wallpaper = IMG_Load("data/Images/Main/lines.png");
 
     tex = SDL_CreateTextureFromSurface(Renderer, wallpaper);
 
     changeState = StateType::None;
-    
-    singleButton.init(loadTexture(Renderer, "IMG/Menu/sin.png"), w / 2 - 150, h*0.3);
-    multiButton.init(loadTexture(Renderer, "IMG/Menu/mul.png"), w / 2 - 150, h*0.4);
-    settingsButton.init(loadTexture(Renderer, "IMG/Menu/sett.png"), w / 2 - 150, h*0.5);
-    exitButton.init(loadTexture(Renderer, "IMG/Menu/ex.png"), w / 2 - 150, h*0.6);
 
-    singleButtonS.init(loadTexture(Renderer, "IMG/Menu/sinS.png"), w / 2 - 150, h*0.3);
-    multiButtonS.init(loadTexture(Renderer, "IMG/Menu/mulS.png"), w / 2 - 150, h*0.4);
-    settingsButtonS.init(loadTexture(Renderer, "IMG/Menu/settS.png"), w / 2 - 150, h*0.5);
-    exitButtonS.init(loadTexture(Renderer, "IMG/Menu/exS.png"), w / 2 - 150, h*0.6);
+    singleButton.init(loadTexture(Renderer, "data/Images/Menu/sin.png"), w / 2 - 150, h*0.3);
+    multiButton.init(loadTexture(Renderer, "data/Images/Menu/mul.png"), w / 2 - 150, h*0.4);
+    settingsButton.init(loadTexture(Renderer, "data/Images/Menu/sett.png"), w / 2 - 150, h*0.5);
+    exitButton.init(loadTexture(Renderer, "data/Images/Menu/ex.png"), w / 2 - 150, h*0.6);
+
+    singleButtonS.init(loadTexture(Renderer, "data/Images/Menu/sinS.png"), w / 2 - 150, h*0.3);
+    multiButtonS.init(loadTexture(Renderer, "data/Images/Menu/mulS.png"), w / 2 - 150, h*0.4);
+    settingsButtonS.init(loadTexture(Renderer, "data/Images/Menu/settS.png"), w / 2 - 150, h*0.5);
+    exitButtonS.init(loadTexture(Renderer, "data/Images/Menu/exS.png"), w / 2 - 150, h*0.6);
 }
 
 void Menu::update(float deltaTime)
-{    
+{
     SDL_RenderCopy(Renderer, tex, NULL, NULL);
 
     singleButton.updateButton(Renderer);
     multiButton.updateButton(Renderer);
     settingsButton.updateButton(Renderer);
     exitButton.updateButton(Renderer);
-    
+
     struct mouse
     {
         int x, y;
     };
-    
+
     mouse m;
-    
+
     Uint32 buton = SDL_GetMouseState(&m.x, &m.y); //przenieść do processEvent i zmienic wartowco hower dla przełącznika
 
     if (singleButtonS.isHover(m.x, m.y))
     {
-        singleButtonS.updateButton(Renderer);   
+        singleButtonS.updateButton(Renderer);
         hover = 0;
     }
-    
+
     if (multiButtonS.isHover(m.x, m.y))
     {
         multiButtonS.updateButton(Renderer);
         hover = 0;
-    } 
-    
+    }
+
     if (settingsButtonS.isHover(m.x, m.y))
     {
         settingsButtonS.updateButton(Renderer);
         hover = 0;
     }
-    
+
     if (exitButtonS.isHover(m.x, m.y))
     {
         exitButtonS.updateButton(Renderer);
         hover = 0;
     }
-        
+
 
     if (buton & SDL_BUTTON(SDL_BUTTON_LEFT) && singleButtonS.isHover(m.x, m.y))
         changeState = StateType::Singleplayer;
-    
+
     if (buton & SDL_BUTTON(SDL_BUTTON_LEFT) && multiButtonS.isHover(m.x, m.y))
         changeState = StateType::WaitingRoom;
-    
+
     if (buton & SDL_BUTTON(SDL_BUTTON_LEFT) && settingsButtonS.isHover(m.x, m.y))
         changeState = StateType::Settings;
-    
+
     if (buton & SDL_BUTTON(SDL_BUTTON_LEFT) && exitButtonS.isHover(m.x, m.y))
         changeState = StateType::Exit;
-    
+
     if (hover % 5 != 0)
     {
         switch(hover % 5)
@@ -99,12 +99,12 @@ void Menu::update(float deltaTime)
             break;
         }
     }
-    
+
 }
 
 void Menu::processEvent(const SDL_Event& event)
 {
-    
+
     if(event.type == SDL_KEYDOWN)
     {
         if(event.key.keysym.sym == SDLK_TAB)

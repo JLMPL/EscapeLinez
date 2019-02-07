@@ -13,17 +13,17 @@ void Login::init(SDL_Window* window, SDL_Renderer* renderer)
 {
     Renderer = renderer;
     Window = window;
-    
-    wallpaper = IMG_Load("IMG/Settings/linesSettings.png");
-    
+
+    wallpaper = IMG_Load("data/Images/Settings/linesSettings.png");
+
     tex = SDL_CreateTextureFromSurface(Renderer, wallpaper);
-    
-    Font = TTF_OpenFont("login.ttf", 36);
+
+    Font = TTF_OpenFont("data/Fonts/login.ttf", 36);
     FontColor = {255, 255, 254};
     FontColorRed = {192, 0, 0};
     FontSurface = TTF_RenderText_Solid(Font, "Login", FontColor);
     FontTexture = SDL_CreateTextureFromSurface(Renderer, FontSurface);
-    
+
     FontSurfaceLoginNick = TTF_RenderText_Solid(Font, "Nick:", FontColor);
     FontTextureLoginNick = SDL_CreateTextureFromSurface(Renderer, FontSurfaceLoginNick);
 
@@ -53,19 +53,19 @@ void Login::init(SDL_Window* window, SDL_Renderer* renderer)
     NickRect.w = 10;
     NickRect.h = 10;
 
-    PasswordReck.x = w / 2; 
+    PasswordReck.x = w / 2;
     PasswordReck.y = h * 0.3 + 70;
     PasswordReck.w = 10;
     PasswordReck.h = 10;
 
-    singleButton.init(loadTexture(Renderer, "IMG/Login/Login2.png"), w / 2 - 150, h*0.6);
-    singleButtonS.init(loadTexture(Renderer, "IMG/Login/LoginS.png"), w / 2 - 150, h*0.6);
-    Error.init(loadTexture(Renderer, "IMG/Login/ErrorLogin.png"), w / 2 - 350, h*0.6, 700);
-    NoInternet.init(loadTexture(Renderer, "IMG/Login/NoInternet.png"), w / 2 - 350, h* 0.6, 700);
-    
-    
+    singleButton.init(loadTexture(Renderer, "data/Images/Login/Login2.png"), w / 2 - 150, h*0.6);
+    singleButtonS.init(loadTexture(Renderer, "data/Images/Login/LoginS.png"), w / 2 - 150, h*0.6);
+    Error.init(loadTexture(Renderer, "data/Images/Login/ErrorLogin.png"), w / 2 - 350, h*0.6, 700);
+    NoInternet.init(loadTexture(Renderer, "data/Images/Login/NoInternet.png"), w / 2 - 350, h* 0.6, 700);
+
+
     new (&MySocketLogin) MySocket(sf::IpAddress(127, 0, 0, 1), 8000);
-	
+
 
 }
 
@@ -75,21 +75,21 @@ void Login::update(float deltaTime)
     {
         int x, y;
     };
-    
+
     mouse m;
-    
+
     Uint32 buton = SDL_GetMouseState(&m.x, &m.y);
 
     SDL_SetRenderDrawColor(Renderer, 0, 0, 0, 0);
     SDL_RenderClear(Renderer);
-    
+
     SDL_RenderCopy(Renderer, tex, NULL, NULL);
     SDL_RenderCopy(Renderer, FontTexture, NULL, &TitleRect);
     SDL_RenderCopy(Renderer, FontTextureLoginNick, NULL, &RectLoginNick);
     SDL_RenderCopy(Renderer, FontTextureLoginPassword, NULL, &RectLoginPassword);
     SDL_RenderCopy(Renderer, FontTextureLoginNickValue, NULL, &NickRect);
     SDL_RenderCopy(Renderer, FontTextureLoginPasswordValue, NULL, &PasswordReck);
-    
+
     switch(err)
     {
         case 0:
@@ -104,7 +104,7 @@ void Login::update(float deltaTime)
             NoInternet.updateButton(Renderer);
         break;
     }
-    
+
 }
 
 void Login::AfterRendering()
@@ -112,7 +112,7 @@ void Login::AfterRendering()
 
 }
 
-void Login::processEvent(const SDL_Event& event) 
+void Login::processEvent(const SDL_Event& event)
 {
 
     if(event.type == SDL_KEYDOWN)
@@ -231,25 +231,25 @@ void Login::processEvent(const SDL_Event& event)
 
     }
 
-    
+
 }
 
 void Login::send() //<<<<<<<<<<<<<<<<-------- Network.cpp
 {
     std::string LoginP = Nick + "," + Password + "," + std::to_string(h);
-	
+
 
     MySocketLogin.send(LoginP);
-	
+
 
 
     std::string answare = MySocketLogin.get();
 
     json parser = json::parse(answare);
-	
 
 
-	
+
+
     switch(MySocketLogin.getStatus())
     {
         case 0://< The socket has sent / received the data
@@ -276,9 +276,9 @@ void Login::send() //<<<<<<<<<<<<<<<<-------- Network.cpp
             err = 2;
         break;
     }
-	
 
-    
+
+
 }
 
 void Login::quit()

@@ -29,7 +29,7 @@ Settings::~Settings()
 
 void Settings::initBackground()
 {
-    SDL_Surface* surf = IMG_Load("IMG/Settings/linesSettings.png");
+    SDL_Surface* surf = IMG_Load("data/Images/Settings/linesSettings.png");
     Wallpaper = SDL_CreateTextureFromSurface(Renderer, surf);
     SDL_FreeSurface(surf);
 }
@@ -183,9 +183,9 @@ void Settings::init(SDL_Window* win, SDL_Renderer* rend)
         case 2560: CurrentResolution = 4;
     }
 
-    
 
-    Font = TTF_OpenFont("husa.ttf", 36);
+
+    Font = TTF_OpenFont("data/Fonts/husa.ttf", 36);
     if (!Font)
     {
         std::cout << "Error: Could not load husa.ttf" << std::endl;
@@ -201,8 +201,8 @@ void Settings::init(SDL_Window* win, SDL_Renderer* rend)
 
     SelectionRect = {0,0,512,48};
 
-    Save.init(loadTexture(Renderer, "IMG/Settings/savee.png"), w / 2 - 150, h*0.8);
-    SaveS.init(loadTexture(Renderer, "IMG/Settings/saveee.png"), w / 2 - 150, h*0.8);
+    Save.init(loadTexture(Renderer, "data/Images/Settings/savee.png"), w / 2 - 150, h*0.8);
+    SaveS.init(loadTexture(Renderer, "data/Images/Settings/saveee.png"), w / 2 - 150, h*0.8);
 
     // updateResolutions(
     //     std::to_string(ResolutionsTable[CurrentResolution][0]) +
@@ -317,7 +317,7 @@ void Settings::processEvent(const SDL_Event& event)
                 }
                 break;
                 case 1:
-                    GlobalConfigFile.setFullscreen(!GlobalConfigFile.isFullscreen()); 
+                    GlobalConfigFile.setFullscreen(!GlobalConfigFile.isFullscreen());
                     updateFullscreen((GlobalConfigFile.isFullscreen()) ? "ON" : "OFF");
                     break;
                 case 2:
@@ -382,12 +382,12 @@ void Settings::update(float deltaTime)
     };
 
     mouse m;
-    
+
     Uint32 buton = SDL_GetMouseState(&m.x, &m.y);
 
     Save.updateButton(Renderer);
     SDL_SetRenderDrawColor(Renderer, 0, 255, 0, 0);
-    
+
     if (m.y > h * 0.8 && m.y < (h * 0.8) + 70 && m.x > (w / 2) - 150 && m.x < (w / 2) + 150)
         SaveS.updateButton(Renderer);
 
