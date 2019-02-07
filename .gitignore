@@ -5,3 +5,11 @@ cmake_install.cmake
 Makefile
 escape.sublime-project
 escape.sublime-workspace
+
+\.cproject
+
+\.directory
+
+\.project
+
+\.settings/language\.settings\.xml

@@ -63,21 +63,12 @@ void Login::init(SDL_Window* window, SDL_Renderer* renderer)
     Error.init(loadTexture(Renderer, "data/Images/Login/ErrorLogin.png"), w / 2 - 350, h*0.6, 700);
     NoInternet.init(loadTexture(Renderer, "data/Images/Login/NoInternet.png"), w / 2 - 350, h* 0.6, 700);
 
-    new (&MySocketLogin) MySocket(sf::IpAddress(83,25,123,179), 8000);
+    new (&MySocketLogin) MySocket(sf::IpAddress("serwerkrolak.ddns.net"), 8000);
     std::cout << MySocketLogin.getStatus() << std::endl;
 }
 
 void Login::update(float deltaTime)
 {
-    struct mouse
-    {
-        int x, y;
-    };
-
-    mouse m;
-
-    Uint32 buton = SDL_GetMouseState(&m.x, &m.y);
-
     SDL_SetRenderDrawColor(Renderer, 0, 0, 0, 0);
     SDL_RenderClear(Renderer);
 
@@ -87,6 +78,8 @@ void Login::update(float deltaTime)
     SDL_RenderCopy(Renderer, FontTextureLoginPassword, NULL, &RectLoginPassword);
     SDL_RenderCopy(Renderer, FontTextureLoginNickValue, NULL, &NickRect);
     SDL_RenderCopy(Renderer, FontTextureLoginPasswordValue, NULL, &PasswordReck);
+
+    Uint32 buton = SDL_GetMouseState(&m.x, &m.y);
 
     switch(err)
     {
@@ -112,6 +105,7 @@ void Login::AfterRendering()
 
 void Login::processEvent(const SDL_Event& event)
 {
+
     if(event.type == SDL_KEYDOWN)
     {
         SDL_StartTextInput();

@@ -13,7 +13,7 @@ void Multiplayer::init(SDL_Window* win, SDL_Renderer* rend)
 
     char message[40];
     std:size_t received;
-    sf::IpAddress ip(83,25,123,179);
+    sf::IpAddress ip("serwerkrolak.ddns.net");
 
     //socket.receive(message, sizeof(message), received);
 
