@@ -6,5 +6,5 @@ CXX_FLAGS =   -g -std=c++17 -Wfatal-errors -Wall
 
 CXX_DEFINES = 
 
-CXX_INCLUDES = -I/home/dominik/Desktop/MyApp/src 
+CXX_INCLUDES = -I/home/dominik/Desktop/EscapeLinez/src 
 
