@@ -3,32 +3,32 @@
 #include "Settings.hpp"
 #include "TextureLoader.hpp"
 #include "Network.hpp"
+#include "Renderer.hpp"
+#include "json.hpp"
 #include <time.h>
 #include <vector>
-#include "jsonP.hpp"
 
 using json = nlohmann::json;
 
-void Login::init(SDL_Window* window, SDL_Renderer* renderer)
+void Login::init(SDL_Window* window)
 {
-    Renderer = renderer;
     Window = window;
 
     wallpaper = IMG_Load("data/Images/Settings/linesSettings.png");
 
-    tex = SDL_CreateTextureFromSurface(Renderer, wallpaper);
+    tex = SDL_CreateTextureFromSurface(GlobalRenderer, wallpaper);
 
     Font = TTF_OpenFont("data/Fonts/login.ttf", 36);
     FontColor = {255, 255, 254};
     FontColorRed = {192, 0, 0};
     FontSurface = TTF_RenderText_Solid(Font, "Login", FontColor);
-    FontTexture = SDL_CreateTextureFromSurface(Renderer, FontSurface);
+    FontTexture = SDL_CreateTextureFromSurface(GlobalRenderer, FontSurface);
 
     FontSurfaceLoginNick = TTF_RenderText_Solid(Font, "Nick:", FontColor);
-    FontTextureLoginNick = SDL_CreateTextureFromSurface(Renderer, FontSurfaceLoginNick);
+    FontTextureLoginNick = SDL_CreateTextureFromSurface(GlobalRenderer, FontSurfaceLoginNick);
 
     FontSurfaceLoginPassword = TTF_RenderText_Solid(Font, "Password:", FontColor);
-    FontTextureLoginPassword = SDL_CreateTextureFromSurface(Renderer, FontSurfaceLoginPassword);
+    FontTextureLoginPassword = SDL_CreateTextureFromSurface(GlobalRenderer, FontSurfaceLoginPassword);
 
     SDL_DisplayMode dm;
     SDL_GetCurrentDisplayMode(0, &dm);
@@ -71,12 +71,12 @@ void Login::update(float deltaTime)
 
 void Login::draw()
 {
-    SDL_RenderCopy(Renderer, tex, NULL, NULL);
-    SDL_RenderCopy(Renderer, FontTexture, NULL, &TitleRect);
-    SDL_RenderCopy(Renderer, FontTextureLoginNick, NULL, &RectLoginNick);
-    SDL_RenderCopy(Renderer, FontTextureLoginPassword, NULL, &RectLoginPassword);
-    SDL_RenderCopy(Renderer, FontTextureLoginNickValue, NULL, &NickRect);
-    SDL_RenderCopy(Renderer, FontTextureLoginPasswordValue, NULL, &PasswordReck);
+    SDL_RenderCopy(GlobalRenderer, tex, NULL, NULL);
+    SDL_RenderCopy(GlobalRenderer, FontTexture, NULL, &TitleRect);
+    SDL_RenderCopy(GlobalRenderer, FontTextureLoginNick, NULL, &RectLoginNick);
+    SDL_RenderCopy(GlobalRenderer, FontTextureLoginPassword, NULL, &RectLoginPassword);
+    SDL_RenderCopy(GlobalRenderer, FontTextureLoginNickValue, NULL, &NickRect);
+    SDL_RenderCopy(GlobalRenderer, FontTextureLoginPasswordValue, NULL, &PasswordReck);
 
     switch(err)
     {
@@ -121,12 +121,12 @@ void Login::processEvent(const SDL_Event& event)
                 if (Nick != "")
                 {
                     FontSurfaceLoginNickValue = TTF_RenderText_Solid(Font, Nick.c_str(), FontColor);
-                    FontTextureLoginNickValue = SDL_CreateTextureFromSurface(Renderer, FontSurfaceLoginNickValue);
+                    FontTextureLoginNickValue = SDL_CreateTextureFromSurface(GlobalRenderer, FontSurfaceLoginNickValue);
                 }
                 else
                 {
                     FontSurfaceLoginNickValue = TTF_RenderText_Solid(Font, NickStandard.c_str(), FontColorRed);
-                    FontTextureLoginNickValue = SDL_CreateTextureFromSurface(Renderer, FontSurfaceLoginNickValue);
+                    FontTextureLoginNickValue = SDL_CreateTextureFromSurface(GlobalRenderer, FontSurfaceLoginNickValue);
                 }
 
                 NickRect.w = FontSurfaceLoginNickValue->w;
@@ -145,12 +145,12 @@ void Login::processEvent(const SDL_Event& event)
                 if (Password != "")
                 {
                     FontSurfaceLoginPasswordValue = TTF_RenderText_Solid(Font, PasswordCopy.c_str(), FontColor);
-                    FontTextureLoginPasswordValue = SDL_CreateTextureFromSurface(Renderer, FontSurfaceLoginPasswordValue);
+                    FontTextureLoginPasswordValue = SDL_CreateTextureFromSurface(GlobalRenderer, FontSurfaceLoginPasswordValue);
                 }
                 else
                 {
                     FontSurfaceLoginPasswordValue = TTF_RenderText_Solid(Font, PasswordStandard.c_str(), FontColorRed);
-                    FontTextureLoginPasswordValue = SDL_CreateTextureFromSurface(Renderer, FontSurfaceLoginPasswordValue);
+                    FontTextureLoginPasswordValue = SDL_CreateTextureFromSurface(GlobalRenderer, FontSurfaceLoginPasswordValue);
                 }
 
                 PasswordReck.w = FontSurfaceLoginPasswordValue->w;
@@ -184,23 +184,23 @@ void Login::processEvent(const SDL_Event& event)
         if (Nick != "")
         {
             FontSurfaceLoginNickValue = TTF_RenderText_Solid(Font, Nick.c_str(), FontColor);
-            FontTextureLoginNickValue = SDL_CreateTextureFromSurface(Renderer, FontSurfaceLoginNickValue);
+            FontTextureLoginNickValue = SDL_CreateTextureFromSurface(GlobalRenderer, FontSurfaceLoginNickValue);
         }
         else
         {
             FontSurfaceLoginNickValue = TTF_RenderText_Solid(Font, NickStandard.c_str(), FontColorRed);
-            FontTextureLoginNickValue = SDL_CreateTextureFromSurface(Renderer, FontSurfaceLoginNickValue);
+            FontTextureLoginNickValue = SDL_CreateTextureFromSurface(GlobalRenderer, FontSurfaceLoginNickValue);
         }
 
         if (Password != "")
         {
             FontSurfaceLoginPasswordValue = TTF_RenderText_Solid(Font, PasswordCopy.c_str(), FontColor);
-            FontTextureLoginPasswordValue = SDL_CreateTextureFromSurface(Renderer, FontSurfaceLoginPasswordValue);
+            FontTextureLoginPasswordValue = SDL_CreateTextureFromSurface(GlobalRenderer, FontSurfaceLoginPasswordValue);
         }
         else
         {
             FontSurfaceLoginPasswordValue = TTF_RenderText_Solid(Font, PasswordStandard.c_str(), FontColorRed);
-            FontTextureLoginPasswordValue = SDL_CreateTextureFromSurface(Renderer, FontSurfaceLoginPasswordValue);
+            FontTextureLoginPasswordValue = SDL_CreateTextureFromSurface(GlobalRenderer, FontSurfaceLoginPasswordValue);
         }
 
         NickRect.w = FontSurfaceLoginNickValue->w;

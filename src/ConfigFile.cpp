@@ -8,7 +8,7 @@ ConfigFile GlobalConfigFile;
 void ConfigFile::load()
 {
 	std::ifstream file("config.set");
-	
+
 	if (!file.good())
 	{
 		printf("Error: config set is not OK!\n");
@@ -52,7 +52,7 @@ void ConfigFile::save()
 {
 	std::ofstream FileToSave("config.set");
 
-	FileToSave  <<"\n" 
+	FileToSave  <<"\n"
 			<< "Width = "<< Width <<"\n"
 			<< "Height = "<< Height <<"\n"
 			<< "Fullscreen = "<< Fullscreen <<"\n"

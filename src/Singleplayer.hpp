@@ -1,16 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
-
-/*
- * File:   Menu.hpp
- * Author: krzysiek
- *
- * Created on April 24, 2018, 2:56 PM
- */
-
 #ifndef SINGLEPLAYER_HPP
 #define SINGLEPLAYER_HPP
 
@@ -28,37 +15,38 @@ struct Player
 
 class Singleplayer : public State
 {
-    public:
-        void init(SDL_Window* win, SDL_Renderer* rend) override final;
-        void quit() override final;
+public:
+    void init(SDL_Window* win) override final;
+    void quit() override final;
 
-        void update(float deltaTime) override final;
-        void draw() override final;
+    void update(float deltaTime) override final;
+    void draw() override final;
 
-        StateType nextState() override final { return StateType::None; }
+    StateType nextState() override final { return StateType::None; }
 
-        void addLine();
-        void moveLine();
+    void addLine();
+    void moveLine(float deltaTime);
 
-        StateType getType() const override final
-        {
-            return StateType::Singleplayer;
-        }
+    StateType getType() const override final
+    {
+        return StateType::Singleplayer;
+    }
 
-    private:
-        Line        lines[90];
-        Line        linesB[90];
-        int         numberLines = 0,
-                    TiMe = 0,
-                    heigth = 0,
-                    speed = 3;
+private:
+    Line        lines[90];
+    Line        linesB[90];
 
-        float       timer = 0;
+    int         numberLines = 0;
+    int         TiMe = 0;
+    int         heigth = 0;
+    int         speed = 3;
 
-        int         w = GlobalConfigFile.getWidth(),
-                    h = GlobalConfigFile.getHeight();
+    float       timer = 0;
 
-        Player      p;
+    int         w = GlobalConfigFile.getWidth(),
+                h = GlobalConfigFile.getHeight();
+
+    Player      p;
 
 };
 

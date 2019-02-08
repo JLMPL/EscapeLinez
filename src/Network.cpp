@@ -5,7 +5,9 @@ MySocket		MySocketLogin;
 MySocket		MySocketTime;
 MySocket		MySocketPlayers;
 MySocket		MySocketToBattle;
+
 const int		*ClientId;
+
 const std::vector<server> servers =
 {
 	server("Login Server", sf::IpAddress("serwerkrolak.ddns.net")),
@@ -16,7 +18,6 @@ void MySocket::send(std::string ToSend)
 {
     socket.send(ToSend.c_str(), ToSend.length() + 1);
 }
-
 
 std::string MySocket::get()
 {

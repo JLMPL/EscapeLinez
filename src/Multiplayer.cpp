@@ -1,11 +1,11 @@
 #include "Multiplayer.hpp"
 #include "ConfigFile.hpp"
+#include "Renderer.hpp"
 #include <SFML/Network.hpp>
 
-void Multiplayer::init(SDL_Window* win, SDL_Renderer* rend)
+void Multiplayer::init(SDL_Window* win)
 {
     Window = win;
-    Renderer = rend;
 
     w = GlobalConfigFile.getWidth();
     h = GlobalConfigFile.getHeight();
@@ -40,7 +40,7 @@ void Multiplayer::moveLine()
 {
     for(int i = 0; i < numberLines; i++)
     {
-        lines[i].moveX();
+        lines[i].moveX(1.f);
         int delta = abs(lines[i].X[1] - lines[i].X[0]);
         if(lines[i].X[0] < 0)
         {
@@ -106,12 +106,12 @@ void Multiplayer::update(float deltaTime)
 
 void Multiplayer::draw()
 {
-    SDL_SetRenderDrawColor(Renderer, 0, 64, 240, 255);
+    SDL_SetRenderDrawColor(GlobalRenderer, 0, 64, 240, 255);
 
     for (int i = 0; i < numberLines; i++)
     {
-        SDL_RenderDrawLine(Renderer, lines[i].X[0], lines[i].Y[0], lines[i].X[1], lines[i].Y[1]);
-        SDL_RenderDrawLine(Renderer, linesB[i].X[0], linesB[i].Y[0], linesB[i].X[1], linesB[i].Y[1]);
+        SDL_RenderDrawLine(GlobalRenderer, lines[i].X[0], lines[i].Y[0], lines[i].X[1], lines[i].Y[1]);
+        SDL_RenderDrawLine(GlobalRenderer, linesB[i].X[0], linesB[i].Y[0], linesB[i].X[1], linesB[i].Y[1]);
     }
 
     for (float x = (-40); x < 40; x+=1)
@@ -120,25 +120,25 @@ void Multiplayer::draw()
         {
             if (pow(x, 2) + pow(y, 2) < pow(players[0].r, 2))
             {
-                SDL_SetRenderDrawColor( Renderer, 240, 64, 0, 255);
+                SDL_SetRenderDrawColor( GlobalRenderer, 240, 64, 0, 255);
                 int a = x + players[0].x;
                 int b = y + players[0].y;
-                SDL_RenderDrawPoint(Renderer, a, b);
+                SDL_RenderDrawPoint(GlobalRenderer, a, b);
 
-                SDL_SetRenderDrawColor( Renderer, 64, 240, 0, 255);
+                SDL_SetRenderDrawColor( GlobalRenderer, 64, 240, 0, 255);
                 a = x + players[1].x;
                 b = y + players[1].y;
-                SDL_RenderDrawPoint(Renderer, a, b);
+                SDL_RenderDrawPoint(GlobalRenderer, a, b);
 
-                SDL_SetRenderDrawColor( Renderer, 255, 255, 0, 255);
+                SDL_SetRenderDrawColor( GlobalRenderer, 255, 255, 0, 255);
                 a = x + players[2].x;
                 b = y + players[2].y;
-                SDL_RenderDrawPoint(Renderer, a, b);
+                SDL_RenderDrawPoint(GlobalRenderer, a, b);
 
-                SDL_SetRenderDrawColor( Renderer, 255, 255, 255, 255);
+                SDL_SetRenderDrawColor( GlobalRenderer, 255, 255, 255, 255);
                 a = x + players[3].x;
                 b = y + players[3].y;
-                SDL_RenderDrawPoint(Renderer, a, b);
+                SDL_RenderDrawPoint(GlobalRenderer, a, b);
             }
         }
     }

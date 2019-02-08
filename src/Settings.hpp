@@ -6,101 +6,88 @@
 #include <SDL2/SDL_image.h>
 #include <SDL2/SDL_ttf.h>
 #include <iostream>
-//#include <X11/Xlib.h>
 
 class Settings : public State
 {
-    public:
-        ~Settings();
-        void init(SDL_Window* win, SDL_Renderer* rend) override final;
-        void quit() override final;
+public:
+    ~Settings();
 
-        void processEvent(const SDL_Event& event) override final;
-        void update(float deltaTime) override final;
-        void draw() override final;
+    void init(SDL_Window* win) override final;
+    void quit() override final;
 
-        void setRenderer(SDL_Renderer* renderer);
+    void processEvent(const SDL_Event& event) override final;
+    void update(float deltaTime) override final;
+    void draw() override final;
 
-        StateType nextState() override final;
+    void setRenderer(SDL_Renderer* renderer);
 
-        StateType getType() const override final
-        {
-            return StateType::Settings;
-        }
+    StateType nextState() override final;
 
-    private:
+    StateType getType() const override final
+    {
+        return StateType::Settings;
+    }
 
-        void initBackground();
-        void initTitle();
+private:
+    void initBackground();
+    void initTitle();
 
-        void initResolutions();
-        void updateResolutions(const std::string& text);
+    void initResolutions();
+    void updateResolutions(const std::string& text);
 
-        void initFullscreen();
-        void updateFullscreen(const std::string& text);
+    void initFullscreen();
+    void updateFullscreen(const std::string& text);
 
-        void initMusic();
-        void updateMusic(const std::string& text);
+    void initMusic();
+    void updateMusic(const std::string& text);
 
-        void initDifficulty();
-        void updateDifficulty(const std::string& text);
+    void initDifficulty();
+    void updateDifficulty(const std::string& text);
 
-        void updateSelectionRect();
+    void updateSelectionRect();
 
-    public:
-        void setWindow(SDL_Window* window);
+public:
+    void setWindow(SDL_Window* window);
 
-    private:
-        struct Text
-        {
-            SDL_Texture* Texture;
-            SDL_Rect Rect;
+private:
+    struct Text
+    {
+        SDL_Texture* Texture;
+        SDL_Rect Rect;
 
-            SDL_Texture* Current;
-            SDL_Rect CurrRect;
-        };
+        SDL_Texture* Current;
+        SDL_Rect CurrRect;
+    };
 
-        int changeState = 0;
+    int changeState = 0;
 
-        std::string     res;
+    std::string     res;
 
-        SDL_Texture*    Wallpaper;
+    SDL_Texture*    Wallpaper;
 
-        TTF_Font*       Font;
+    TTF_Font*       Font;
 
-        SDL_Texture*    TitleTexture;
-        SDL_Rect        TitleRect;
+    SDL_Texture*    TitleTexture;
+    SDL_Rect        TitleRect;
 
-        Text            Resolutions;
-        Text            Fullscreen;
-        Text            Music;
-        Text            Difficulty;
+    Text            Resolutions;
+    Text            Fullscreen;
+    Text            Music;
+    Text            Difficulty;
 
-        SDL_Rect        SelectionRect;
+    SDL_Rect        SelectionRect;
 
-        int             Selection = 0;
-        int             CurrentResolution;
-        int             CurrentDifficulty = 0;
-        int             w,h;
-        int             toUpdateWidth = 0;
-        int             toUpdateHeight = 0;
+    int             Selection = 0;
+    int             CurrentResolution;
+    int             CurrentDifficulty = 0;
+    int             w,h;
+    int             toUpdateWidth = 0;
+    int             toUpdateHeight = 0;
 
-        Button          Save;
-        Button          SaveS;
+    Button          Save;
+    Button          SaveS;
 
-        SDL_DisplayMode dm;
-
-        // Display*        d = XOpenDisplay(NULL);
-        // Screen*         screen = DefaultScreenOfDisplay(d);
-
+    SDL_DisplayMode dm;
 };
 
 #endif
-
-/*
-
-Resolution
-Fullscreen
-Music ON/OFF
-Difficulty
-*/

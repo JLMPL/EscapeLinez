@@ -19,8 +19,8 @@ private:
     bool isHover() const;
 
 private:
-    SDL_Texture* m_released;
-    SDL_Texture* m_selected;
+    SDL_Texture* m_released = nullptr;
+    SDL_Texture* m_selected = nullptr;
     SDL_Rect     m_rect;
 };
 

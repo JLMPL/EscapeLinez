@@ -1,9 +1,9 @@
 #include "Button.hpp"
+#include "Mouse.hpp"
+#include "Renderer.hpp"
+#include "TextureLoader.hpp"
 #include <SDL2/SDL.h>
 #include <SDL2/SDL_image.h>
-#include "Mouse.hpp"
-#include "TextureLoader.hpp"
-#include "Renderer.hpp"
 
 void Button::init(const std::string& released, const std::string& selected, int x, int y, int w)
 {

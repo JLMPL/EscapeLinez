@@ -23,7 +23,7 @@ class State
     public:
         virtual ~State() {}
 
-        virtual void init(struct SDL_Window* win, SDL_Renderer* rend) = 0;
+        virtual void init(struct SDL_Window* win) = 0;
         virtual void quit() = 0;
 
         virtual void processEvent(const SDL_Event& event) {}
@@ -39,8 +39,6 @@ class State
 
     protected:
         SDL_Window* Window = nullptr;
-        SDL_Renderer* Renderer = nullptr;
-
 };
 
 #endif /* STATE_HPP */

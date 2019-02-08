@@ -5,10 +5,9 @@
 #include "TextureLoader.hpp"
 #include "Renderer.hpp"
 
-void Menu::init(SDL_Window* win, SDL_Renderer* rend)
+void Menu::init(SDL_Window* win)
 {
     Window = win;
-    Renderer = rend;
 
     m_background = loadTexture("data/Images/Main/lines.png");
 

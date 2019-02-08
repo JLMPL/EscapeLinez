@@ -154,5 +154,5 @@ void Game::setState(StateType type)
             break;
     }
 
-    m_currState->init(m_window, m_renderer);
+    m_currState->init(m_window);
 }

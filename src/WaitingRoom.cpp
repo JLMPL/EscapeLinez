@@ -1,23 +1,22 @@
 #include "ConfigFile.hpp"
-#include "jsonP.hpp"
 #include "Login.hpp"
 #include "Network.hpp"
 #include "Settings.hpp"
 #include "State.hpp"
 #include "WaitingRoom.hpp"
-#include <iostream>
+#include "Renderer.hpp"
+#include "json.hpp"
 #include <SDL2/SDL.h>
 #include <SDL2/SDL_image.h>
 #include <SFML/Network.hpp>
+#include <iostream>
 #include <time.h>
 #include <vector>
 
 using json = nlohmann::json;
 
-void WaitingRoom::init(SDL_Window* win, SDL_Renderer* rend)
+void WaitingRoom::init(SDL_Window* win)
 {
-	Renderer = rend;
-
 	Font = TTF_OpenFont("data/Fonts/husa.ttf", 36);
 	FontColor = {255, 255, 255};
 
@@ -29,9 +28,9 @@ void WaitingRoom::init(SDL_Window* win, SDL_Renderer* rend)
 	FontSurfacePlayers = TTF_RenderText_Solid(Font, "Players: ", FontColor);
 	FontSurfaceHour = TTF_RenderText_Solid(Font, "Time: ", FontColor);
 
-    FontTextureTime = SDL_CreateTextureFromSurface(Renderer, FontSurfaceTime);
-    FontTexturePlayers = SDL_CreateTextureFromSurface(Renderer, FontSurfacePlayers);
-    FontTextureHour = SDL_CreateTextureFromSurface(Renderer, FontSurfaceHour);
+    FontTextureTime = SDL_CreateTextureFromSurface(GlobalRenderer, FontSurfaceTime);
+    FontTexturePlayers = SDL_CreateTextureFromSurface(GlobalRenderer, FontSurfacePlayers);
+    FontTextureHour = SDL_CreateTextureFromSurface(GlobalRenderer, FontSurfaceHour);
 
     RectTime.x = w / 2 - (FontSurfaceTime->w + 16);
     RectTime.y = h * 0.3 - 70;
@@ -78,12 +77,11 @@ void WaitingRoom::update(float deltaTime)
 {
     time_t now = time(0);
     char* dt = ctime(&now);
-    std::size_t received;
 
     FontSurfaceHourData = TTF_RenderText_Solid(Font, dt, FontColor);
     RectHourData.w = FontSurfaceHourData->w;
     RectHourData.h = FontSurfaceHourData->h;
-    FontTextureHourData = SDL_CreateTextureFromSurface(Renderer, FontSurfaceHourData);
+    FontTextureHourData = SDL_CreateTextureFromSurface(GlobalRenderer, FontSurfaceHourData);
 
     MessagePlayers = "0";
 
@@ -105,12 +103,12 @@ void WaitingRoom::update(float deltaTime)
     FontSurfaceTimeData = TTF_RenderText_Solid(Font, StringTime.c_str(), FontColor);
     RectTimeData.w = FontSurfaceTimeData->w;
     RectTimeData.h = FontSurfaceTimeData->h;
-    FontTextureTimeData = SDL_CreateTextureFromSurface(Renderer, FontSurfaceTimeData);
+    FontTextureTimeData = SDL_CreateTextureFromSurface(GlobalRenderer, FontSurfaceTimeData);
 
     FontSurfacePlayersData = TTF_RenderText_Solid(Font, StringPlayers.c_str(), FontColor);
     RectPlayersData.w = FontSurfacePlayersData->w;
     RectPlayersData.h = FontSurfacePlayersData->h;
-    FontTexturePlayersData = SDL_CreateTextureFromSurface(Renderer, FontSurfacePlayersData);
+    FontTexturePlayersData = SDL_CreateTextureFromSurface(GlobalRenderer, FontSurfacePlayersData);
 
     SDL_FreeSurface(FontSurfaceTimeData);
     SDL_FreeSurface(FontSurfacePlayersData);
@@ -122,13 +120,13 @@ void WaitingRoom::update(float deltaTime)
 
 void WaitingRoom::draw()
 {
-    SDL_RenderCopy(Renderer, FontTextureTime, NULL, &RectTime);
-    SDL_RenderCopy(Renderer, FontTexturePlayers, NULL, &RectPlayers);
-    SDL_RenderCopy(Renderer, FontTextureHour, NULL, &RectHour);
+    SDL_RenderCopy(GlobalRenderer, FontTextureTime, NULL, &RectTime);
+    SDL_RenderCopy(GlobalRenderer, FontTexturePlayers, NULL, &RectPlayers);
+    SDL_RenderCopy(GlobalRenderer, FontTextureHour, NULL, &RectHour);
 
-    SDL_RenderCopy(Renderer, FontTextureTimeData, NULL, &RectTimeData);
-    SDL_RenderCopy(Renderer, FontTexturePlayersData, NULL, &RectPlayersData);
-    SDL_RenderCopy(Renderer, FontTextureHourData, NULL, &RectHourData);
+    SDL_RenderCopy(GlobalRenderer, FontTextureTimeData, NULL, &RectTimeData);
+    SDL_RenderCopy(GlobalRenderer, FontTexturePlayersData, NULL, &RectPlayersData);
+    SDL_RenderCopy(GlobalRenderer, FontTextureHourData, NULL, &RectHourData);
 
     SDL_DestroyTexture(FontTextureTimeData);
     SDL_DestroyTexture(FontTexturePlayersData);

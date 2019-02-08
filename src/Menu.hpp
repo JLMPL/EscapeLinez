@@ -15,33 +15,33 @@
 
 class Menu : public State
 {
-    public:
-        void init(SDL_Window* win, SDL_Renderer* rend) override final;
-        void quit() override final;
+public:
+    void init(SDL_Window* win) override final;
+    void quit() override final;
 
-        void processEvent(const SDL_Event& event) override final;
-        void update(float deltaTime) override final;
-        void draw() override final;
+    void processEvent(const SDL_Event& event) override final;
+    void update(float deltaTime) override final;
+    void draw() override final;
 
-        StateType nextState() override final;
+    StateType nextState() override final;
 
-        StateType getType() const override final
-        {
-            return StateType::Menu;
-        }
+    StateType getType() const override final
+    {
+        return StateType::Menu;
+    }
 
-    private:
-        StateType changeState = StateType::None;
+private:
+    StateType changeState = StateType::None;
 
-        SDL_Texture* m_background = nullptr;
+    SDL_Texture* m_background = nullptr;
 
-        int w = GlobalConfigFile.getWidth();
-        int h = GlobalConfigFile.getHeight();
+    int w = GlobalConfigFile.getWidth();
+    int h = GlobalConfigFile.getHeight();
 
-        Button singleButton;
-        Button multiButton;
-        Button settingsButton;
-        Button exitButton;
+    Button singleButton;
+    Button multiButton;
+    Button settingsButton;
+    Button exitButton;
 };
 
 

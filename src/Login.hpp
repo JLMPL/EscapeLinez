@@ -12,79 +12,69 @@
 
 class Login : public State
 {
-    public:
-        void init(SDL_Window* window, SDL_Renderer* renderer) override final;
-        void quit() override final;
+public:
+    void init(SDL_Window* window) override final;
+    void quit() override final;
 
-        void processEvent(const SDL_Event& event) override final;
-        void update(float deltaTime) override final;
-        void draw() override final;
+    void processEvent(const SDL_Event& event) override final;
+    void update(float deltaTime) override final;
+    void draw() override final;
 
-        void send();
+    void send();
 
-        StateType getType() const override final
-        {
-            return StateType::Login;
-        }
+    StateType getType() const override final
+    {
+        return StateType::Login;
+    }
 
-        StateType nextState() override final;
+    StateType nextState() override final;
 
-        //const extern std::string ClientId;
+private:
+    int id;
+    int changeState = 0;
 
-    private:
-        struct mouse
-        {
-            int x, y;
-        };
+    int w = GlobalConfigFile.getWidth(), h = GlobalConfigFile.getHeight();
 
-        mouse m;
+    bool tab = 1;
+    int err = 0;
 
-        int id;
-        int changeState = 0;
+    SDL_Surface     *wallpaper;
 
-        int w = GlobalConfigFile.getWidth(), h = GlobalConfigFile.getHeight();
+    SDL_Texture*    tex;
 
-        bool tab = 1;
-        int err = 0;
+    TTF_Font*       Font;
+    SDL_Color       FontColor;
+    SDL_Color       FontColorRed;
+    SDL_Surface*    FontSurface;
+    SDL_Texture*    FontTexture;
+    SDL_Rect        TitleRect;
 
-        SDL_Surface     *wallpaper;
+    SDL_Surface*    FontSurfaceLoginNick;
+    SDL_Texture*    FontTextureLoginNick;
+    SDL_Rect        RectLoginNick;
 
-        SDL_Texture*    tex;
+    SDL_Surface*    FontSurfaceLoginPassword;
+    SDL_Texture*    FontTextureLoginPassword;
+    SDL_Rect        RectLoginPassword;
 
-        TTF_Font*       Font;
-        SDL_Color       FontColor;
-        SDL_Color       FontColorRed;
-        SDL_Surface*    FontSurface;
-        SDL_Texture*    FontTexture;
-        SDL_Rect        TitleRect;
+    SDL_Surface*    FontSurfaceLoginNickValue;
+    SDL_Texture*    FontTextureLoginNickValue;
 
-        SDL_Surface*    FontSurfaceLoginNick;
-        SDL_Texture*    FontTextureLoginNick;
-        SDL_Rect        RectLoginNick;
+    SDL_Surface*    FontSurfaceLoginPasswordValue;
+    SDL_Texture*    FontTextureLoginPasswordValue;
 
-        SDL_Surface*    FontSurfaceLoginPassword;
-        SDL_Texture*    FontTextureLoginPassword;
-        SDL_Rect        RectLoginPassword;
+    std::string     Nick = "";
+    std::string     Password = "";
+    std::string     NickStandard = "Type your nick";
+    std::string     PasswordStandard = "Type your password";
+    std::string     PasswordCopy = "";
+    SDL_Rect        NickRect;
+    SDL_Rect        PasswordReck;
 
-        SDL_Surface*    FontSurfaceLoginNickValue;
-        SDL_Texture*    FontTextureLoginNickValue;
-
-        SDL_Surface*    FontSurfaceLoginPasswordValue;
-        SDL_Texture*    FontTextureLoginPasswordValue;
-
-        std::string     Nick = "";
-        std::string     Password = "";
-        std::string     NickStandard = "Type your nick";
-        std::string     PasswordStandard = "Type your password";
-        std::string     PasswordCopy = "";
-        SDL_Rect        NickRect;
-        SDL_Rect        PasswordReck;
-
-        Button          singleButton;
-        Button          singleButtonS;
-        Button          Error;
-        Button          NoInternet;
-
+    Button          singleButton;
+    Button          singleButtonS;
+    Button          Error;
+    Button          NoInternet;
 };
 
 #endif
