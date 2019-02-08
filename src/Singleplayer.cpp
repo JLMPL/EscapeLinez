@@ -8,7 +8,7 @@ void Singleplayer::init(SDL_Window* win, SDL_Renderer* rend)
     p.x = w / 2;
     p.y = 25;
     p.r = 10;
-    
+
     timer = 0;
 }
 
@@ -22,8 +22,8 @@ void Singleplayer::addLine()
         linesB[numberLines] = Line(w, h, 2, numberLines, heigth, speed);
 
         numberLines++;
-        
-            
+
+
     }
     TiMe++;
 }
@@ -53,27 +53,27 @@ void Singleplayer::update(float deltaTime)
 
     const Uint8* keys = SDL_GetKeyboardState(NULL);
 
-    if (keys[SDL_SCANCODE_DOWN])
-    {
-        p.y += deltaTime * 0.5;
-    }
-    if (keys[SDL_SCANCODE_LEFT])
-    {
-        p.x -= deltaTime * 0.5;
-    }
-    if (keys[SDL_SCANCODE_RIGHT])
-    {
-        p.x += deltaTime * 0.5;
-    }
-    if (keys[SDL_SCANCODE_UP])
-    {
-        p.y -= deltaTime * 0.5;
-    }
-
-    if (timer > 5.f)
+    if (timer > 0.01)
     {
         addLine();
         moveLine();
+
+        if (keys[SDL_SCANCODE_DOWN])
+        {
+            p.y += 2.5;
+        }
+        if (keys[SDL_SCANCODE_LEFT])
+        {
+            p.x -= 2.5;
+        }
+        if (keys[SDL_SCANCODE_RIGHT])
+        {
+            p.x += 2.5;
+        }
+        if (keys[SDL_SCANCODE_UP])
+        {
+            p.y -= 2.5;
+        }
         timer = 0;
     }
 
@@ -130,5 +130,5 @@ void Singleplayer::AfterRendering()
 
 void Singleplayer::quit()
 {
-    
+
 }
