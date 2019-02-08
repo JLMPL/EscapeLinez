@@ -58,10 +58,9 @@ void Login::init(SDL_Window* window, SDL_Renderer* renderer)
     PasswordReck.w = 10;
     PasswordReck.h = 10;
 
-    singleButton.init(loadTexture(Renderer, "data/Images/Login/Login2.png"), w / 2 - 150, h*0.6);
-    singleButtonS.init(loadTexture(Renderer, "data/Images/Login/LoginS.png"), w / 2 - 150, h*0.6);
-    Error.init(loadTexture(Renderer, "data/Images/Login/ErrorLogin.png"), w / 2 - 350, h*0.6, 700);
-    NoInternet.init(loadTexture(Renderer, "data/Images/Login/NoInternet.png"), w / 2 - 350, h* 0.6, 700);
+    singleButton.init("Login/Login2.png", "Login/LoginS.png", w / 2 - 150, h*0.6);
+    Error.init("Login/ErrorLogin.png", "Login/ErrorLogin.png", w / 2 - 350, h*0.6, 700);
+    NoInternet.init("Login/NoInternet.png", "Login/NoInternet.png", w / 2 - 350, h* 0.6, 700);
 
     new (&MySocketLogin) MySocket(servers[0].ip, 8000);
 }
@@ -78,24 +77,18 @@ void Login::update(float deltaTime)
     SDL_RenderCopy(Renderer, FontTextureLoginNickValue, NULL, &NickRect);
     SDL_RenderCopy(Renderer, FontTextureLoginPasswordValue, NULL, &PasswordReck);
 
-    Uint32 buton = SDL_GetMouseState(&m.x, &m.y);
-
     switch(err)
     {
-
         case 0:
-            singleButton.updateButton(Renderer);
-            if (m.y > h * 0.6 && m.y < (h * 0.6) + 70 && m.x > (w / 2) - 150 && m.x < (w / 2) + 150)
-                singleButtonS.updateButton(Renderer);
-        break;
+            singleButton.draw();
+            break;
         case 1:
-            Error.updateButton(Renderer);
-        break;
+            Error.draw();
+            break;
         case 2:
-            NoInternet.updateButton(Renderer);
-        break;
+            NoInternet.draw();
+            break;
     }
-
 }
 
 void Login::AfterRendering()
@@ -105,7 +98,6 @@ void Login::AfterRendering()
 
 void Login::processEvent(const SDL_Event& event)
 {
-
     if(event.type == SDL_KEYDOWN)
     {
         SDL_StartTextInput();

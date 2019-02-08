@@ -1,25 +1,27 @@
 #ifndef BUTTON_HPP
 #define BUTTON_HPP
-
 #include <SDL2/SDL.h>
 #include <SDL2/SDL_image.h>
-#include <iostream>
+#include <string>
 
 class Button
 {
-    public:
-        Button() = default;
-        ~Button();
+public:
+    Button() = default;
+    ~Button();
 
-        void init(SDL_Texture* texture, int x, int y, int w = 300);
-        void updateButton(SDL_Renderer *renderer);
+    void init(const std::string& released, const std::string& selected, int x, int y, int w = 300);
+    void draw();
 
-        bool isHover(int x, int y) const;
+    bool isPressed() const;
 
-    private:
-    	SDL_Surface 		*imcopy;
-        SDL_Texture         *texture;
-        SDL_Rect            DownR;
+private:
+    bool isHover() const;
+
+private:
+    SDL_Texture* m_released;
+    SDL_Texture* m_selected;
+    SDL_Rect     m_rect;
 };
 
 #endif /* BUTTON_HPP */

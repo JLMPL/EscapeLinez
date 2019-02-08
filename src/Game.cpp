@@ -1,22 +1,24 @@
 #include "Game.hpp"
+#include "ConfigFile.hpp"
+#include "Mouse.hpp"
+#include "Login.hpp"
+#include "Menu.hpp"
+#include "Multiplayer.hpp"
+#include "Settings.hpp"
+#include "Singleplayer.hpp"
+#include "WaitingRoom.hpp"
+#include "Renderer.hpp"
+#include <SFML/Network.hpp>
+#include <iostream>
 #include <cstdlib>
 #include <time.h>
-#include <iostream>
 #include <math.h>
-#include <SFML/Network.hpp>
-#include "Multiplayer.hpp"
-#include "Singleplayer.hpp"
-#include "Menu.hpp"
-#include "Settings.hpp"
-#include "Login.hpp"
-#include "ConfigFile.hpp"
-#include "WaitingRoom.hpp"
 
 Game::Game()
 {
     initSDL();
 
-    setState(StateType::Login);
+    setState(StateType::Menu);
 }
 
 Game::~Game()
@@ -56,6 +58,8 @@ void Game::initSDL()
         flags
     );
     m_renderer = SDL_CreateRenderer(m_window, -1, SDL_RENDERER_ACCELERATED);
+
+    GlobalRenderer = m_renderer;
 }
 
 void Game::run()
@@ -102,6 +106,8 @@ void Game::update()
     m_prevTime = m_currTime;
     m_currTime = SDL_GetTicks();
     m_deltaTime = (m_currTime - m_prevTime) / 1000.f;
+
+    GlobalMouse.update();
 
     SDL_RenderClear(m_renderer);
 

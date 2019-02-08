@@ -1,110 +1,28 @@
 #include "Menu.hpp"
 #include "Button.hpp"
 #include "Settings.hpp"
-#include "TextureLoader.hpp"
 #include "ConfigFile.hpp"
+#include "TextureLoader.hpp"
+#include "Renderer.hpp"
 
 void Menu::init(SDL_Window* win, SDL_Renderer* rend)
 {
     Window = win;
     Renderer = rend;
 
-    wallpaper = IMG_Load("data/Images/Main/lines.png");
-
-    tex = SDL_CreateTextureFromSurface(Renderer, wallpaper);
+    m_background = loadTexture("data/Images/Main/lines.png");
 
     changeState = StateType::None;
 
-    singleButton.init(loadTexture(Renderer, "data/Images/Menu/sin.png"), w / 2 - 150, h*0.3);
-    multiButton.init(loadTexture(Renderer, "data/Images/Menu/mul.png"), w / 2 - 150, h*0.4);
-    settingsButton.init(loadTexture(Renderer, "data/Images/Menu/sett.png"), w / 2 - 150, h*0.5);
-    exitButton.init(loadTexture(Renderer, "data/Images/Menu/ex.png"), w / 2 - 150, h*0.6);
-
-    singleButtonS.init(loadTexture(Renderer, "data/Images/Menu/sinS.png"), w / 2 - 150, h*0.3);
-    multiButtonS.init(loadTexture(Renderer, "data/Images/Menu/mulS.png"), w / 2 - 150, h*0.4);
-    settingsButtonS.init(loadTexture(Renderer, "data/Images/Menu/settS.png"), w / 2 - 150, h*0.5);
-    exitButtonS.init(loadTexture(Renderer, "data/Images/Menu/exS.png"), w / 2 - 150, h*0.6);
-}
-
-void Menu::update(float deltaTime)
-{
-    SDL_RenderCopy(Renderer, tex, NULL, NULL);
-
-    singleButton.updateButton(Renderer);
-    multiButton.updateButton(Renderer);
-    settingsButton.updateButton(Renderer);
-    exitButton.updateButton(Renderer);
-
-    struct mouse
-    {
-        int x, y;
-    };
-
-    mouse m;
-
-    Uint32 buton = SDL_GetMouseState(&m.x, &m.y); //przenieść do processEvent i zmienic wartowco hower dla przełącznika
-
-    if (singleButtonS.isHover(m.x, m.y))
-    {
-        singleButtonS.updateButton(Renderer);
-        hover = 0;
-    }
-
-    if (multiButtonS.isHover(m.x, m.y))
-    {
-        multiButtonS.updateButton(Renderer);
-        hover = 0;
-    }
-
-    if (settingsButtonS.isHover(m.x, m.y))
-    {
-        settingsButtonS.updateButton(Renderer);
-        hover = 0;
-    }
-
-    if (exitButtonS.isHover(m.x, m.y))
-    {
-        exitButtonS.updateButton(Renderer);
-        hover = 0;
-    }
-
-
-    if (buton & SDL_BUTTON(SDL_BUTTON_LEFT) && singleButtonS.isHover(m.x, m.y))
-        changeState = StateType::Singleplayer;
-
-    if (buton & SDL_BUTTON(SDL_BUTTON_LEFT) && multiButtonS.isHover(m.x, m.y))
-        changeState = StateType::WaitingRoom;
-
-    if (buton & SDL_BUTTON(SDL_BUTTON_LEFT) && settingsButtonS.isHover(m.x, m.y))
-        changeState = StateType::Settings;
-
-    if (buton & SDL_BUTTON(SDL_BUTTON_LEFT) && exitButtonS.isHover(m.x, m.y))
-        changeState = StateType::Exit;
-
-    if (hover % 5 != 0)
-    {
-        switch(hover % 5)
-        {
-            case 1:
-                singleButtonS.updateButton(Renderer);
-            break;
-            case 2:
-                multiButtonS.updateButton(Renderer);
-            break;
-            case 3:
-                settingsButtonS.updateButton(Renderer);
-            break;
-            case 4:
-                exitButtonS.updateButton(Renderer);
-            break;
-        }
-    }
-
+    singleButton.init("Menu/sin.png", "Menu/sinS.png", w / 2 - 150, h * 0.3);
+    multiButton.init("Menu/mul.png", "Menu/mulS.png", w / 2 - 150, h*0.4);
+    settingsButton.init("Menu/sett.png", "Menu/settS.png", w / 2 - 150, h*0.5);
+    exitButton.init("Menu/ex.png", "Menu/exS.png", w / 2 - 150, h*0.6);
 }
 
 void Menu::processEvent(const SDL_Event& event)
 {
-
+    /*
     if(event.type == SDL_KEYDOWN)
     {
         if(event.key.keysym.sym == SDLK_TAB)
@@ -138,7 +56,34 @@ void Menu::processEvent(const SDL_Event& event)
             }
         }
     }
+    */
+}
 
+void Menu::update(float deltaTime)
+{
+    if (singleButton.isPressed())
+    {
+        changeState = StateType::Singleplayer;
+    }
+    else if (multiButton.isPressed())
+    {
+        changeState = StateType::WaitingRoom;
+    }
+    else if (settingsButton.isPressed())
+    {
+        changeState = StateType::Settings;
+    }
+    else if (exitButton.isPressed())
+    {
+        changeState = StateType::Exit;
+    }
+
+    SDL_RenderCopy(GlobalRenderer, m_background, NULL, NULL);
+
+    singleButton.draw();
+    multiButton.draw();
+    settingsButton.draw();
+    exitButton.draw();
 }
 
 void Menu::AfterRendering()
@@ -148,7 +93,7 @@ void Menu::AfterRendering()
 
 void Menu::quit()
 {
-    SDL_DestroyTexture(tex);
+    SDL_DestroyTexture(m_background);
 }
 
 StateType Menu::nextState()

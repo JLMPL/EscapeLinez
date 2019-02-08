@@ -1,37 +1,49 @@
+#include "Button.hpp"
 #include <SDL2/SDL.h>
 #include <SDL2/SDL_image.h>
-#include <iostream>
-#include "Button.hpp"
+#include "Mouse.hpp"
+#include "TextureLoader.hpp"
+#include "Renderer.hpp"
 
-void Button::init(SDL_Texture* texture, int x, int y, int w)
-{    
-    this->texture = texture;
-
-    DownR.w = w;
-    DownR.h = 70;
-    DownR.x = x;
-    DownR.y = y;
-}
-
-void Button::updateButton(SDL_Renderer *renderer)
-{  
-    SDL_RenderCopy(renderer, texture, NULL, &DownR);
-}
-
-bool Button::isHover(int x, int y) const
+void Button::init(const std::string& released, const std::string& selected, int x, int y, int w)
 {
-	if (x < DownR.x)
-		return false;
-	if (x > DownR.x + DownR.w)
-		return false;
-	if (y < DownR.y)
-		return false;
-	if (y > DownR.y + DownR.h)
-		return false;
-	return true;
+    m_released = loadTexture("data/Images/" + released);
+    m_selected = loadTexture("data/Images/" + selected);
+
+    m_rect.w = w;
+    m_rect.h = 70;
+    m_rect.x = x;
+    m_rect.y = y;
+}
+
+void Button::draw()
+{
+    if (isHover())
+        SDL_RenderCopy(GlobalRenderer, m_selected, NULL, &m_rect);
+    else
+        SDL_RenderCopy(GlobalRenderer, m_released, NULL, &m_rect);
+}
+
+bool Button::isHover() const
+{
+    if (GlobalMouse.x < m_rect.x)
+        return false;
+    if (GlobalMouse.x > m_rect.x + m_rect.w)
+        return false;
+    if (GlobalMouse.y < m_rect.y)
+        return false;
+    if (GlobalMouse.y > m_rect.y + m_rect.h)
+        return false;
+    return true;
+}
+
+bool Button::isPressed() const
+{
+    return isHover() && GlobalMouse.left;
 }
 
 Button::~Button()
 {
-    SDL_DestroyTexture(this->texture);
+    SDL_DestroyTexture(m_released);
+    SDL_DestroyTexture(m_selected);
 }

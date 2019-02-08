@@ -201,8 +201,7 @@ void Settings::init(SDL_Window* win, SDL_Renderer* rend)
 
     SelectionRect = {0,0,512,48};
 
-    Save.init(loadTexture(Renderer, "data/Images/Settings/savee.png"), w / 2 - 150, h*0.8);
-    SaveS.init(loadTexture(Renderer, "data/Images/Settings/saveee.png"), w / 2 - 150, h*0.8);
+    Save.init("Settings/savee.png", "Settings/saveee.png", w / 2 - 150, h*0.8);
 
     // updateResolutions(
     //     std::to_string(ResolutionsTable[CurrentResolution][0]) +
@@ -385,13 +384,13 @@ void Settings::update(float deltaTime)
 
     Uint32 buton = SDL_GetMouseState(&m.x, &m.y);
 
-    Save.updateButton(Renderer);
+    // Save.updateButton(Renderer);
     SDL_SetRenderDrawColor(Renderer, 0, 255, 0, 0);
 
-    if (m.y > h * 0.8 && m.y < (h * 0.8) + 70 && m.x > (w / 2) - 150 && m.x < (w / 2) + 150)
-        SaveS.updateButton(Renderer);
+    // if (m.y > h * 0.8 && m.y < (h * 0.8) + 70 && m.x > (w / 2) - 150 && m.x < (w / 2) + 150)
+        // SaveS.updateButton(Renderer);
 
-    if (buton & SDL_BUTTON(SDL_BUTTON_LEFT) && SaveS.isHover(m.x, m.y))
+    if (Save.isPressed())
     {
         GlobalConfigFile.setWidth(toUpdateWidth);
         GlobalConfigFile.setHeight(toUpdateHeight);
@@ -405,6 +404,8 @@ void Settings::update(float deltaTime)
         //printf("%s1\n");
 
     }
+
+    Save.draw();
 }
 
 void Settings::AfterRendering()
