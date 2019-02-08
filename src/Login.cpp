@@ -67,9 +67,10 @@ void Login::init(SDL_Window* window, SDL_Renderer* renderer)
 
 void Login::update(float deltaTime)
 {
-    SDL_SetRenderDrawColor(Renderer, 0, 0, 0, 0);
-    SDL_RenderClear(Renderer);
+}
 
+void Login::draw()
+{
     SDL_RenderCopy(Renderer, tex, NULL, NULL);
     SDL_RenderCopy(Renderer, FontTexture, NULL, &TitleRect);
     SDL_RenderCopy(Renderer, FontTextureLoginNick, NULL, &RectLoginNick);
@@ -89,11 +90,6 @@ void Login::update(float deltaTime)
             NoInternet.draw();
             break;
     }
-}
-
-void Login::AfterRendering()
-{
-
 }
 
 void Login::processEvent(const SDL_Event& event)

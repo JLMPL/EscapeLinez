@@ -70,6 +70,10 @@ void WaitingRoom::init(SDL_Window* win, SDL_Renderer* rend)
 	new (&MySocketToBattle) MySocket(servers[0].ip, 8003);
 }
 
+void WaitingRoom::processEvent(const SDL_Event& event)
+{
+}
+
 void WaitingRoom::update(float deltaTime)
 {
     time_t now = time(0);
@@ -108,14 +112,6 @@ void WaitingRoom::update(float deltaTime)
     RectPlayersData.h = FontSurfacePlayersData->h;
     FontTexturePlayersData = SDL_CreateTextureFromSurface(Renderer, FontSurfacePlayersData);
 
-    SDL_RenderCopy(Renderer, FontTextureTime, NULL, &RectTime);
-    SDL_RenderCopy(Renderer, FontTexturePlayers, NULL, &RectPlayers);
-    SDL_RenderCopy(Renderer, FontTextureHour, NULL, &RectHour);
-
-    SDL_RenderCopy(Renderer, FontTextureTimeData, NULL, &RectTimeData);
-    SDL_RenderCopy(Renderer, FontTexturePlayersData, NULL, &RectPlayersData);
-    SDL_RenderCopy(Renderer, FontTextureHourData, NULL, &RectHourData);
-
     SDL_FreeSurface(FontSurfaceTimeData);
     SDL_FreeSurface(FontSurfacePlayersData);
     SDL_FreeSurface(FontSurfaceHourData);
@@ -124,15 +120,19 @@ void WaitingRoom::update(float deltaTime)
         changeState = StateType::Multiplayer;
 }
 
-void WaitingRoom::AfterRendering()
+void WaitingRoom::draw()
 {
+    SDL_RenderCopy(Renderer, FontTextureTime, NULL, &RectTime);
+    SDL_RenderCopy(Renderer, FontTexturePlayers, NULL, &RectPlayers);
+    SDL_RenderCopy(Renderer, FontTextureHour, NULL, &RectHour);
+
+    SDL_RenderCopy(Renderer, FontTextureTimeData, NULL, &RectTimeData);
+    SDL_RenderCopy(Renderer, FontTexturePlayersData, NULL, &RectPlayersData);
+    SDL_RenderCopy(Renderer, FontTextureHourData, NULL, &RectHourData);
+
     SDL_DestroyTexture(FontTextureTimeData);
     SDL_DestroyTexture(FontTexturePlayersData);
     SDL_DestroyTexture(FontTextureHourData);
-}
-
-void WaitingRoom::processEvent(const SDL_Event& event)
-{
 }
 
 void WaitingRoom::quit()

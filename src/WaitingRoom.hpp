@@ -16,10 +16,11 @@ class WaitingRoom : public State
     public:
         void init(SDL_Window* win, SDL_Renderer* rend) override final;
         void quit() override final;
-        void update(float deltaTime) override final;
-        void AfterRendering() override final;
 
         void processEvent(const SDL_Event& event) override final;
+        void update(float deltaTime) override final;
+        void draw() override final;
+
 
         StateType nextState() override final;
 

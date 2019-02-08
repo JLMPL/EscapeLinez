@@ -77,18 +77,16 @@ void Menu::update(float deltaTime)
     {
         changeState = StateType::Exit;
     }
+}
 
+void Menu::draw()
+{
     SDL_RenderCopy(GlobalRenderer, m_background, NULL, NULL);
 
     singleButton.draw();
     multiButton.draw();
     settingsButton.draw();
     exitButton.draw();
-}
-
-void Menu::AfterRendering()
-{
-
 }
 
 void Menu::quit()

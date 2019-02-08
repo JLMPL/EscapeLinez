@@ -14,14 +14,15 @@ class Settings : public State
         ~Settings();
         void init(SDL_Window* win, SDL_Renderer* rend) override final;
         void quit() override final;
+
         void processEvent(const SDL_Event& event) override final;
         void update(float deltaTime) override final;
-        void AfterRendering() override final;
+        void draw() override final;
 
         void setRenderer(SDL_Renderer* renderer);
 
         StateType nextState() override final;
-        
+
         StateType getType() const override final
         {
             return StateType::Settings;

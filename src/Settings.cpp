@@ -337,8 +337,6 @@ void Settings::processEvent(const SDL_Event& event)
         }
         GlobalConfigFile.save();
     }
-
-
 }
 
 void Settings::updateSelectionRect()
@@ -355,6 +353,23 @@ void Settings::update(float deltaTime)
 
     updateSelectionRect();
 
+    if (Save.isPressed())
+    {
+        GlobalConfigFile.setWidth(toUpdateWidth);
+        GlobalConfigFile.setHeight(toUpdateHeight);
+
+        SDL_SetWindowSize(Window, GlobalConfigFile.getWidth(), GlobalConfigFile.getHeight());
+        // SDL_RenderSetLogicalSize(Renderer, GlobalConfigFile.getWidth(), GlobalConfigFile.getHeight());
+        // SDL_RenderSetScale(Renderer, float(GlobalConfigFile.getWidth()) / 1366.f, float(GlobalConfigFile.getHeight()) / 768.f);
+        GlobalConfigFile.save();
+        changeState = 3;
+        //system("./script.sh");
+        //printf("%s1\n");
+    }
+}
+
+void Settings::draw()
+{
     SDL_SetRenderDrawColor(Renderer, 0, 100, 100, 0);
 
     SDL_RenderCopy(Renderer, Wallpaper, NULL, NULL);
@@ -375,42 +390,9 @@ void Settings::update(float deltaTime)
     SDL_RenderCopy(Renderer, Difficulty.Texture, NULL, &Difficulty.Rect);
     SDL_RenderCopy(Renderer, Difficulty.Current, NULL, &Difficulty.CurrRect);
 
-    struct mouse
-    {
-        int x, y;
-    };
-
-    mouse m;
-
-    Uint32 buton = SDL_GetMouseState(&m.x, &m.y);
-
-    // Save.updateButton(Renderer);
-    SDL_SetRenderDrawColor(Renderer, 0, 255, 0, 0);
-
-    // if (m.y > h * 0.8 && m.y < (h * 0.8) + 70 && m.x > (w / 2) - 150 && m.x < (w / 2) + 150)
-        // SaveS.updateButton(Renderer);
-
-    if (Save.isPressed())
-    {
-        GlobalConfigFile.setWidth(toUpdateWidth);
-        GlobalConfigFile.setHeight(toUpdateHeight);
-
-        SDL_SetWindowSize(Window, GlobalConfigFile.getWidth(), GlobalConfigFile.getHeight());
-        // SDL_RenderSetLogicalSize(Renderer, GlobalConfigFile.getWidth(), GlobalConfigFile.getHeight());
-        // SDL_RenderSetScale(Renderer, float(GlobalConfigFile.getWidth()) / 1366.f, float(GlobalConfigFile.getHeight()) / 768.f);
-        GlobalConfigFile.save();
-        changeState = 3;
-        //system("./script.sh");
-        //printf("%s1\n");
-
-    }
+    SDL_SetRenderDrawColor(Renderer, 0, 0, 0, 0);
 
     Save.draw();
-}
-
-void Settings::AfterRendering()
-{
-
 }
 
 void Settings::quit()

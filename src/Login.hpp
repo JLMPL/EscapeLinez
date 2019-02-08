@@ -1,34 +1,34 @@
 #ifndef LOGIN_HPP
 #define LOGIN_HPP
-
+#include "Button.hpp"
+#include "ConfigFile.hpp"
+#include "Settings.hpp"
 #include "State.hpp"
 #include <SDL2/SDL.h>
 #include <SDL2/SDL_image.h>
 #include <SDL2/SDL_ttf.h>
 #include <SFML/Network.hpp>
 #include <iostream>
-#include "Button.hpp"
-#include "Settings.hpp"
-#include "ConfigFile.hpp"
 
 class Login : public State
 {
     public:
         void init(SDL_Window* window, SDL_Renderer* renderer) override final;
         void quit() override final;
+
         void processEvent(const SDL_Event& event) override final;
         void update(float deltaTime) override final;
-        void AfterRendering() override final;
-        
+        void draw() override final;
+
         void send();
-        
+
         StateType getType() const override final
         {
             return StateType::Login;
         }
-        
+
         StateType nextState() override final;
-        
+
         //const extern std::string ClientId;
 
     private:
@@ -41,14 +41,14 @@ class Login : public State
 
         int id;
         int changeState = 0;
-                      
+
         int w = GlobalConfigFile.getWidth(), h = GlobalConfigFile.getHeight();
 
         bool tab = 1;
         int err = 0;
-        
+
         SDL_Surface     *wallpaper;
-        
+
         SDL_Texture*    tex;
 
         TTF_Font*       Font;

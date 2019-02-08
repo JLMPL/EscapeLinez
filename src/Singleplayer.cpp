@@ -77,20 +77,6 @@ void Singleplayer::update(float deltaTime)
         timer = 0;
     }
 
-
-
-    SDL_SetRenderDrawColor(Renderer, 0, 0, 0, 0);
-    SDL_RenderClear(Renderer);
-
-    SDL_SetRenderDrawColor( Renderer, 0, 64, 240, 255);
-    for (int i = 0; i < numberLines; i++)
-    {
-        SDL_RenderDrawLine(Renderer, lines[i].X[0], lines[i].Y[0], lines[i].X[1], lines[i].Y[1]);
-        SDL_RenderDrawLine(Renderer, linesB[i].X[0], linesB[i].Y[0], linesB[i].X[1], linesB[i].Y[1]);
-    }
-
-    SDL_SetRenderDrawColor( Renderer, 240, 64, 0, 255);
-
     for(int i = 0; i<90; i++)
     {
 
@@ -107,6 +93,19 @@ void Singleplayer::update(float deltaTime)
             p.r = 10;
         }
     }
+}
+
+void Singleplayer::draw()
+{
+    SDL_SetRenderDrawColor( Renderer, 0, 64, 240, 255);
+
+    for (int i = 0; i < numberLines; i++)
+    {
+        SDL_RenderDrawLine(Renderer, lines[i].X[0], lines[i].Y[0], lines[i].X[1], lines[i].Y[1]);
+        SDL_RenderDrawLine(Renderer, linesB[i].X[0], linesB[i].Y[0], linesB[i].X[1], linesB[i].Y[1]);
+    }
+
+    SDL_SetRenderDrawColor( Renderer, 240, 64, 0, 255);
 
     for(float x = (-40); x < 40; x+=1)
     {
@@ -121,11 +120,6 @@ void Singleplayer::update(float deltaTime)
 
         }
     }
-}
-
-void Singleplayer::AfterRendering()
-{
-
 }
 
 void Singleplayer::quit()

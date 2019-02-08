@@ -4,7 +4,7 @@
  * and open the template in the editor.
  */
 
-/* 
+/*
  * File:   Menu.hpp
  * Author: krzysiek
  *
@@ -31,19 +31,20 @@ class Singleplayer : public State
     public:
         void init(SDL_Window* win, SDL_Renderer* rend) override final;
         void quit() override final;
+
         void update(float deltaTime) override final;
-        void AfterRendering() override final;
-        
+        void draw() override final;
+
         StateType nextState() override final { return StateType::None; }
-        
+
         void addLine();
         void moveLine();
-        
+
         StateType getType() const override final
         {
             return StateType::Singleplayer;
         }
-        
+
     private:
         Line        lines[90];
         Line        linesB[90];
@@ -51,12 +52,12 @@ class Singleplayer : public State
                     TiMe = 0,
                     heigth = 0,
                     speed = 3;
-                    
+
         float       timer = 0;
 
-        int         w = GlobalConfigFile.getWidth(), 
+        int         w = GlobalConfigFile.getWidth(),
                     h = GlobalConfigFile.getHeight();
-        
+
         Player      p;
 
 };

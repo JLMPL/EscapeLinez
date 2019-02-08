@@ -109,8 +109,6 @@ void Game::update()
 
     GlobalMouse.update();
 
-    SDL_RenderClear(m_renderer);
-
     if (m_currState->nextState() != StateType::None)
     {
         setState(m_currState->nextState());
@@ -121,6 +119,9 @@ void Game::update()
 
 void Game::draw()
 {
+    SDL_SetRenderDrawColor(m_renderer, 0, 0, 0, 0);
+    SDL_RenderClear(m_renderer);
+    m_currState->draw();
     SDL_RenderPresent(m_renderer);
 }
 

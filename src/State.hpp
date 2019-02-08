@@ -13,7 +13,7 @@ enum class StateType
     Settings,
     Login,
     Exit,
-    
+
     None,
     Count
 };
@@ -28,9 +28,9 @@ class State
 
         virtual void processEvent(const SDL_Event& event) {}
         virtual void update(float deltaTime) = 0;
-        virtual void AfterRendering() = 0;
-        
-        virtual StateType getType() const 
+        virtual void draw() = 0;
+
+        virtual StateType getType() const
         {
             return StateType::None;
         }
@@ -40,7 +40,7 @@ class State
     protected:
         SDL_Window* Window = nullptr;
         SDL_Renderer* Renderer = nullptr;
-        
+
 };
 
 #endif /* STATE_HPP */
