@@ -1,7 +1,7 @@
 #ifndef MULTIPLAYER_HPP
 #define MULTIPLAYER_HPP
 #include "State.hpp"
-#include "Lines.hpp"
+#include "Line.hpp"
 #include "Settings.hpp"
 #include <SDL2/SDL.h>
 #include <SFML/Network.hpp>

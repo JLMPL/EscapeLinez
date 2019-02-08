@@ -1,11 +1,11 @@
 #ifndef SINGLEPLAYER_HPP
 #define SINGLEPLAYER_HPP
-
 #include "State.hpp"
-#include "Lines.hpp"
-#include <SDL2/SDL.h>
+#include "Line.hpp"
 #include "Settings.hpp"
 #include "ConfigFile.hpp"
+#include <SDL2/SDL.h>
+#include <vector>
 
 struct Player
 {
@@ -33,21 +33,13 @@ public:
     }
 
 private:
-    Line        lines[90];
-    Line        linesB[90];
+    std::vector<Line> m_lines;
 
-    int         numberLines = 0;
-    int         TiMe = 0;
-    int         heigth = 0;
-    int         speed = 3;
+    int m_height = 64;
 
-    float       timer = 0;
+    float m_timer = 0;
 
-    int         w = GlobalConfigFile.getWidth(),
-                h = GlobalConfigFile.getHeight();
-
-    Player      p;
-
+    Player m_player;
 };
 
 #endif /* MENU_HPP */

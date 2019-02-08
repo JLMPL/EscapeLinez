@@ -22,7 +22,7 @@ void Multiplayer::init(SDL_Window* win)
 
 void Multiplayer::addLine()
 {
-    if (TiMe < 90)
+    /*if (TiMe < 90)
     {
         if (numberLines%3 == 0)
             speed = rand()%4+2;
@@ -33,12 +33,12 @@ void Multiplayer::addLine()
 
 
     }
-    TiMe++;
+    TiMe++;*/
 }
 
 void Multiplayer::moveLine()
 {
-    for(int i = 0; i < numberLines; i++)
+/*    for(int i = 0; i < numberLines; i++)
     {
         lines[i].moveX(1.f);
         int delta = abs(lines[i].X[1] - lines[i].X[0]);
@@ -52,7 +52,7 @@ void Multiplayer::moveLine()
                 linesB[i].X[0] = w - 1;
             }
         }
-    }
+    }*/
 }
 
 void Multiplayer::update(float deltaTime)
@@ -108,12 +108,12 @@ void Multiplayer::draw()
 {
     SDL_SetRenderDrawColor(GlobalRenderer, 0, 64, 240, 255);
 
-    for (int i = 0; i < numberLines; i++)
+/*    for (int i = 0; i < numberLines; i++)
     {
         SDL_RenderDrawLine(GlobalRenderer, lines[i].X[0], lines[i].Y[0], lines[i].X[1], lines[i].Y[1]);
         SDL_RenderDrawLine(GlobalRenderer, linesB[i].X[0], linesB[i].Y[0], linesB[i].X[1], linesB[i].Y[1]);
     }
-
+*/
     for (float x = (-40); x < 40; x+=1)
     {
         for (float y = (-40); y < 40; y+=1)
