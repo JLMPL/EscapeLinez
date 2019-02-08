@@ -104,6 +104,11 @@ void Game::update()
 
     SDL_RenderClear(m_renderer);
     m_currState->update(m_deltaTime);
+
+    if (m_currState->nextState() != StateType::None)
+    {
+        setState(m_currState->nextState());
+    }
 }
 
 void Game::draw()

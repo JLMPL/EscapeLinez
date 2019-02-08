@@ -15,12 +15,24 @@ class Button
         void updateButton(SDL_Renderer *renderer);
 
         bool isHover(int x, int y) const;
+        bool isClicked(int x, int y, const SDL_Event& event);
 
     private:
     	SDL_Surface 		*imcopy;
         SDL_Texture         *texture;
         SDL_Rect            DownR;
+
 };
 
-#endif /* BUTTON_HPP */
+struct mouse
+{
+    int x, y;
+    void start()
+    {
+        SDL_GetMouseState(&this->x, &this->y);
+    }
+};
 
+extern mouse m;
+
+#endif /* BUTTON_HPP */

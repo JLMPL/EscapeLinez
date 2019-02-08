@@ -19,36 +19,30 @@ class Login : public State
         void processEvent(const SDL_Event& event) override final;
         void update(float deltaTime) override final;
         void AfterRendering() override final;
-        
+
         void send();
-        
+
         StateType getType() const override final
         {
             return StateType::Login;
         }
-        
+
         StateType nextState() override final;
-        
+
         //const extern std::string ClientId;
 
     private:
-        struct mouse
-        {
-            int x, y;
-        };
-
-        mouse m;
 
         int id;
         int changeState = 0;
-                      
+
         int w = GlobalConfigFile.getWidth(), h = GlobalConfigFile.getHeight();
 
         bool tab = 1;
         int err = 0;
-        
+
         SDL_Surface     *wallpaper;
-        
+
         SDL_Texture*    tex;
 
         TTF_Font*       Font;
@@ -88,4 +82,3 @@ class Login : public State
 };
 
 #endif
-

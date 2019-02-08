@@ -18,31 +18,24 @@ void Menu::init(SDL_Window* win, SDL_Renderer* rend)
     singleButton.init(loadTexture(Renderer, "data/Images/Menu/sin.png"), w / 2 - 150, h*0.3);
     multiButton.init(loadTexture(Renderer, "data/Images/Menu/mul.png"), w / 2 - 150, h*0.4);
     settingsButton.init(loadTexture(Renderer, "data/Images/Menu/sett.png"), w / 2 - 150, h*0.5);
-    exitButton.init(loadTexture(Renderer, "data/Images/Menu/ex.png"), w / 2 - 150, h*0.6);
+    exitButton.init(loadTexture(Renderer, "data/Images/Menu/ex.png"), w / 2 - 150, h*0.7);
 
     singleButtonS.init(loadTexture(Renderer, "data/Images/Menu/sinS.png"), w / 2 - 150, h*0.3);
     multiButtonS.init(loadTexture(Renderer, "data/Images/Menu/mulS.png"), w / 2 - 150, h*0.4);
     settingsButtonS.init(loadTexture(Renderer, "data/Images/Menu/settS.png"), w / 2 - 150, h*0.5);
-    exitButtonS.init(loadTexture(Renderer, "data/Images/Menu/exS.png"), w / 2 - 150, h*0.6);
+    exitButtonS.init(loadTexture(Renderer, "data/Images/Menu/exS.png"), w / 2 - 150, h*0.7);
 }
 
 void Menu::update(float deltaTime)
 {
     SDL_RenderCopy(Renderer, tex, NULL, NULL);
 
+    m.start();
+
     singleButton.updateButton(Renderer);
     multiButton.updateButton(Renderer);
     settingsButton.updateButton(Renderer);
     exitButton.updateButton(Renderer);
-
-    struct mouse
-    {
-        int x, y;
-    };
-
-    mouse m;
-
-    Uint32 buton = SDL_GetMouseState(&m.x, &m.y); //przenieść do processEvent i zmienic wartowco hower dla przełącznika
 
     if (singleButtonS.isHover(m.x, m.y))
     {
@@ -68,19 +61,6 @@ void Menu::update(float deltaTime)
         hover = 0;
     }
 
-
-    if (buton & SDL_BUTTON(SDL_BUTTON_LEFT) && singleButtonS.isHover(m.x, m.y))
-        changeState = StateType::Singleplayer;
-
-    if (buton & SDL_BUTTON(SDL_BUTTON_LEFT) && multiButtonS.isHover(m.x, m.y))
-        changeState = StateType::WaitingRoom;
-
-    if (buton & SDL_BUTTON(SDL_BUTTON_LEFT) && settingsButtonS.isHover(m.x, m.y))
-        changeState = StateType::Settings;
-
-    if (buton & SDL_BUTTON(SDL_BUTTON_LEFT) && exitButtonS.isHover(m.x, m.y))
-        changeState = StateType::Exit;
-
     if (hover % 5 != 0)
     {
         switch(hover % 5)
@@ -104,6 +84,17 @@ void Menu::update(float deltaTime)
 
 void Menu::processEvent(const SDL_Event& event)
 {
+    if (singleButtonS.isClicked(m.x, m.y, event))
+        changeState = StateType::Singleplayer;
+
+    if (multiButtonS.isClicked(m.x, m.y, event))
+        changeState = StateType::WaitingRoom;
+
+    if (settingsButtonS.isClicked(m.x, m.y, event))
+        changeState = StateType::Settings;
+
+    if (exitButtonS.isClicked(m.x, m.y, event))
+        changeState = StateType::Exit;
 
     if(event.type == SDL_KEYDOWN)
     {

@@ -221,6 +221,21 @@ void Settings::processEvent(const SDL_Event& event)
     SDL_GetDesktopDisplayMode(0, &dm);
     // GetWindowRect(hDesktop, &desktop);
 
+    if (SaveS.isClicked(m.x, m.y, event))
+    {
+        GlobalConfigFile.setWidth(toUpdateWidth);
+        GlobalConfigFile.setHeight(toUpdateHeight);
+
+        SDL_SetWindowSize(Window, GlobalConfigFile.getWidth(), GlobalConfigFile.getHeight());
+        // SDL_RenderSetLogicalSize(Renderer, GlobalConfigFile.getWidth(), GlobalConfigFile.getHeight());
+        // SDL_RenderSetScale(Renderer, float(GlobalConfigFile.getWidth()) / 1366.f, float(GlobalConfigFile.getHeight()) / 768.f);
+        GlobalConfigFile.save();
+        changeState = 3;
+        //system("./script.sh");
+        //printf("%s1\n");
+
+    }
+
     if (event.type == SDL_KEYDOWN)
     {
         if (event.key.keysym.sym == SDLK_RETURN)
@@ -376,14 +391,7 @@ void Settings::update(float deltaTime)
     SDL_RenderCopy(Renderer, Difficulty.Texture, NULL, &Difficulty.Rect);
     SDL_RenderCopy(Renderer, Difficulty.Current, NULL, &Difficulty.CurrRect);
 
-    struct mouse
-    {
-        int x, y;
-    };
-
-    mouse m;
-
-    Uint32 buton = SDL_GetMouseState(&m.x, &m.y);
+    m.start();
 
     Save.updateButton(Renderer);
     SDL_SetRenderDrawColor(Renderer, 0, 255, 0, 0);
@@ -391,20 +399,6 @@ void Settings::update(float deltaTime)
     if (m.y > h * 0.8 && m.y < (h * 0.8) + 70 && m.x > (w / 2) - 150 && m.x < (w / 2) + 150)
         SaveS.updateButton(Renderer);
 
-    if (buton & SDL_BUTTON(SDL_BUTTON_LEFT) && SaveS.isHover(m.x, m.y))
-    {
-        GlobalConfigFile.setWidth(toUpdateWidth);
-        GlobalConfigFile.setHeight(toUpdateHeight);
-
-        SDL_SetWindowSize(Window, GlobalConfigFile.getWidth(), GlobalConfigFile.getHeight());
-        // SDL_RenderSetLogicalSize(Renderer, GlobalConfigFile.getWidth(), GlobalConfigFile.getHeight());
-        // SDL_RenderSetScale(Renderer, float(GlobalConfigFile.getWidth()) / 1366.f, float(GlobalConfigFile.getHeight()) / 768.f);
-        GlobalConfigFile.save();
-        changeState = 3;
-        //system("./script.sh");
-        //printf("%s1\n");
-
-    }
 }
 
 void Settings::AfterRendering()
@@ -430,4 +424,3 @@ StateType Settings::nextState()
     if (changeState == 0)
         return StateType::None;
 }
-

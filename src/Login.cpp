@@ -79,7 +79,7 @@ void Login::update(float deltaTime)
     SDL_RenderCopy(Renderer, FontTextureLoginNickValue, NULL, &NickRect);
     SDL_RenderCopy(Renderer, FontTextureLoginPasswordValue, NULL, &PasswordReck);
 
-    Uint32 buton = SDL_GetMouseState(&m.x, &m.y);
+    m.start();
 
     switch(err)
     {
@@ -105,6 +105,8 @@ void Login::AfterRendering()
 
 void Login::processEvent(const SDL_Event& event)
 {
+    if (singleButtonS.isClicked(m.x, m.y, event))
+        Login::send();
 
     if(event.type == SDL_KEYDOWN)
     {
@@ -230,11 +232,12 @@ void Login::send() //<<<<<<<<<<<<<<<<-------- Network.cpp
 
     std::string answare = MySocketLogin.get();
 
-    json parser = json::parse(answare);
+    json parser;
 
     switch(MySocketLogin.getStatus())
     {
         case 0://< The socket has sent / received the data
+            parser = json::parse(answare);
             if (parser["status"].get<int>() == 200)
             {
                 changeState = 3;
@@ -278,4 +281,3 @@ StateType Login::nextState()
     if (changeState == 0)
         return StateType::None;
 }
-
