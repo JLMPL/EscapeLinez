@@ -1,6 +1,7 @@
 #ifndef FONT_HPP
 #define FONT_HPP
 #include <SDL2/SDL.h>
+#include <SDL2/SDL_ttf.h>
 #include <string>
 
 class Font

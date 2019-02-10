@@ -18,16 +18,16 @@ void Login::init(SDL_Window* window)
 
     tex = SDL_CreateTextureFromSurface(GlobalRenderer, wallpaper);
 
-    Font = TTF_OpenFont("data/Fonts/login.ttf", 36);
+    Font0 = TTF_OpenFont("data/Fonts/login.ttf", 36);
     FontColor = {255, 255, 254};
     FontColorRed = {192, 0, 0};
-    FontSurface = TTF_RenderText_Solid(Font, "Login", FontColor);
+    FontSurface = TTF_RenderText_Solid(Font0, "Login", FontColor);
     FontTexture = SDL_CreateTextureFromSurface(GlobalRenderer, FontSurface);
 
-    FontSurfaceLoginNick = TTF_RenderText_Solid(Font, "Nick:", FontColor);
+    FontSurfaceLoginNick = TTF_RenderText_Solid(Font0, "Nick:", FontColor);
     FontTextureLoginNick = SDL_CreateTextureFromSurface(GlobalRenderer, FontSurfaceLoginNick);
 
-    FontSurfaceLoginPassword = TTF_RenderText_Solid(Font, "Password:", FontColor);
+    FontSurfaceLoginPassword = TTF_RenderText_Solid(Font0, "Password:", FontColor);
     FontTextureLoginPassword = SDL_CreateTextureFromSurface(GlobalRenderer, FontSurfaceLoginPassword);
 
     SDL_DisplayMode dm;
@@ -63,6 +63,12 @@ void Login::init(SDL_Window* window)
     NoInternet.init("Login/NoInternet.png", "Login/NoInternet.png", w / 2 - 350, h* 0.6, 700);
 
     new (&MySocketLogin) MySocket(servers[0].ip, 8000);
+
+    m_testFont.loadFromFile("data/Fonts/login.ttf");
+    m_testText.setFont(m_testFont);
+    m_testText.setString("Test text is here!");
+    m_testText.setColor({0,255,0,255});
+    m_testText.setPosition(100,100);
 }
 
 void Login::update(float deltaTime)
@@ -94,6 +100,8 @@ void Login::draw()
             NoInternet.draw();
             break;
     }
+
+    m_testText.draw();
 }
 
 void Login::processEvent(const SDL_Event& event)
@@ -124,12 +132,12 @@ void Login::processEvent(const SDL_Event& event)
 
                 if (Nick != "")
                 {
-                    FontSurfaceLoginNickValue = TTF_RenderText_Solid(Font, Nick.c_str(), FontColor);
+                    FontSurfaceLoginNickValue = TTF_RenderText_Solid(Font0, Nick.c_str(), FontColor);
                     FontTextureLoginNickValue = SDL_CreateTextureFromSurface(GlobalRenderer, FontSurfaceLoginNickValue);
                 }
                 else
                 {
-                    FontSurfaceLoginNickValue = TTF_RenderText_Solid(Font, NickStandard.c_str(), FontColorRed);
+                    FontSurfaceLoginNickValue = TTF_RenderText_Solid(Font0, NickStandard.c_str(), FontColorRed);
                     FontTextureLoginNickValue = SDL_CreateTextureFromSurface(GlobalRenderer, FontSurfaceLoginNickValue);
                 }
 
@@ -148,12 +156,12 @@ void Login::processEvent(const SDL_Event& event)
 
                 if (Password != "")
                 {
-                    FontSurfaceLoginPasswordValue = TTF_RenderText_Solid(Font, PasswordCopy.c_str(), FontColor);
+                    FontSurfaceLoginPasswordValue = TTF_RenderText_Solid(Font0, PasswordCopy.c_str(), FontColor);
                     FontTextureLoginPasswordValue = SDL_CreateTextureFromSurface(GlobalRenderer, FontSurfaceLoginPasswordValue);
                 }
                 else
                 {
-                    FontSurfaceLoginPasswordValue = TTF_RenderText_Solid(Font, PasswordStandard.c_str(), FontColorRed);
+                    FontSurfaceLoginPasswordValue = TTF_RenderText_Solid(Font0, PasswordStandard.c_str(), FontColorRed);
                     FontTextureLoginPasswordValue = SDL_CreateTextureFromSurface(GlobalRenderer, FontSurfaceLoginPasswordValue);
                 }
 
@@ -187,23 +195,23 @@ void Login::processEvent(const SDL_Event& event)
 
         if (Nick != "")
         {
-            FontSurfaceLoginNickValue = TTF_RenderText_Solid(Font, Nick.c_str(), FontColor);
+            FontSurfaceLoginNickValue = TTF_RenderText_Solid(Font0, Nick.c_str(), FontColor);
             FontTextureLoginNickValue = SDL_CreateTextureFromSurface(GlobalRenderer, FontSurfaceLoginNickValue);
         }
         else
         {
-            FontSurfaceLoginNickValue = TTF_RenderText_Solid(Font, NickStandard.c_str(), FontColorRed);
+            FontSurfaceLoginNickValue = TTF_RenderText_Solid(Font0, NickStandard.c_str(), FontColorRed);
             FontTextureLoginNickValue = SDL_CreateTextureFromSurface(GlobalRenderer, FontSurfaceLoginNickValue);
         }
 
         if (Password != "")
         {
-            FontSurfaceLoginPasswordValue = TTF_RenderText_Solid(Font, PasswordCopy.c_str(), FontColor);
+            FontSurfaceLoginPasswordValue = TTF_RenderText_Solid(Font0, PasswordCopy.c_str(), FontColor);
             FontTextureLoginPasswordValue = SDL_CreateTextureFromSurface(GlobalRenderer, FontSurfaceLoginPasswordValue);
         }
         else
         {
-            FontSurfaceLoginPasswordValue = TTF_RenderText_Solid(Font, PasswordStandard.c_str(), FontColorRed);
+            FontSurfaceLoginPasswordValue = TTF_RenderText_Solid(Font0, PasswordStandard.c_str(), FontColorRed);
             FontTextureLoginPasswordValue = SDL_CreateTextureFromSurface(GlobalRenderer, FontSurfaceLoginPasswordValue);
         }
 

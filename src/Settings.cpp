@@ -218,7 +218,7 @@ void Settings::processEvent(const SDL_Event& event)
     SDL_GetDesktopDisplayMode(0, &dm);
     // GetWindowRect(hDesktop, &desktop);
 
-    if (SaveS.isClicked(m.x, m.y, event))
+    if (Save.isPressed())
     {
         GlobalConfigFile.setWidth(toUpdateWidth);
         GlobalConfigFile.setHeight(toUpdateHeight);
