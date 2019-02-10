@@ -98,7 +98,8 @@ void Game::processEvent(const SDL_Event& event)
         }
     }
 
-    m_currState->processEvent(m_event);
+    if (m_currState)
+        m_currState->processEvent(m_event);
 }
 
 void Game::update()
@@ -114,14 +115,16 @@ void Game::update()
         setState(m_currState->nextState());
     }
 
-    m_currState->update(m_deltaTime);
+    if (m_currState)
+        m_currState->update(m_deltaTime);
 }
 
 void Game::draw()
 {
     SDL_SetRenderDrawColor(m_renderer, 0, 0, 0, 0);
     SDL_RenderClear(m_renderer);
-    m_currState->draw();
+    if (m_currState)
+        m_currState->draw();
     SDL_RenderPresent(m_renderer);
 }
 
@@ -131,6 +134,7 @@ void Game::setState(StateType type)
         m_currState->quit();
 
     delete m_currState;
+    m_currState = nullptr;
 
     switch (type)
     {
@@ -152,7 +156,11 @@ void Game::setState(StateType type)
         case StateType::Login:
             m_currState = new Login();
             break;
+        case StateType::Exit:
+            m_open = false;
+            break;
     }
 
-    m_currState->init(m_window);
+    if (m_currState)
+        m_currState->init(m_window);
 }
