@@ -16,7 +16,6 @@ private:
     TTF_Font* m_font = nullptr;
 
     friend class Text;
-    friend class Password;
 };
 
 #endif

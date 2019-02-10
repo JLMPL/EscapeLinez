@@ -117,7 +117,11 @@ Renderer.hpp
 /home/dominik/Desktop/EscapeLinez/src/Renderer.hpp
 json.hpp
 /home/dominik/Desktop/EscapeLinez/src/json.hpp
+Text.hpp
+/home/dominik/Desktop/EscapeLinez/src/Text.hpp
 time.h
+-
+math.h
 -
 vector
 -
@@ -277,6 +281,8 @@ Text.hpp
 /home/dominik/Desktop/EscapeLinez/src/Text.hpp
 Renderer.hpp
 /home/dominik/Desktop/EscapeLinez/src/Renderer.hpp
+iostream
+-
 
 /home/dominik/Desktop/EscapeLinez/src/Text.hpp
 Font.hpp
@@ -307,6 +313,8 @@ State.hpp
 /home/dominik/Desktop/EscapeLinez/src/State.hpp
 WaitingRoom.hpp
 /home/dominik/Desktop/EscapeLinez/src/WaitingRoom.hpp
+TextureLoader.hpp
+/home/dominik/Desktop/EscapeLinez/src/TextureLoader.hpp
 Renderer.hpp
 /home/dominik/Desktop/EscapeLinez/src/Renderer.hpp
 json.hpp

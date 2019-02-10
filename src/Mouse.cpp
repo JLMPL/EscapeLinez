@@ -12,6 +12,7 @@ void Mouse::update()
 
     if (button & SDL_BUTTON(SDL_BUTTON_LEFT))
         GlobalMouse.left = true;
+
     if (button & SDL_BUTTON(SDL_BUTTON_RIGHT))
         GlobalMouse.right = true;
 }

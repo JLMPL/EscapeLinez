@@ -110,6 +110,7 @@ CMakeFiles/EscapeLinez.dir/src/WaitingRoom.cpp.o: src/Renderer.hpp
 CMakeFiles/EscapeLinez.dir/src/WaitingRoom.cpp.o: src/Settings.hpp
 CMakeFiles/EscapeLinez.dir/src/WaitingRoom.cpp.o: src/State.hpp
 CMakeFiles/EscapeLinez.dir/src/WaitingRoom.cpp.o: src/Text.hpp
+CMakeFiles/EscapeLinez.dir/src/WaitingRoom.cpp.o: src/TextureLoader.hpp
 CMakeFiles/EscapeLinez.dir/src/WaitingRoom.cpp.o: src/WaitingRoom.cpp
 CMakeFiles/EscapeLinez.dir/src/WaitingRoom.cpp.o: src/WaitingRoom.hpp
 CMakeFiles/EscapeLinez.dir/src/WaitingRoom.cpp.o: src/json.hpp

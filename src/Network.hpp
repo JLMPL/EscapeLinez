@@ -3,6 +3,15 @@
 #include <SFML/Network.hpp>
 #include <string>
 
+enum SocketStatus
+{
+    SOCKET_STATUS_OK,
+    SOCKET_STATUS_NOT_READY,
+    SOCKET_STATUS_PARTIAL,
+    SOCKET_STATUS_DISCONNECTED,
+    SOCKET_STATUS_UNEXPECTED_ERROR
+};
+
 class MySocket
 {
 public:

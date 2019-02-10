@@ -41,21 +41,22 @@ private:
     bool tab = 1;
     int err = 0;
 
-    Font m_login_font;
-    Font m_login_title_font;
+    std::string m_loginData[2];
+
+    std::string m_loginString;
+    std::string m_passwordString;
+
+    Font m_loginFont;
+    Font m_loginTitleFont;
+
     Text m_title;
-    Text m_login_nick;
-    Text m_login_password;
+    Text m_loginNick;
+    Text m_loginPassword;
 
-    Text m_login_nick_value;
-    Password m_login_password_value;
+    Text m_loginNickValue;
+    Text m_loginPasswordValue;
 
-    Text m_login_nick_value_err;
-    Text m_login_password_value_err;
-
-    SDL_Surface     *wallpaper;
-
-    SDL_Texture*    tex;
+    SDL_Texture*    wallpaper;
 
     Button          LoginButton;
     Button          Error;

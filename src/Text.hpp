@@ -2,59 +2,51 @@
 #define TEXT_HPP
 #include "Font.hpp"
 
+enum class TextType
+{
+    Regular,
+    Password
+};
+
 class Text
 {
 public:
     Text() = default;
     ~Text();
 
+    void update(float deltaTime);
+    void draw();
+
+    void setTextType(const TextType& type);
+    void setCaret(bool isCaret);
     void setFont(const Font& font);
     void setString(const std::string& string);
     void setColor(const SDL_Color& color);
-    bool isFocus();
-    virtual void setInputMark();
-    virtual void deleteInputMark();
-    SDL_Rect getRect();
-    std::string getString();
-    virtual void popBack();
-    void pushBack(const char t);
-
     void setPosition(int x, int y);
 
-    void draw();
+    SDL_Rect getRect();
+    const std::string& getString();
 
 protected:
     void updateTexture();
-    virtual void updateTextureMarked();
 
 protected:
     const Font* m_font = nullptr;
+    TextType m_type = TextType::Regular;
 
-    bool focus = false;
+    bool m_isCaret = false;
+    bool m_caretBlink = false;
 
     std::string m_string;
-    std::string m_string_marked;
 
     SDL_Color m_color = {255,255,255,255};
 
     SDL_Texture* m_texture = nullptr;
     SDL_Rect m_rect = {0,0,32,32};
-};
 
-class Password : public Text
-{
-private:
-    std::string m_password_hidden;
-private:
-    void updateTextureHidden();
-    void updateTextureMarked() override final;
-public:
-    void hide();
-    void popBack() override final;
-    void setInputMark() override final;
-    void deleteInputMark() override final;
-    std::string getStringHidden();
+    SDL_Rect m_caret = {0,0,32,32};
 
+    float m_timer = 0;
 };
 
 #endif
