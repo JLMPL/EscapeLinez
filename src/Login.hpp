@@ -34,47 +34,28 @@ public:
 private:
     int id;
     int changeState = 0;
+    float m_time = 0.f;
 
     int w = GlobalConfigFile.getWidth(), h = GlobalConfigFile.getHeight();
 
     bool tab = 1;
     int err = 0;
 
-    Font m_testFont;
-    Text m_testText;
+    Font m_login_font;
+    Font m_login_title_font;
+    Text m_title;
+    Text m_login_nick;
+    Text m_login_password;
+
+    Text m_login_nick_value;
+    Password m_login_password_value;
+
+    Text m_login_nick_value_err;
+    Text m_login_password_value_err;
 
     SDL_Surface     *wallpaper;
 
     SDL_Texture*    tex;
-
-    TTF_Font*       Font0;
-    SDL_Color       FontColor;
-    SDL_Color       FontColorRed;
-    SDL_Surface*    FontSurface;
-    SDL_Texture*    FontTexture;
-    SDL_Rect        TitleRect;
-
-    SDL_Surface*    FontSurfaceLoginNick;
-    SDL_Texture*    FontTextureLoginNick;
-    SDL_Rect        RectLoginNick;
-
-    SDL_Surface*    FontSurfaceLoginPassword;
-    SDL_Texture*    FontTextureLoginPassword;
-    SDL_Rect        RectLoginPassword;
-
-    SDL_Surface*    FontSurfaceLoginNickValue;
-    SDL_Texture*    FontTextureLoginNickValue;
-
-    SDL_Surface*    FontSurfaceLoginPasswordValue;
-    SDL_Texture*    FontTextureLoginPasswordValue;
-
-    std::string     Nick = "";
-    std::string     Password = "";
-    std::string     NickStandard = "Type your nick";
-    std::string     PasswordStandard = "Type your password";
-    std::string     PasswordCopy = "";
-    SDL_Rect        NickRect;
-    SDL_Rect        PasswordReck;
 
     Button          LoginButton;
     Button          Error;

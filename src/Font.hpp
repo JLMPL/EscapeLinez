@@ -10,12 +10,13 @@ public:
     Font() = default;
     ~Font();
 
-    void loadFromFile(const std::string& path);
+    void loadFromFile(const std::string& path, const int size);
 
 private:
     TTF_Font* m_font = nullptr;
 
     friend class Text;
+    friend class Password;
 };
 
 #endif

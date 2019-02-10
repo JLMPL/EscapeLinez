@@ -5,7 +5,9 @@
 #include "Network.hpp"
 #include "Renderer.hpp"
 #include "json.hpp"
+#include "Text.hpp"
 #include <time.h>
+#include <math.h>
 #include <vector>
 
 using json = nlohmann::json;
@@ -18,45 +20,8 @@ void Login::init(SDL_Window* window)
 
     tex = SDL_CreateTextureFromSurface(GlobalRenderer, wallpaper);
 
-    Font0 = TTF_OpenFont("data/Fonts/login.ttf", 36);
-    FontColor = {255, 255, 254};
-    FontColorRed = {192, 0, 0};
-    FontSurface = TTF_RenderText_Solid(Font0, "Login", FontColor);
-    FontTexture = SDL_CreateTextureFromSurface(GlobalRenderer, FontSurface);
-
-    FontSurfaceLoginNick = TTF_RenderText_Solid(Font0, "Nick:", FontColor);
-    FontTextureLoginNick = SDL_CreateTextureFromSurface(GlobalRenderer, FontSurfaceLoginNick);
-
-    FontSurfaceLoginPassword = TTF_RenderText_Solid(Font0, "Password:", FontColor);
-    FontTextureLoginPassword = SDL_CreateTextureFromSurface(GlobalRenderer, FontSurfaceLoginPassword);
-
     SDL_DisplayMode dm;
     SDL_GetCurrentDisplayMode(0, &dm);
-
-    TitleRect.x = w / 2 - FontSurface->w / 2;
-    TitleRect.y = 0;
-    TitleRect.w = FontSurface->w;
-    TitleRect.h = FontSurface->h;
-
-    RectLoginNick.x = w / 2 - (FontSurfaceLoginNick->w + 16);
-    RectLoginNick.y = h * 0.3 - 70;
-    RectLoginNick.w = FontSurfaceLoginNick->w;
-    RectLoginNick.h = FontSurfaceLoginNick->h;
-
-    RectLoginPassword.x = w / 2 - (FontSurfaceLoginPassword->w + 16);
-    RectLoginPassword.y = h * 0.3 + 70;
-    RectLoginPassword.w = FontSurfaceLoginPassword->w;
-    RectLoginPassword.h = FontSurfaceLoginPassword->h;
-
-    NickRect.x = w / 2;
-    NickRect.y = h * 0.3 - 70;
-    NickRect.w = 10;
-    NickRect.h = 10;
-
-    PasswordReck.x = w / 2;
-    PasswordReck.y = h * 0.3 + 70;
-    PasswordReck.w = 10;
-    PasswordReck.h = 10;
 
     LoginButton.init("Login/Login2.png", "Login/LoginS.png", w / 2 - 150, h*0.6);
     Error.init("Login/ErrorLogin.png", "Login/ErrorLogin.png", w / 2 - 350, h*0.6, 700);
@@ -64,11 +29,43 @@ void Login::init(SDL_Window* window)
 
     new (&MySocketLogin) MySocket(servers[0].ip, 8000);
 
-    m_testFont.loadFromFile("data/Fonts/login.ttf");
-    m_testText.setFont(m_testFont);
-    m_testText.setString("Test text is here!");
-    m_testText.setColor({0,255,0,255});
-    m_testText.setPosition(100,100);
+    m_login_font.loadFromFile("data/Fonts/login.ttf", 36);
+    m_login_title_font.loadFromFile("data/Fonts/husa.ttf", 60);
+
+    m_title.setFont(m_login_title_font);
+    m_title.setString("Login");
+    m_title.setColor({255,255,255,255});
+    m_title.setPosition(w / 2 - (m_title.getRect().w / 2), 36);
+
+    m_login_nick.setFont(m_login_font);
+    m_login_nick.setString("Nick:");
+    m_login_nick.setColor({255,255,255,255});
+    m_login_nick.setPosition(w / 2 - (m_login_nick.getRect().w + 16), h * 0.4 - 70);
+
+    m_login_password.setFont(m_login_font);
+    m_login_password.setString("Password:");
+    m_login_password.setColor({255,255,255,255});
+    m_login_password.setPosition(w / 2 - (m_login_password.getRect().w + 16), h * 0.5 - 70);
+    std::cout<<h*0.5-70<<std::endl;
+
+    m_login_nick_value.setFont(m_login_font);
+    m_login_nick_value.setPosition(w / 2, h * 0.4 - 70);
+    m_login_nick_value.setColor({255, 255, 255, 255});
+
+    m_login_password_value.setFont(m_login_font);
+    m_login_password_value.setPosition(w / 2, h * 0.5 + 70);
+    m_login_password_value.setColor({255, 255, 255, 255});
+    std::cout<<h*0.5-70<<std::endl;
+
+    m_login_nick_value_err.setFont(m_login_font);
+    m_login_nick_value_err.setPosition(w / 2, h * 0.4 - 70);
+    m_login_nick_value_err.setColor({255, 0, 0, 255});
+    m_login_nick_value_err.setString("Type your nick");
+
+    m_login_password_value_err.setFont(m_login_font);
+    m_login_password_value_err.setPosition(w / 2, h * 0.5 + 70);
+    m_login_password_value_err.setColor({255, 0, 0, 255});
+    m_login_password_value_err.setString("Type your password");
 }
 
 void Login::update(float deltaTime)
@@ -77,16 +74,36 @@ void Login::update(float deltaTime)
     {
         Login::send();
     }
+    m_time += deltaTime;
+
+    int f = m_time;
+    if(f%2 == 1)
+    {
+        if(tab)
+        {
+            m_login_nick_value.setInputMark();
+        }
+        else
+        {
+            m_login_password_value.setInputMark();
+        }
+    }
+    else
+    {
+        if(tab)
+        {
+            m_login_nick_value.deleteInputMark();
+        }
+        else
+        {
+            m_login_password_value.deleteInputMark();
+        }
+    }
 }
 
 void Login::draw()
 {
     SDL_RenderCopy(GlobalRenderer, tex, NULL, NULL);
-    SDL_RenderCopy(GlobalRenderer, FontTexture, NULL, &TitleRect);
-    SDL_RenderCopy(GlobalRenderer, FontTextureLoginNick, NULL, &RectLoginNick);
-    SDL_RenderCopy(GlobalRenderer, FontTextureLoginPassword, NULL, &RectLoginPassword);
-    SDL_RenderCopy(GlobalRenderer, FontTextureLoginNickValue, NULL, &NickRect);
-    SDL_RenderCopy(GlobalRenderer, FontTextureLoginPasswordValue, NULL, &PasswordReck);
 
     switch(err)
     {
@@ -100,8 +117,28 @@ void Login::draw()
             NoInternet.draw();
             break;
     }
+    m_title.draw();
+    m_login_nick.draw();
+    m_login_password.draw();
 
-    m_testText.draw();
+    if (m_login_nick_value.getString() != "")
+    {
+        m_login_nick_value.draw();
+    }
+    else
+    {
+        m_login_nick_value_err.draw();
+    }
+
+    if (m_login_password_value.getString() != "")
+    {
+        m_login_password_value.draw();
+    }
+    else
+    {
+        m_login_password_value_err.draw();
+    }
+
 }
 
 void Login::processEvent(const SDL_Event& event)
@@ -124,49 +161,20 @@ void Login::processEvent(const SDL_Event& event)
         {
             if (tab)
             {
-                if (Nick.size() > 0)
+                if (m_login_nick_value.getString().size() > 0)
                 {
-                    Nick.pop_back();
+                    m_login_nick_value.popBack();
                     err = 0;
                 }
-
-                if (Nick != "")
-                {
-                    FontSurfaceLoginNickValue = TTF_RenderText_Solid(Font0, Nick.c_str(), FontColor);
-                    FontTextureLoginNickValue = SDL_CreateTextureFromSurface(GlobalRenderer, FontSurfaceLoginNickValue);
-                }
-                else
-                {
-                    FontSurfaceLoginNickValue = TTF_RenderText_Solid(Font0, NickStandard.c_str(), FontColorRed);
-                    FontTextureLoginNickValue = SDL_CreateTextureFromSurface(GlobalRenderer, FontSurfaceLoginNickValue);
-                }
-
-                NickRect.w = FontSurfaceLoginNickValue->w;
-                NickRect.h = FontSurfaceLoginNickValue->h;
             }
 
             else
             {
-                if (Password.size() > 0)
+                if (m_login_password_value.getString().size() > 0)
                 {
-                    Password.pop_back();
-                    PasswordCopy.pop_back();
+                    m_login_password_value.popBack();
                     err = 0;
                 }
-
-                if (Password != "")
-                {
-                    FontSurfaceLoginPasswordValue = TTF_RenderText_Solid(Font0, PasswordCopy.c_str(), FontColor);
-                    FontTextureLoginPasswordValue = SDL_CreateTextureFromSurface(GlobalRenderer, FontSurfaceLoginPasswordValue);
-                }
-                else
-                {
-                    FontSurfaceLoginPasswordValue = TTF_RenderText_Solid(Font0, PasswordStandard.c_str(), FontColorRed);
-                    FontTextureLoginPasswordValue = SDL_CreateTextureFromSurface(GlobalRenderer, FontSurfaceLoginPasswordValue);
-                }
-
-                PasswordReck.w = FontSurfaceLoginPasswordValue->w;
-                PasswordReck.h = FontSurfaceLoginPasswordValue->h;
             }
         }
     }
@@ -175,56 +183,25 @@ void Login::processEvent(const SDL_Event& event)
     {
         if (tab)
         {
-            Nick += event.text.text;
+            m_login_nick_value.pushBack(*event.text.text);
             err = 0;
         }
         else
         {
-            Password += event.text.text;
-            PasswordCopy = Password;
+            m_login_password_value.pushBack(*event.text.text);
             err = 0;
 
-            if (PasswordCopy.size() > 1)
+            if (m_login_password_value.getString().size() > 0)
             {
-                for (int i = PasswordCopy.size() - 2; i >= 0; i--)
-                {
-                    PasswordCopy[i] = '#';
-                }
+                m_login_password_value.hide();
             }
         }
-
-        if (Nick != "")
-        {
-            FontSurfaceLoginNickValue = TTF_RenderText_Solid(Font0, Nick.c_str(), FontColor);
-            FontTextureLoginNickValue = SDL_CreateTextureFromSurface(GlobalRenderer, FontSurfaceLoginNickValue);
-        }
-        else
-        {
-            FontSurfaceLoginNickValue = TTF_RenderText_Solid(Font0, NickStandard.c_str(), FontColorRed);
-            FontTextureLoginNickValue = SDL_CreateTextureFromSurface(GlobalRenderer, FontSurfaceLoginNickValue);
-        }
-
-        if (Password != "")
-        {
-            FontSurfaceLoginPasswordValue = TTF_RenderText_Solid(Font0, PasswordCopy.c_str(), FontColor);
-            FontTextureLoginPasswordValue = SDL_CreateTextureFromSurface(GlobalRenderer, FontSurfaceLoginPasswordValue);
-        }
-        else
-        {
-            FontSurfaceLoginPasswordValue = TTF_RenderText_Solid(Font0, PasswordStandard.c_str(), FontColorRed);
-            FontTextureLoginPasswordValue = SDL_CreateTextureFromSurface(GlobalRenderer, FontSurfaceLoginPasswordValue);
-        }
-
-        NickRect.w = FontSurfaceLoginNickValue->w;
-        NickRect.h = FontSurfaceLoginNickValue->h;
-        PasswordReck.w = FontSurfaceLoginPasswordValue->w;
-        PasswordReck.h = FontSurfaceLoginPasswordValue->h;
     }
 }
 
 void Login::send() //<<<<<<<<<<<<<<<<-------- Network.cpp
 {
-    std::string LoginP = Nick + "," + Password + "," + std::to_string(h);
+    std::string LoginP = m_login_nick_value.getString() + "," + m_login_password_value.getString() + "," + std::to_string(h);
 
     MySocketLogin.send(LoginP);
 
