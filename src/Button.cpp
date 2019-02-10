@@ -14,6 +14,8 @@ void Button::init(const std::string& released, const std::string& selected, int 
     m_rect.h = 70;
     m_rect.x = x;
     m_rect.y = y;
+
+    m_initTime = SDL_GetTicks();
 }
 
 void Button::draw()
@@ -39,7 +41,9 @@ bool Button::isHover() const
 
 bool Button::isPressed() const
 {
-    return isHover() && GlobalMouse.left;
+    if (SDL_GetTicks() - m_initTime > 150)
+        return isHover() && GlobalMouse.left;
+    return false;
 }
 
 Button::~Button()

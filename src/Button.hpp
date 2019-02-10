@@ -22,6 +22,8 @@ private:
     SDL_Texture* m_released = nullptr;
     SDL_Texture* m_selected = nullptr;
     SDL_Rect     m_rect;
+
+    int m_initTime = 0;
 };
 
 #endif /* BUTTON_HPP */
