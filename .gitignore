@@ -6,6 +6,7 @@ Makefile
 escape.sublime-project
 escape.sublime-workspace
 config.set
+EscapeLinez
 
 \.cproject
 
