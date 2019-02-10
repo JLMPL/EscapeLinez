@@ -34,6 +34,8 @@ private:
     TTF_Font*       Font;
     SDL_Color       FontColor;
 
+    SDL_Texture* m_background = nullptr;
+
 //-----------------------left-----------------------------
 
     SDL_Surface*    FontSurfaceTime;
@@ -73,4 +75,3 @@ private:
 };
 
 #endif /* WAITINGROOM_HPP */
-

@@ -4,6 +4,7 @@
 #include "Settings.hpp"
 #include "State.hpp"
 #include "WaitingRoom.hpp"
+#include "TextureLoader.hpp"
 #include "Renderer.hpp"
 #include "json.hpp"
 #include <SDL2/SDL.h>
@@ -17,8 +18,10 @@ using json = nlohmann::json;
 
 void WaitingRoom::init(SDL_Window* win)
 {
-	Font = TTF_OpenFont("data/Fonts/husa.ttf", 36);
+	Font = TTF_OpenFont("data/Fonts/husa.ttf", 48);
 	FontColor = {255, 255, 255};
+
+	m_background = loadTexture("data/Images/WaitingRoom/tlo.jpg");
 
     MessageTime[2] = '\0';
 
@@ -120,6 +123,8 @@ void WaitingRoom::update(float deltaTime)
 
 void WaitingRoom::draw()
 {
+	SDL_RenderCopy(GlobalRenderer, m_background, NULL, NULL);
+
     SDL_RenderCopy(GlobalRenderer, FontTextureTime, NULL, &RectTime);
     SDL_RenderCopy(GlobalRenderer, FontTexturePlayers, NULL, &RectPlayers);
     SDL_RenderCopy(GlobalRenderer, FontTextureHour, NULL, &RectHour);
@@ -138,6 +143,7 @@ void WaitingRoom::quit()
     SDL_DestroyTexture(FontTextureTime);
     SDL_DestroyTexture(FontTexturePlayers);
     SDL_DestroyTexture(FontTextureHour);
+	SDL_DestroyTexture(m_background);
 }
 
 StateType WaitingRoom::nextState()
