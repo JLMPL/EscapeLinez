@@ -58,7 +58,7 @@ void Login::init(SDL_Window* window)
     PasswordReck.w = 10;
     PasswordReck.h = 10;
 
-    singleButton.init("Login/Login2.png", "Login/LoginS.png", w / 2 - 150, h*0.6);
+    LoginButton.init("Login/Login2.png", "Login/LoginS.png", w / 2 - 150, h*0.6);
     Error.init("Login/ErrorLogin.png", "Login/ErrorLogin.png", w / 2 - 350, h*0.6, 700);
     NoInternet.init("Login/NoInternet.png", "Login/NoInternet.png", w / 2 - 350, h* 0.6, 700);
 
@@ -67,6 +67,10 @@ void Login::init(SDL_Window* window)
 
 void Login::update(float deltaTime)
 {
+    if (LoginButton.isPressed())
+    {
+        Login::send();
+    }
 }
 
 void Login::draw()
@@ -81,7 +85,7 @@ void Login::draw()
     switch(err)
     {
         case 0:
-            singleButton.draw();
+            LoginButton.draw();
             break;
         case 1:
             Error.draw();
@@ -266,4 +270,3 @@ StateType Login::nextState()
     if (changeState == 0)
         return StateType::None;
 }
-

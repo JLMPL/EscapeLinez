@@ -14,3 +14,7 @@ config.set
 \.project
 
 \.settings/language\.settings\.xml
+
+EscapeLinez
+
+config\.set
