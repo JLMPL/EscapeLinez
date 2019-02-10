@@ -18,7 +18,7 @@ Game::Game()
 {
     initSDL();
 
-    setState(StateType::Menu);
+    setState(StateType::Login);
 }
 
 Game::~Game()

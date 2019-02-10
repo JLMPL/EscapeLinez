@@ -71,11 +71,9 @@ private:
     SDL_Rect        NickRect;
     SDL_Rect        PasswordReck;
 
-    Button          singleButton;
-    Button          singleButtonS;
+    Button          LoginButton;
     Button          Error;
     Button          NoInternet;
 };
 
 #endif
-
