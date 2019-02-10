@@ -2,8 +2,8 @@
 #include "Button.hpp"
 #include "TextureLoader.hpp"
 #include "ConfigFile.hpp"
+#include "Renderer.hpp"
 
-//float ctime = 0;
 int numReses = 5;
 static int ResolutionsTable[5][2] =
 {
@@ -30,7 +30,7 @@ Settings::~Settings()
 void Settings::initBackground()
 {
     SDL_Surface* surf = IMG_Load("data/Images/Settings/linesSettings.png");
-    Wallpaper = SDL_CreateTextureFromSurface(Renderer, surf);
+    Wallpaper = SDL_CreateTextureFromSurface(GlobalRenderer, surf);
     SDL_FreeSurface(surf);
 }
 
@@ -38,7 +38,7 @@ void Settings::initTitle()
 {
     SDL_Color fontColor = {255, 255, 255};
     SDL_Surface* titleSurface = TTF_RenderText_Solid(Font, "Settings", fontColor);
-    TitleTexture = SDL_CreateTextureFromSurface(Renderer, titleSurface);
+    TitleTexture = SDL_CreateTextureFromSurface(GlobalRenderer, titleSurface);
 
     int w = GlobalConfigFile.getWidth();
     int h = GlobalConfigFile.getHeight();
@@ -54,7 +54,7 @@ void Settings::initTitle()
 void Settings::initResolutions()
 {
     SDL_Surface* surf = TTF_RenderText_Solid(Font, "Resolution:", {255,255,255});
-    Resolutions.Texture = SDL_CreateTextureFromSurface(Renderer, surf);
+    Resolutions.Texture = SDL_CreateTextureFromSurface(GlobalRenderer, surf);
 
     Resolutions.Rect.x = GlobalConfigFile.getWidth()/2 - (surf->w + 16);
     Resolutions.Rect.y = 200;
@@ -70,8 +70,7 @@ void Settings::initResolutions()
 void Settings::updateResolutions(const std::string& text)
 {
     SDL_Surface* surf = TTF_RenderText_Solid(Font, text.c_str(), {255,255,255});
-    Resolutions.Current = SDL_CreateTextureFromSurface(Renderer, surf);
-
+    Resolutions.Current = SDL_CreateTextureFromSurface(GlobalRenderer, surf);
 
     Resolutions.CurrRect.x = GlobalConfigFile.getWidth()/2 + 16;
     Resolutions.CurrRect.y = 200;
@@ -84,7 +83,7 @@ void Settings::updateResolutions(const std::string& text)
 void Settings::initFullscreen()
 {
     SDL_Surface* surf = TTF_RenderText_Solid(Font, "Fullscreen:", {255,255,255});
-    Fullscreen.Texture = SDL_CreateTextureFromSurface(Renderer, surf);
+    Fullscreen.Texture = SDL_CreateTextureFromSurface(GlobalRenderer, surf);
 
     Fullscreen.Rect.x = GlobalConfigFile.getWidth()/2 - (surf->w + 16);
     Fullscreen.Rect.y = 300;
@@ -99,7 +98,7 @@ void Settings::initFullscreen()
 void Settings::updateFullscreen(const std::string& text)
 {
     SDL_Surface* surf = TTF_RenderText_Solid(Font, text.c_str(), {255,255,255});
-    Fullscreen.Current = SDL_CreateTextureFromSurface(Renderer, surf);
+    Fullscreen.Current = SDL_CreateTextureFromSurface(GlobalRenderer, surf);
 
     Fullscreen.CurrRect.x = GlobalConfigFile.getWidth()/2 + 16;
     Fullscreen.CurrRect.y = 300;
@@ -112,7 +111,7 @@ void Settings::updateFullscreen(const std::string& text)
 void Settings::initMusic()
 {
     SDL_Surface* surf = TTF_RenderText_Solid(Font, "Music:", {255,255,255});
-    Music.Texture = SDL_CreateTextureFromSurface(Renderer, surf);
+    Music.Texture = SDL_CreateTextureFromSurface(GlobalRenderer, surf);
 
     Music.Rect.x = GlobalConfigFile.getWidth()/2 - (surf->w + 16);
     Music.Rect.y = 400;
@@ -127,7 +126,7 @@ void Settings::initMusic()
 void Settings::updateMusic(const std::string& text)
 {
     SDL_Surface* surf = TTF_RenderText_Solid(Font, text.c_str(), {255,255,255});
-    Music.Current = SDL_CreateTextureFromSurface(Renderer, surf);
+    Music.Current = SDL_CreateTextureFromSurface(GlobalRenderer, surf);
 
     Music.CurrRect.x = GlobalConfigFile.getWidth()/2 + 16;
     Music.CurrRect.y = 400;
@@ -140,7 +139,7 @@ void Settings::updateMusic(const std::string& text)
 void Settings::initDifficulty()
 {
     SDL_Surface* surf = TTF_RenderText_Solid(Font, "Difficulty:", {255,255,255});
-    Difficulty.Texture = SDL_CreateTextureFromSurface(Renderer, surf);
+    Difficulty.Texture = SDL_CreateTextureFromSurface(GlobalRenderer, surf);
 
     Difficulty.Rect.x = GlobalConfigFile.getWidth()/2 - (surf->w + 16);
     Difficulty.Rect.y = 500;
@@ -155,7 +154,7 @@ void Settings::initDifficulty()
 void Settings::updateDifficulty(const std::string& text)
 {
     SDL_Surface* surf = TTF_RenderText_Solid(Font, text.c_str(), {255,255,255});
-    Difficulty.Current = SDL_CreateTextureFromSurface(Renderer, surf);
+    Difficulty.Current = SDL_CreateTextureFromSurface(GlobalRenderer, surf);
 
     Difficulty.CurrRect.x = GlobalConfigFile.getWidth()/2 + 16;
     Difficulty.CurrRect.y = 500;
@@ -165,9 +164,8 @@ void Settings::updateDifficulty(const std::string& text)
     SDL_FreeSurface(surf);
 }
 
-void Settings::init(SDL_Window* win, SDL_Renderer* rend)
+void Settings::init(SDL_Window* win)
 {
-    Renderer = rend;
     Window = win;
 
     changeState = 0;
@@ -201,8 +199,7 @@ void Settings::init(SDL_Window* win, SDL_Renderer* rend)
 
     SelectionRect = {0,0,512,48};
 
-    Save.init(loadTexture(Renderer, "data/Images/Settings/savee.png"), w / 2 - 150, h*0.8);
-    SaveS.init(loadTexture(Renderer, "data/Images/Settings/saveee.png"), w / 2 - 150, h*0.8);
+    Save.init("Settings/savee.png", "Settings/saveee.png", w / 2 - 150, h*0.8);
 
     // updateResolutions(
     //     std::to_string(ResolutionsTable[CurrentResolution][0]) +
@@ -353,8 +350,6 @@ void Settings::processEvent(const SDL_Event& event)
         }
         GlobalConfigFile.save();
     }
-
-
 }
 
 void Settings::updateSelectionRect()
@@ -371,39 +366,46 @@ void Settings::update(float deltaTime)
 
     updateSelectionRect();
 
-    SDL_SetRenderDrawColor(Renderer, 0, 100, 100, 0);
+    if (Save.isPressed())
+    {
+        GlobalConfigFile.setWidth(toUpdateWidth);
+        GlobalConfigFile.setHeight(toUpdateHeight);
 
-    SDL_RenderCopy(Renderer, Wallpaper, NULL, NULL);
-    SDL_RenderCopy(Renderer, TitleTexture, NULL, &TitleRect);
-
-    SDL_SetRenderDrawColor(Renderer, 32, 64, 192, 0);
-    SDL_RenderFillRect(Renderer, &SelectionRect);
-
-    SDL_RenderCopy(Renderer, Resolutions.Texture, NULL, &Resolutions.Rect);
-    SDL_RenderCopy(Renderer, Resolutions.Current, NULL, &Resolutions.CurrRect);
-
-    SDL_RenderCopy(Renderer, Fullscreen.Texture, NULL, &Fullscreen.Rect);
-    SDL_RenderCopy(Renderer, Fullscreen.Current, NULL, &Fullscreen.CurrRect);
-
-    SDL_RenderCopy(Renderer, Music.Texture, NULL, &Music.Rect);
-    SDL_RenderCopy(Renderer, Music.Current, NULL, &Music.CurrRect);
-
-    SDL_RenderCopy(Renderer, Difficulty.Texture, NULL, &Difficulty.Rect);
-    SDL_RenderCopy(Renderer, Difficulty.Current, NULL, &Difficulty.CurrRect);
-
-    m.start();
-
-    Save.updateButton(Renderer);
-    SDL_SetRenderDrawColor(Renderer, 0, 255, 0, 0);
-
-    if (m.y > h * 0.8 && m.y < (h * 0.8) + 70 && m.x > (w / 2) - 150 && m.x < (w / 2) + 150)
-        SaveS.updateButton(Renderer);
-
+        SDL_SetWindowSize(Window, GlobalConfigFile.getWidth(), GlobalConfigFile.getHeight());
+        // SDL_RenderSetLogicalSize(Renderer, GlobalConfigFile.getWidth(), GlobalConfigFile.getHeight());
+        // SDL_RenderSetScale(Renderer, float(GlobalConfigFile.getWidth()) / 1366.f, float(GlobalConfigFile.getHeight()) / 768.f);
+        GlobalConfigFile.save();
+        changeState = 3;
+        //system("./script.sh");
+        //printf("%s1\n");
+    }
 }
 
-void Settings::AfterRendering()
+void Settings::draw()
 {
+    SDL_SetRenderDrawColor(GlobalRenderer, 0, 100, 100, 0);
 
+    SDL_RenderCopy(GlobalRenderer, Wallpaper, NULL, NULL);
+    SDL_RenderCopy(GlobalRenderer, TitleTexture, NULL, &TitleRect);
+
+    SDL_SetRenderDrawColor(GlobalRenderer, 32, 64, 192, 0);
+    SDL_RenderFillRect(GlobalRenderer, &SelectionRect);
+
+    SDL_RenderCopy(GlobalRenderer, Resolutions.Texture, NULL, &Resolutions.Rect);
+    SDL_RenderCopy(GlobalRenderer, Resolutions.Current, NULL, &Resolutions.CurrRect);
+
+    SDL_RenderCopy(GlobalRenderer, Fullscreen.Texture, NULL, &Fullscreen.Rect);
+    SDL_RenderCopy(GlobalRenderer, Fullscreen.Current, NULL, &Fullscreen.CurrRect);
+
+    SDL_RenderCopy(GlobalRenderer, Music.Texture, NULL, &Music.Rect);
+    SDL_RenderCopy(GlobalRenderer, Music.Current, NULL, &Music.CurrRect);
+
+    SDL_RenderCopy(GlobalRenderer, Difficulty.Texture, NULL, &Difficulty.Rect);
+    SDL_RenderCopy(GlobalRenderer, Difficulty.Current, NULL, &Difficulty.CurrRect);
+
+    SDL_SetRenderDrawColor(GlobalRenderer, 0, 0, 0, 0);
+
+    Save.draw();
 }
 
 void Settings::quit()

@@ -9,43 +9,39 @@
 #include <iostream>
 #include "ConfigFile.hpp"
 
-
+/*
+    Narazie nie będzie działać klawiatura w menu
+*/
 
 class Menu : public State
 {
-    public:
-        void init(SDL_Window* win, SDL_Renderer* rend) override final;
-        void quit() override final;
-        void update(float deltaTime) override final;
-        void AfterRendering() override final;
-        void processEvent(const SDL_Event& event) override final;
-        
-        StateType nextState() override final;
-        
-        StateType getType() const override final
-        {
-            return StateType::Menu;
-        }
+public:
+    void init(SDL_Window* win) override final;
+    void quit() override final;
 
-    private:        
-        StateType changeState = StateType::None;
-        SDL_Surface *wallpaper;
+    void processEvent(const SDL_Event& event) override final;
+    void update(float deltaTime) override final;
+    void draw() override final;
 
-        SDL_Texture* tex;
-        
-        int w = GlobalConfigFile.getWidth(), h = GlobalConfigFile.getHeight();
-        int hover = 0;
+    StateType nextState() override final;
 
+    StateType getType() const override final
+    {
+        return StateType::Menu;
+    }
 
-        Button singleButton;
-        Button multiButton;
-        Button settingsButton;
-        Button exitButton;
+private:
+    StateType changeState = StateType::None;
 
-        Button singleButtonS;
-        Button multiButtonS;
-        Button settingsButtonS;
-        Button exitButtonS;
+    SDL_Texture* m_background = nullptr;
+
+    int w = GlobalConfigFile.getWidth();
+    int h = GlobalConfigFile.getHeight();
+
+    Button singleButton;
+    Button multiButton;
+    Button settingsButton;
+    Button exitButton;
 };
 
 

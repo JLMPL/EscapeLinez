@@ -1,16 +1,18 @@
 #include "Game.hpp"
+#include "ConfigFile.hpp"
+#include "Mouse.hpp"
+#include "Login.hpp"
+#include "Menu.hpp"
+#include "Multiplayer.hpp"
+#include "Settings.hpp"
+#include "Singleplayer.hpp"
+#include "WaitingRoom.hpp"
+#include "Renderer.hpp"
+#include <SFML/Network.hpp>
+#include <iostream>
 #include <cstdlib>
 #include <time.h>
-#include <iostream>
 #include <math.h>
-#include <SFML/Network.hpp>
-#include "Multiplayer.hpp"
-#include "Singleplayer.hpp"
-#include "Menu.hpp"
-#include "Settings.hpp"
-#include "Login.hpp"
-#include "ConfigFile.hpp"
-#include "WaitingRoom.hpp"
 
 Game::Game()
 {
@@ -56,6 +58,8 @@ void Game::initSDL()
         flags
     );
     m_renderer = SDL_CreateRenderer(m_window, -1, SDL_RENDERER_ACCELERATED);
+
+    GlobalRenderer = m_renderer;
 }
 
 void Game::run()
@@ -93,7 +97,9 @@ void Game::processEvent(const SDL_Event& event)
             break;
         }
     }
-    m_currState->processEvent(m_event);
+
+    if (m_currState)
+        m_currState->processEvent(m_event);
 }
 
 void Game::update()
@@ -102,17 +108,23 @@ void Game::update()
     m_currTime = SDL_GetTicks();
     m_deltaTime = (m_currTime - m_prevTime) / 1000.f;
 
-    SDL_RenderClear(m_renderer);
-    m_currState->update(m_deltaTime);
+    GlobalMouse.update();
 
     if (m_currState->nextState() != StateType::None)
     {
         setState(m_currState->nextState());
     }
+
+    if (m_currState)
+        m_currState->update(m_deltaTime);
 }
 
 void Game::draw()
 {
+    SDL_SetRenderDrawColor(m_renderer, 0, 0, 0, 0);
+    SDL_RenderClear(m_renderer);
+    if (m_currState)
+        m_currState->draw();
     SDL_RenderPresent(m_renderer);
 }
 
@@ -122,6 +134,7 @@ void Game::setState(StateType type)
         m_currState->quit();
 
     delete m_currState;
+    m_currState = nullptr;
 
     switch (type)
     {
@@ -143,7 +156,11 @@ void Game::setState(StateType type)
         case StateType::Login:
             m_currState = new Login();
             break;
+        case StateType::Exit:
+            m_open = false;
+            break;
     }
 
-    m_currState->init(m_window, m_renderer);
+    if (m_currState)
+        m_currState->init(m_window);
 }

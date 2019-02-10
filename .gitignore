@@ -5,6 +5,8 @@ cmake_install.cmake
 Makefile
 escape.sublime-project
 escape.sublime-workspace
+config.set
+EscapeLinez
 
 \.cproject
 
@@ -13,3 +15,7 @@ escape.sublime-workspace
 \.project
 
 \.settings/language\.settings\.xml
+
+EscapeLinez
+
+config\.set

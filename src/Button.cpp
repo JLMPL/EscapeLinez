@@ -1,56 +1,53 @@
+#include "Button.hpp"
+#include "Mouse.hpp"
+#include "Renderer.hpp"
+#include "TextureLoader.hpp"
 #include <SDL2/SDL.h>
 #include <SDL2/SDL_image.h>
-#include <iostream>
-#include "Button.hpp"
 
-mouse   m;
-
-void Button::init(SDL_Texture* texture, int x, int y, int w)
+void Button::init(const std::string& released, const std::string& selected, int x, int y, int w)
 {
-    this->texture = texture;
+    m_released = loadTexture("data/Images/" + released);
+    m_selected = loadTexture("data/Images/" + selected);
 
-    DownR.w = w;
-    DownR.h = 70;
-    DownR.x = x;
-    DownR.y = y;
+    m_rect.w = w;
+    m_rect.h = 70;
+    m_rect.x = x;
+    m_rect.y = y;
+
+    m_initTime = SDL_GetTicks();
 }
 
-void Button::updateButton(SDL_Renderer *renderer)
+void Button::draw()
 {
-    SDL_RenderCopy(renderer, texture, NULL, &DownR);
+    if (isHover())
+        SDL_RenderCopy(GlobalRenderer, m_selected, NULL, &m_rect);
+    else
+        SDL_RenderCopy(GlobalRenderer, m_released, NULL, &m_rect);
 }
 
-bool Button::isHover(int x, int y) const
+bool Button::isHover() const
 {
-	if (x < DownR.x)
-		return false;
-	if (x > DownR.x + DownR.w)
-		return false;
-	if (y < DownR.y)
-		return false;
-	if (y > DownR.y + DownR.h)
-		return false;
-	return true;
+    if (GlobalMouse.x < m_rect.x)
+        return false;
+    if (GlobalMouse.x > m_rect.x + m_rect.w)
+        return false;
+    if (GlobalMouse.y < m_rect.y)
+        return false;
+    if (GlobalMouse.y > m_rect.y + m_rect.h)
+        return false;
+    return true;
 }
 
-bool Button::isClicked(int x, int y, const SDL_Event& event)
+bool Button::isPressed() const
 {
-    if (x < DownR.x)
-        return false;
-    if (x > DownR.x + DownR.w)
-        return false;
-    if (y < DownR.y)
-        return false;
-    if (y > DownR.y + DownR.h)
-        return false;
-    if(event.type == SDL_MOUSEBUTTONUP && event.button.button == SDL_BUTTON_LEFT)
-    {
-        return true;
-    }
-
+    if (SDL_GetTicks() - m_initTime > 150)
+        return isHover() && GlobalMouse.left;
+    return false;
 }
 
 Button::~Button()
 {
-    SDL_DestroyTexture(this->texture);
+    SDL_DestroyTexture(m_released);
+    SDL_DestroyTexture(m_selected);
 }

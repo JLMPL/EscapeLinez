@@ -36,7 +36,6 @@ private:
     float m_deltaTime = 0;
 
     State* m_currState = nullptr;
-
 };
 
 #endif
