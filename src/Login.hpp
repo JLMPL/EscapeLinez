@@ -10,6 +10,8 @@
 #include <SFML/Network.hpp>
 #include <iostream>
 
+#include "Text.hpp"
+
 class Login : public State
 {
 public:
@@ -38,11 +40,14 @@ private:
     bool tab = 1;
     int err = 0;
 
+    Font m_testFont;
+    Text m_testText;
+
     SDL_Surface     *wallpaper;
 
     SDL_Texture*    tex;
 
-    TTF_Font*       Font;
+    TTF_Font*       Font0;
     SDL_Color       FontColor;
     SDL_Color       FontColorRed;
     SDL_Surface*    FontSurface;

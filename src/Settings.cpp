@@ -218,6 +218,21 @@ void Settings::processEvent(const SDL_Event& event)
     SDL_GetDesktopDisplayMode(0, &dm);
     // GetWindowRect(hDesktop, &desktop);
 
+    if (Save.isPressed())
+    {
+        GlobalConfigFile.setWidth(toUpdateWidth);
+        GlobalConfigFile.setHeight(toUpdateHeight);
+
+        SDL_SetWindowSize(Window, GlobalConfigFile.getWidth(), GlobalConfigFile.getHeight());
+        // SDL_RenderSetLogicalSize(Renderer, GlobalConfigFile.getWidth(), GlobalConfigFile.getHeight());
+        // SDL_RenderSetScale(Renderer, float(GlobalConfigFile.getWidth()) / 1366.f, float(GlobalConfigFile.getHeight()) / 768.f);
+        GlobalConfigFile.save();
+        changeState = 3;
+        //system("./script.sh");
+        //printf("%s1\n");
+
+    }
+
     if (event.type == SDL_KEYDOWN)
     {
         if (event.key.keysym.sym == SDLK_RETURN)
@@ -411,4 +426,3 @@ StateType Settings::nextState()
     if (changeState == 0)
         return StateType::None;
 }
-
