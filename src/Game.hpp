@@ -1,7 +1,25 @@
 #ifndef GAME_HPP
 #define GAME_HPP
+
 #include "State.hpp"
 #include <SDL2/SDL.h>
+
+#include "ConfigFile.hpp"
+#include "Mouse.hpp"
+#include "Login.hpp"
+#include "Menu.hpp"
+#include "Multiplayer.hpp"
+#include "OfflineMod.hpp"
+#include "Settings.hpp"
+#include "FindThe.hpp"
+#include "CatchMe.hpp"
+#include "WaitingRoom.hpp"
+#include "Renderer.hpp"
+#include <SFML/Network.hpp>
+#include <iostream>
+#include <cstdlib>
+#include <time.h>
+#include <math.h>
 
 /*
     Główna klasa programu

@@ -4,8 +4,9 @@
 #include "ConfigFile.hpp"
 #include "TextureLoader.hpp"
 #include "Renderer.hpp"
+#include "OfflineMod.hpp"
 
-void Menu::init(SDL_Window* win)
+void OfflineMod::init(SDL_Window* win)
 {
     Window = win;
 
@@ -13,13 +14,11 @@ void Menu::init(SDL_Window* win)
 
     changeState = StateType::None;
 
-    singleButton.init("Menu/sin.png", "Menu/sinS.png", w / 2 - 150, h * 0.3);
-    multiButton.init("Menu/mul.png", "Menu/mulS.png", w / 2 - 150, h*0.4);
-    settingsButton.init("Menu/sett.png", "Menu/settS.png", w / 2 - 150, h*0.5);
-    exitButton.init("Menu/ex.png", "Menu/exS.png", w / 2 - 150, h*0.6);
+    CatchMeIfYouCanButton.init("OfflineMod/CatchMe.png", "OfflineMod/CatchMeS.png", w / 2 - 150, h * 0.3);
+    FindTheWayInsideButton.init("OfflineMod/FindThe.png", "OfflineMod/FindTheS.png", w / 2 - 150, h*0.4);
 }
 
-void Menu::processEvent(const SDL_Event& event)
+void OfflineMod::processEvent(const SDL_Event& event)
 {
     /*
     if(event.type == SDL_KEYDOWN)
@@ -58,42 +57,33 @@ void Menu::processEvent(const SDL_Event& event)
     */
 }
 
-void Menu::update(float deltaTime)
+void OfflineMod::update(float deltaTime)
 {
-    if (singleButton.isPressed())
+    if (CatchMeIfYouCanButton.isPressed())
     {
-        changeState = StateType::OfflineMod;
+        changeState = StateType::CatchMe;
     }
-    else if (multiButton.isPressed())
+    else if (FindTheWayInsideButton.isPressed())
     {
-        changeState = StateType::WaitingRoom;
+        changeState = StateType::FindThe;
     }
-    else if (settingsButton.isPressed())
-    {
-        changeState = StateType::Settings;
-    }
-    else if (exitButton.isPressed())
-    {
-        changeState = StateType::Exit;
-    }
+
 }
 
-void Menu::draw()
+void OfflineMod::draw()
 {
     SDL_RenderCopy(GlobalRenderer, m_background, NULL, NULL);
 
-    singleButton.draw();
-    multiButton.draw();
-    settingsButton.draw();
-    exitButton.draw();
+    CatchMeIfYouCanButton.draw();
+    FindTheWayInsideButton.draw();
 }
 
-void Menu::quit()
+void OfflineMod::quit()
 {
     SDL_DestroyTexture(m_background);
 }
 
-StateType Menu::nextState()
+StateType OfflineMod::nextState()
 {
     return changeState;
 }

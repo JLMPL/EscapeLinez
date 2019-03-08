@@ -1,24 +1,11 @@
 #include "Game.hpp"
-#include "ConfigFile.hpp"
-#include "Mouse.hpp"
-#include "Login.hpp"
-#include "Menu.hpp"
-#include "Multiplayer.hpp"
-#include "Settings.hpp"
-#include "Singleplayer.hpp"
-#include "WaitingRoom.hpp"
-#include "Renderer.hpp"
-#include <SFML/Network.hpp>
-#include <iostream>
-#include <cstdlib>
-#include <time.h>
-#include <math.h>
+
 
 Game::Game()
 {
     initSDL();
 
-    setState(StateType::Login);
+    setState(StateType::Menu);
 }
 
 Game::~Game()
@@ -113,6 +100,7 @@ void Game::update()
     if (m_currState->nextState() != StateType::None)
     {
         setState(m_currState->nextState());
+
     }
 
     if (m_currState)
@@ -132,7 +120,6 @@ void Game::setState(StateType type)
 {
     if (m_currState)
         m_currState->quit();
-
     delete m_currState;
     m_currState = nullptr;
 
@@ -141,8 +128,8 @@ void Game::setState(StateType type)
         case StateType::Menu:
             m_currState = new Menu();
             break;
-        case StateType::Singleplayer:
-            m_currState = new Singleplayer();
+        case StateType::CatchMe:
+            m_currState = new CatchMe();
             break;
         case StateType::Multiplayer:
             m_currState = new Multiplayer();
@@ -153,8 +140,14 @@ void Game::setState(StateType type)
         case StateType::WaitingRoom:
             m_currState = new WaitingRoom();
             break;
+        case StateType::OfflineMod:
+            m_currState = new OfflineMod();
+            break;
         case StateType::Login:
             m_currState = new Login();
+            break;
+        case StateType::FindThe:
+            m_currState = new FindThe();
             break;
         case StateType::Exit:
             m_open = false;

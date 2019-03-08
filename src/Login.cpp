@@ -5,7 +5,6 @@
 #include "Network.hpp"
 #include "Renderer.hpp"
 #include "json.hpp"
-#include "Text.hpp"
 #include <time.h>
 #include <math.h>
 #include <vector>
@@ -211,7 +210,7 @@ void Login::quit()
 StateType Login::nextState()
 {
     if (changeState == 1)
-        return StateType::Singleplayer;
+        return StateType::CatchMe;
     if (changeState == 2)
         return StateType::Multiplayer;
     if (changeState == 3)

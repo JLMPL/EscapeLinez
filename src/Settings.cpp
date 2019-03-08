@@ -416,7 +416,7 @@ void Settings::quit()
 StateType Settings::nextState()
 {
     if (changeState == 1)
-        return StateType::Singleplayer;
+        return StateType::CatchMe;
     if (changeState == 2)
         return StateType::Multiplayer;
     if (changeState == 3)

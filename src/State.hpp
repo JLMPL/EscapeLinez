@@ -7,10 +7,12 @@ union SDL_Event;
 enum class StateType
 {
     Menu = 0,
-    Singleplayer,
+    CatchMe,
     WaitingRoom,
     Multiplayer,
     Settings,
+    OfflineMod,
+    FindThe,
     Login,
     Exit,
 
@@ -42,4 +44,3 @@ class State
 };
 
 #endif /* STATE_HPP */
-

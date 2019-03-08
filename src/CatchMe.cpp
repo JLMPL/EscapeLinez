@@ -1,8 +1,8 @@
-#include "Singleplayer.hpp"
+#include "CatchMe.hpp"
 #include "ConfigFile.hpp"
 #include "Renderer.hpp"
 
-void Singleplayer::init(SDL_Window* win)
+void CatchMe::init(SDL_Window* win)
 {
     Window = win;
 
@@ -13,13 +13,13 @@ void Singleplayer::init(SDL_Window* win)
     m_timer = 0;
 }
 
-void Singleplayer::addLine()
+void CatchMe::addLine()
 {
     m_lines.push_back(Line(m_height));
     m_height += 48;
 }
 
-void Singleplayer::update(float deltaTime)
+void CatchMe::update(float deltaTime)
 {
     m_timer += deltaTime;
 
@@ -68,7 +68,7 @@ void Singleplayer::update(float deltaTime)
     }*/
 }
 
-void Singleplayer::draw()
+void CatchMe::draw()
 {
     for (auto& line : m_lines)
         line.draw();
@@ -90,7 +90,7 @@ void Singleplayer::draw()
     }
 }
 
-void Singleplayer::quit()
+void CatchMe::quit()
 {
 
 }
