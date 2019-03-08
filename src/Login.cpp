@@ -5,6 +5,7 @@
 #include "Network.hpp"
 #include "Renderer.hpp"
 #include "json.hpp"
+#include "Text.hpp"
 #include <time.h>
 #include <math.h>
 #include <vector>
