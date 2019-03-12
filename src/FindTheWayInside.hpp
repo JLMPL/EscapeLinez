@@ -1,5 +1,5 @@
-#ifndef FINDTHE_HPP
-#define FINDTHE_HPP
+#ifndef FINDTHEWAYINSIDE_HPP
+#define FINDTHEWAYINSIDE_HPP
 
 #include "State.hpp"
 #include "Settings.hpp"
@@ -7,8 +7,9 @@
 #include "Player.hpp"
 #include <SDL2/SDL.h>
 #include <vector>
+#include "Maze.hpp"
 
-class FindThe : public State
+class FindTheWayInside : public State
 {
 public:
     void init(SDL_Window* win) override final;
@@ -21,10 +22,12 @@ public:
 
     StateType getType() const override final
     {
-        return StateType::FindThe;
+        return StateType::FindTheWayInside;
     }
 private:
     float m_timer = 0;
+
+    Maze* m_maze;
 
     Player m_player;
 };

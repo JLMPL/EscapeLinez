@@ -65,7 +65,7 @@ void OfflineMod::update(float deltaTime)
     }
     else if (FindTheWayInsideButton.isPressed())
     {
-        changeState = StateType::FindThe;
+        changeState = StateType::FindTheWayInside;
     }
 
 }

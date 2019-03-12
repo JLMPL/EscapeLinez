@@ -12,7 +12,7 @@ enum class StateType
     Multiplayer,
     Settings,
     OfflineMod,
-    FindThe,
+    FindTheWayInside,
     Login,
     Exit,
 

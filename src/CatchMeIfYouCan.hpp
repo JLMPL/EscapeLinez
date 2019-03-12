@@ -1,5 +1,5 @@
-#ifndef CATCHME_HPP
-#define CATCHME_HPP
+#ifndef CATCHMEIFYOUCAN_HPP
+#define CATCHMEIFYOUCAN_HPP
 #include "State.hpp"
 #include "Line.hpp"
 #include "Settings.hpp"
@@ -9,7 +9,7 @@
 #include <SDL2/SDL.h>
 #include <vector>
 
-class CatchMe : public State
+class CatchMeIfYouCan : public State
 {
 public:
     void init(SDL_Window* win) override final;

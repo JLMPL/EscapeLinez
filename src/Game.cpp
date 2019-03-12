@@ -129,7 +129,7 @@ void Game::setState(StateType type)
             m_currState = new Menu();
             break;
         case StateType::CatchMe:
-            m_currState = new CatchMe();
+            m_currState = new CatchMeIfYouCan();
             break;
         case StateType::Multiplayer:
             m_currState = new Multiplayer();
@@ -146,8 +146,8 @@ void Game::setState(StateType type)
         case StateType::Login:
             m_currState = new Login();
             break;
-        case StateType::FindThe:
-            m_currState = new FindThe();
+        case StateType::FindTheWayInside:
+            m_currState = new FindTheWayInside();
             break;
         case StateType::Exit:
             m_open = false;

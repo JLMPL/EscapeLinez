@@ -1,8 +1,8 @@
-#include "CatchMe.hpp"
+#include "CatchMeIfYouCan.hpp"
 #include "ConfigFile.hpp"
 #include "Renderer.hpp"
 
-void CatchMe::init(SDL_Window* win)
+void CatchMeIfYouCan::init(SDL_Window* win)
 {
     Window = win;
 
@@ -13,13 +13,13 @@ void CatchMe::init(SDL_Window* win)
     m_timer = 0;
 }
 
-void CatchMe::addLine()
+void CatchMeIfYouCan::addLine()
 {
     m_lines.push_back(Line(m_height));
     m_height += 48;
 }
 
-void CatchMe::update(float deltaTime)
+void CatchMeIfYouCan::update(float deltaTime)
 {
     m_timer += deltaTime;
 
@@ -68,7 +68,7 @@ void CatchMe::update(float deltaTime)
     }*/
 }
 
-void CatchMe::draw()
+void CatchMeIfYouCan::draw()
 {
     for (auto& line : m_lines)
         line.draw();
@@ -90,7 +90,7 @@ void CatchMe::draw()
     }
 }
 
-void CatchMe::quit()
+void CatchMeIfYouCan::quit()
 {
 
 }

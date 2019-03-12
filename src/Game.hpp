@@ -11,8 +11,8 @@
 #include "Multiplayer.hpp"
 #include "OfflineMod.hpp"
 #include "Settings.hpp"
-#include "FindThe.hpp"
-#include "CatchMe.hpp"
+#include "FindTheWayInside.hpp"
+#include "CatchMeIfYouCan.hpp"
 #include "WaitingRoom.hpp"
 #include "Renderer.hpp"
 #include <SFML/Network.hpp>
