@@ -30,6 +30,8 @@ private:
     Maze* m_maze;
 
     Player m_player;
+    
+    Square* m_CurrentSquare = nullptr;
 };
 
 

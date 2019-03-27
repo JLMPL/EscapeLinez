@@ -3,20 +3,43 @@
 
 void Maze::draw()
 {
+    SDL_Rect gate;
     int x1;
     int x2;
     int y1;
     int y2;
-
-    SDL_SetRenderDrawColor(GlobalRenderer, 0, 64, 255, 0);
+    
+    //SDL_SetRenderDrawColor(GlobalRenderer, 0, 64, 255, 0);
 
 
     for (int i = 0; i < m_V.size(); i++)
     {
-        x1 = m_V[i]->x * m_WallLength;
-        x2 = (m_V[i]->x + 1) * m_WallLength;
-        y1 = m_V[i]->y * m_WallLength;
-        y2 = (m_V[i]->y + 1) * m_WallLength;
+        x1 = (m_V[i]->x * m_SquareSize) + m_OffsetW;
+        x2 = ((m_V[i]->x + 1) * m_SquareSize) + m_OffsetW;
+        y1 = (m_V[i]->y * m_SquareSize) + m_OffsetH;
+        y2 = ((m_V[i]->y + 1) * m_SquareSize) + m_OffsetH;
+        
+        if(m_V[i]->gate)
+        {
+            SDL_SetRenderDrawBlendMode(GlobalRenderer, SDL_BLENDMODE_BLEND);
+            SDL_SetRenderDrawColor(GlobalRenderer, 64, 255, 64, 64);
+            
+                        
+            gate.x = x1;
+            gate.y = y1;
+            gate.w = m_SquareSize;
+            gate.h = m_SquareSize;
+            
+            SDL_RenderDrawRect(GlobalRenderer, &gate);
+            SDL_RenderFillRect(GlobalRenderer, &gate);
+            
+                        SDL_SetRenderDrawBlendMode(GlobalRenderer, SDL_BLENDMODE_NONE);
+
+
+        }
+        
+        SDL_SetRenderDrawColor(GlobalRenderer, 0, 64, 255, 0);
+
 
         if (m_V[i]->topWall == true)
         {
@@ -86,12 +109,14 @@ void Maze::generate()
             m_stack.pop_back();
         }
     }
+    
+    m_V[m_V.size() - 1]->gate = true;
 }
 
 
 bool Maze::unvisitedSquares()
 {
-    for (int i = 0; i < m_V.size(); i++)
+    for (unsigned int i = 0; i < m_V.size(); i++)
     {
 
         if (m_V[i]->visited == false)
@@ -106,18 +131,18 @@ bool Maze::unvisitedSquares()
 }
 
 
-// Square* Map::findSquare(int x, int y)
-// {
-//     for (int i = 0; i < m_V.size(); i++)
-//     {
-//         if (m_V[i]->x == x && m_V[i]->y == y)
-//         {
-//             return m_V[i];
-//         }
-//     }
-//
-//     return nullptr;
-// }
+ Square* Maze::findSquare(int x, int y)
+ {
+     for (int i = 0; i < m_V.size(); i++)
+     {
+         if (m_V[i]->x == x && m_V[i]->y == y)
+         {
+             return m_V[i];
+         }
+     }
+
+     return nullptr;
+ }
 
 Square* Maze::findSquareNeighbour(int x, int y)
 {
@@ -212,7 +237,5 @@ Square* Maze::findSquareNeighbour(int x, int y)
         } while(end != true);
 
     else return nullptr;
-
-
 
 }

@@ -6,12 +6,15 @@ void FindTheWayInside::init(SDL_Window* win)
 {
     Window = win;
 
-    m_player.x = GlobalConfigFile.getWidth() / 2;
-    m_player.y = 25;
     m_player.r = 10;
 
     m_maze = new Maze(1, m_player.r);
     m_maze->generate();
+    
+    m_player.x = (m_maze->getSquareSize() / 2) + m_maze->getOffsetW();
+    m_player.y = (m_maze->getSquareSize() / 2) + m_maze->getOffsetH();
+    
+    m_CurrentSquare = m_maze->getMaze()[0];
 
     m_timer = 0;
 }
@@ -21,24 +24,37 @@ void FindTheWayInside::update(float deltaTime)
     m_timer += deltaTime;
 
     const Uint8* keys = SDL_GetKeyboardState(NULL);
-
-    if (keys[SDL_SCANCODE_DOWN])
+    
+    if((m_CurrentSquare->x * m_maze->getSquareSize() + m_maze->getOffsetW()) < (m_player.x - m_player.r) || m_CurrentSquare->leftWall == false)
     {
-        m_player.y += deltaTime * 96;
+        if (keys[SDL_SCANCODE_LEFT])
+        {
+            m_player.x -= deltaTime * 200;
+        }
     }
-    if (keys[SDL_SCANCODE_LEFT])
+    if(((m_CurrentSquare->x * m_maze->getSquareSize()) + m_maze->getSquareSize()  + m_maze->getOffsetW()) > (m_player.x + m_player.r) || m_CurrentSquare->rightWall == false)
     {
-        m_player.x -= deltaTime * 96;
+        if (keys[SDL_SCANCODE_RIGHT])
+        {
+            m_player.x += deltaTime * 200;
+        }
     }
-    if (keys[SDL_SCANCODE_RIGHT])
+    if((m_CurrentSquare->y * m_maze->getSquareSize()  + m_maze->getOffsetH()) < (m_player.y - m_player.r) || m_CurrentSquare->topWall == false)
     {
-        m_player.x += deltaTime * 96;
+        if (keys[SDL_SCANCODE_UP])
+        {
+            m_player.y -= deltaTime * 200;
+        }
     }
-    if (keys[SDL_SCANCODE_UP])
-    {
-        m_player.y -= deltaTime * 96;
+    if(((m_CurrentSquare->y * m_maze->getSquareSize()) + m_maze->getSquareSize()  + m_maze->getOffsetH())> (m_player.y + m_player.r) || m_CurrentSquare->downWall == false)
+    {        
+        if (keys[SDL_SCANCODE_DOWN])
+        {
+            m_player.y += deltaTime * 200;
+        }
     }
-
+    
+    m_CurrentSquare = m_maze->findSquare(m_player.x / m_maze->getSquareSize(),  m_player.y / m_maze->getSquareSize()); 
 }
 
 void FindTheWayInside::draw()

@@ -13,7 +13,7 @@ struct Square
 {
     Square(int x, int y):x(x), y(y) {}
     bool visited = false;
-    bool special = false;
+    bool gate = false;
 
     bool topWall = true;
     bool downWall = true;
@@ -33,12 +33,14 @@ public:
     {
         m_WallSize = WallSize;
         m_PlayerSize = PlayerSize;
-        m_WallLength = (4 * PlayerSize + 5);
         m_CorridorSize = (4 * PlayerSize + 5);
         m_SquareSize = m_CorridorSize + (2 * m_WallSize);
 
         m_Width = w / m_SquareSize;
         m_Heigth = h / m_SquareSize;
+        
+        m_OffsetW = (w % m_SquareSize) / 2;
+        m_OffsetH = (h % m_SquareSize) / 2;
 
         for (int i = 0; i < m_Width; i++)
         {
@@ -50,7 +52,11 @@ public:
     }
     void generate();
     bool unvisitedSquares();
-    // Square* findSquare(int x, int y);
+    int getSquareSize() {return this->m_SquareSize;}
+    int getOffsetW() {return this->m_OffsetW;}
+    int getOffsetH() {return this->m_OffsetH;}
+    std::vector<Square*> getMaze() {return this->m_V;}
+    Square* findSquare(int x, int y);
     Square* findSquareNeighbour(int x, int y);
     void draw();
 
@@ -63,6 +69,8 @@ private:
     int m_SquareSize;
     int m_Width;
     int m_Heigth;
+    int m_OffsetW;
+    int m_OffsetH;
 
     std::vector<Square*> m_V;
     std::vector<Square*> m_stack;
